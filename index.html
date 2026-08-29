@@ -1,799 +1,1671 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LANA — Leads · Acquisition · Nurturing · Accomplishment</title>
-<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --w:#FFFFFF;--off:#F7F7F9;--off2:#EFEFF4;
-  --ink:#09090F;--ink2:#1E1E2E;--ink3:#52526A;--ink4:#9898B2;
-  --line:#E4E4EE;
-  --p:#5B2FD4;--p2:#7C4FF0;--pl:#9B77FF;--pxl:#C4B5FD;
-  --pa:rgba(91,47,212,.08);--pa2:rgba(91,47,212,.14);
-  --green:#10B981;--amber:#F59E0B;
-  --r:14px;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Instrument Sans',sans-serif;background:var(--w);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="LANA reúne WhatsApp Business, Messenger e Instagram en una sola bandeja, donde su IA responde con contexto y convierte conversaciones en cotizaciones y producción.">
+  <meta name="theme-color" content="#F7F8FA">
+  <meta property="og:title" content="LANA — De la conversación a producción">
+  <meta property="og:description" content="La plataforma comercial y operativa para talleres de artículos promocionales.">
+  <meta property="og:url" content="https://get-lana.com/">
+  <meta property="og:image" content="https://app.get-lana.com/assets/lana-hero-omnichannel-original.png">
+  <link rel="canonical" href="https://get-lana.com/">
+  <title>LANA — De la conversación a producción</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lana-ui-bg:#F7F8FA;
+      --lana-ui-surface:#FFFFFF;
+      --lana-ui-surface-subtle:#F2F4F7;
+      --lana-ui-border:#E4E7EC;
+      --lana-ui-border-strong:#D0D5DD;
+      --lana-ui-text:#101828;
+      --lana-ui-text-secondary:#475467;
+      --lana-ui-text-muted:#667085;
+      --lana-ui-brand:#6941C6;
+      --lana-ui-brand-hover:#53389E;
+      --lana-ui-brand-soft:#F4F0FF;
+      --lana-ui-success:#16803C;
+      --lana-ui-success-soft:#EDF9F0;
+      --lana-ui-info:#175CD3;
+      --lana-ui-info-soft:#EFF8FF;
+      --lana-ui-dark:#171A21;
+      --lana-ui-dark-subtle:#1E222B;
+      --lana-ui-dark-border:#2B303B;
+      --lana-ui-dark-text:#F2F4F7;
+      --lana-ui-dark-muted:#B5BDCB;
+      --lana-shadow:0 1px 2px rgba(16,24,40,.04),0 6px 20px rgba(16,24,40,.06);
+      --lana-shadow-lg:0 22px 60px rgba(16,24,40,.14);
+      --container:1180px;
+      --lana-motion-fast:160ms;
+      --lana-motion-standard:320ms;
+      --lana-motion-slow:620ms;
+      --lana-motion-ease:cubic-bezier(.22,1,.36,1);
+    }
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:58px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);transition:all .3s}
-.nav-logo{display:flex;align-items:center;gap:9px}
-.nav-mark{width:28px;height:28px;background:var(--p);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px}
-.nav-brand{font-family:'Urbanist',sans-serif;font-weight:900;font-size:17px;letter-spacing:.1em;color:var(--ink)}
-.nav-links{display:flex;align-items:center;gap:28px}
-.nav-links a{font-size:13px;color:var(--ink3);text-decoration:none;font-weight:500;transition:color .15s}
-.nav-links a:hover{color:var(--p)}
-.nav-cta{display:flex;gap:10px}
-.btn-nav{background:var(--p);color:white;border:none;padding:9px 20px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .2s}
-.btn-nav:hover{background:var(--p2);box-shadow:0 4px 18px rgba(91,47,212,.3)}
-.btn-nav-o{background:transparent;color:var(--p);border:1.5px solid var(--pxl);padding:9px 18px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .2s}
-.btn-nav-o:hover{background:var(--pa);border-color:var(--p)}
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      min-width:320px;
+      background:var(--lana-ui-bg);
+      color:var(--lana-ui-text);
+      font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-size:16px;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    body.menu-open { overflow:hidden; }
+    .page-progress { position:fixed; z-index:1001; top:0; right:0; left:0; height:2px; pointer-events:none; }
+    .page-progress span { width:100%; height:100%; display:block; background:var(--lana-ui-brand); transform:scaleX(var(--page-progress,0)); transform-origin:left center; transition:transform 80ms linear; }
+    img,svg { display:block; }
+    button,a { font:inherit; }
+    a { color:inherit; }
+    button { cursor:pointer; }
+    :focus-visible {
+      outline:3px solid color-mix(in srgb,var(--lana-ui-brand) 28%,transparent);
+      outline-offset:3px;
+    }
+    .skip-link {
+      position:fixed;
+      left:16px;
+      top:-80px;
+      z-index:1000;
+      padding:10px 14px;
+      border-radius:8px;
+      background:var(--lana-ui-text);
+      color:var(--lana-ui-surface);
+      text-decoration:none;
+    }
+    .skip-link:focus { top:12px; }
+    .container { width:min(calc(100% - 40px),var(--container)); margin-inline:auto; }
+    .section { padding:clamp(72px,9vw,112px) 0; }
+    .hero,#plataforma,#flujo,#meta,#comparativa { scroll-margin-top:70px; }
+    .section-label {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:16px;
+      color:var(--lana-ui-brand);
+      font-size:13px;
+      font-weight:700;
+    }
+    .section-label::before { content:""; width:22px; height:2px; background:currentColor; }
+    .section-heading {
+      max-width:760px;
+      margin:0;
+      font:700 clamp(34px,4.6vw,56px)/1.06 Manrope,Inter,sans-serif;
+      letter-spacing:-.045em;
+    }
+    .section-intro {
+      max-width:680px;
+      margin:20px 0 0;
+      color:var(--lana-ui-text-secondary);
+      font-size:clamp(16px,2vw,19px);
+    }
+    .button {
+      position:relative;
+      overflow:hidden;
+      min-height:44px;
+      padding:0 18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      border:1px solid var(--lana-ui-border-strong);
+      border-radius:8px;
+      background:var(--lana-ui-surface);
+      color:var(--lana-ui-text);
+      font-weight:650;
+      text-decoration:none;
+      transition:background var(--lana-motion-fast) ease,border-color var(--lana-motion-fast) ease,color var(--lana-motion-fast) ease,transform var(--lana-motion-fast) var(--lana-motion-ease);
+    }
+    .button:hover { border-color:var(--lana-ui-text-muted); transform:translateY(-2px); }
+    .button:active { transform:translateY(0) scale(.985); }
+    main .button::after { content:"→"; width:0; overflow:hidden; opacity:0; transform:translateX(-7px); transition:width var(--lana-motion-standard) var(--lana-motion-ease),opacity var(--lana-motion-fast) ease,transform var(--lana-motion-standard) var(--lana-motion-ease); }
+    main .button:hover::after,main .button:focus-visible::after { width:16px; opacity:1; transform:translateX(0); }
+    .button-primary { border-color:var(--lana-ui-brand); background:var(--lana-ui-brand); color:#FFFFFF; }
+    .button-primary:hover { border-color:var(--lana-ui-brand-hover); background:var(--lana-ui-brand-hover); }
+    .button svg { width:17px; height:17px; }
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 40px 60px;position:relative;overflow:hidden;flex-direction:column;text-align:center}
-.hero::before{content:'';position:absolute;top:-20%;left:-15%;width:70vw;height:70vw;max-width:900px;max-height:900px;background:radial-gradient(circle,rgba(91,47,212,.08) 0%,transparent 65%);pointer-events:none;animation:orbf 14s ease-in-out infinite}
-.hero::after{content:'';position:absolute;bottom:-15%;right:-10%;width:55vw;height:55vw;max-width:700px;background:radial-gradient(circle,rgba(91,47,212,.05) 0%,transparent 65%);pointer-events:none;animation:orbf 18s ease-in-out infinite reverse}
-@keyframes orbf{0%,100%{transform:translate(0,0)}50%{transform:translate(24px,-28px)}}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--pa);border:1px solid rgba(91,47,212,.15);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:700;color:var(--p);margin-bottom:28px;font-family:'Urbanist',sans-serif;letter-spacing:.04em}
-.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
-.hero-h1{font-family:'Urbanist',sans-serif;font-weight:900;font-size:clamp(44px,6.5vw,84px);line-height:1.04;max-width:920px;margin-bottom:20px}
-.hero-h1 em{font-style:normal;color:var(--p)}
-.hero-sub{font-size:19px;color:var(--ink3);max-width:580px;line-height:1.65;margin-bottom:40px}
-.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:72px}
-.btn-hero{background:var(--p);color:white;border:none;padding:15px 30px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .25s;box-shadow:0 6px 28px rgba(91,47,212,.3);display:flex;align-items:center;gap:8px}
-.btn-hero:hover{background:var(--p2);transform:translateY(-2px);box-shadow:0 10px 36px rgba(91,47,212,.4)}
-.btn-hero-g{background:transparent;color:var(--ink);border:1.5px solid var(--line);padding:14px 26px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .2s}
-.btn-hero-g:hover{border-color:var(--p);color:var(--p)}
+    .site-header {
+      position:sticky;
+      top:0;
+      z-index:100;
+      border-bottom:1px solid color-mix(in srgb,var(--lana-ui-border) 88%,transparent);
+      background:color-mix(in srgb,var(--lana-ui-surface) 94%,transparent);
+      backdrop-filter:blur(14px);
+      transition:background-color .28s ease,box-shadow .28s ease;
+    }
+    body.is-scrolled .site-header { background:color-mix(in srgb,var(--lana-ui-surface) 98%,transparent); box-shadow:0 8px 28px rgba(16,24,40,.07); }
+    .header-inner { height:70px; display:flex; align-items:center; gap:20px; }
+    .brand-lockup { display:flex; align-items:center; min-width:max-content; flex:0 0 auto; }
+    .brand { display:inline-flex; align-items:center; text-decoration:none; }
+    .brand img { width:124px; height:38px; object-fit:contain; object-position:left center; }
+    .meta-partner-lockup { min-height:34px; margin-left:16px; padding-left:16px; display:grid; align-content:center; border-left:1px solid var(--lana-ui-border-strong); line-height:1.05; }
+    .meta-partner-logo { display:block; width:82px; height:auto; }
+    .meta-partner-status { margin-top:5px; display:flex; align-items:center; gap:5px; color:var(--lana-ui-text-muted); font-size:9px; font-weight:600; white-space:nowrap; }
+    .meta-partner-status::before { content:""; width:6px; height:6px; flex:0 0 auto; border-radius:50%; background:var(--lana-ui-success); }
+    .desktop-nav { margin-left:auto; display:flex; align-items:center; gap:clamp(14px,1.6vw,24px); }
+    .desktop-nav a {
+      position:relative;
+      color:var(--lana-ui-text-secondary);
+      font-size:14px;
+      font-weight:600;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .desktop-nav a::after { content:""; position:absolute; right:0; bottom:-9px; left:0; height:2px; border-radius:2px; background:var(--lana-ui-brand); transform:scaleX(0); transform-origin:left; transition:transform var(--lana-motion-standard) var(--lana-motion-ease); }
+    .desktop-nav a:hover { color:var(--lana-ui-text); }
+    .desktop-nav a:hover::after,.desktop-nav a.is-current::after { transform:scaleX(1); }
+    .desktop-nav a.is-current { color:var(--lana-ui-brand); }
+    .header-actions { display:flex; align-items:center; gap:8px; flex:0 0 auto; }
+    .menu-button {
+      display:none;
+      width:44px;
+      height:44px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--lana-ui-border-strong);
+      border-radius:8px;
+      background:var(--lana-ui-surface);
+      color:var(--lana-ui-text);
+    }
+    .menu-button svg { width:21px; height:21px; }
 
-/* LANA journey card */
-.journey-card{background:white;border:1px solid var(--line);border-radius:20px;padding:20px 28px;max-width:860px;width:100%;box-shadow:0 4px 40px rgba(9,9,15,.07);position:relative;z-index:1}
-.jc-label{font-size:10px;font-weight:700;color:var(--ink4);text-transform:uppercase;letter-spacing:.1em;font-family:'Urbanist',sans-serif;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.jc-label::before{content:'';width:20px;height:1.5px;background:var(--line)}
-.jc-steps{display:flex;align-items:flex-start;gap:0}
-.jcs{text-align:center;padding:8px 12px;display:flex;flex-direction:column;align-items:center}
-.jc-arr{color:var(--pxl);font-size:18px;font-weight:700;line-height:1;flex-shrink:0;padding:0 2px;margin-top:18px;opacity:.7}
-.jcs-ico{font-size:26px;display:block;margin-bottom:8px;line-height:1}
-.jcs-letter{font-family:'Urbanist',sans-serif;font-weight:900;font-size:22px;color:var(--p);line-height:1;margin-bottom:3px}
-.jcs-word{font-family:'Urbanist',sans-serif;font-weight:700;font-size:12px;color:var(--ink);margin-bottom:3px}
-.jcs-desc{font-size:11px;color:var(--ink4);line-height:1.4}
+    .hero { padding:clamp(56px,7vw,92px) 0 72px; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,.78fr) minmax(560px,1.22fr); align-items:center; gap:clamp(20px,3vw,44px); }
+    .hero-content { position:relative; z-index:2; }
+    .hero-kicker {
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      margin-bottom:22px;
+      padding:7px 11px;
+      border:1px solid color-mix(in srgb,var(--lana-ui-brand) 24%,var(--lana-ui-border));
+      border-radius:999px;
+      background:var(--lana-ui-brand-soft);
+      color:var(--lana-ui-brand);
+      font-size:12px;
+      font-weight:700;
+    }
+    .hero-kicker span { width:7px; height:7px; border-radius:50%; background:var(--lana-ui-success); }
+    .hero h1 {
+      max-width:760px;
+      margin:0;
+      font:800 clamp(42px,5.4vw,66px)/1.01 Manrope,Inter,sans-serif;
+      letter-spacing:-.055em;
+    }
+    .hero h1 em { color:var(--lana-ui-brand); font-style:normal; }
+    .hero-copy {
+      max-width:420px;
+      margin:20px 0 0;
+      color:var(--lana-ui-text-secondary);
+      font-size:clamp(16px,1.65vw,18px);
+    }
+    .hero-actions { margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; }
+    .hero-proof { margin-top:34px; display:flex; flex-wrap:wrap; gap:10px 22px; }
+    .proof-item { display:flex; align-items:center; gap:8px; color:var(--lana-ui-text-muted); font-size:13px; font-weight:600; }
+    .proof-icon { width:28px; height:28px; display:grid; place-items:center; border:1px solid var(--lana-ui-border); border-radius:8px; background:var(--lana-ui-surface); color:var(--lana-ui-brand); }
+    .proof-icon svg { width:15px; height:15px; }
 
-/* TECHNIQUE STRIP */
-.strip{background:var(--off);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,black 80px,black calc(100% - 80px),transparent);mask-image:linear-gradient(90deg,transparent,black 80px,black calc(100% - 80px),transparent)}
-.strip-inner{display:flex;gap:12px;animation:marquee 28s linear infinite;width:max-content}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.strip-tag{display:flex;align-items:center;gap:7px;padding:7px 16px;background:white;border:1px solid var(--line);border-radius:100px;font-size:12px;font-weight:600;color:var(--ink3);white-space:nowrap;font-family:'Urbanist',sans-serif}
+    .product-stage { position:relative; min-height:600px; display:grid; align-items:center; margin:0; }
+    .product-stage::before {
+      display:none;
+    }
+    .app-window {
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--lana-ui-border-strong);
+      border-radius:16px;
+      background:var(--lana-ui-surface);
+      box-shadow:var(--lana-shadow-lg);
+    }
+    .window-bar { height:48px; padding:0 16px; display:flex; align-items:center; gap:7px; border-bottom:1px solid var(--lana-ui-border); background:var(--lana-ui-surface-subtle); }
+    .window-dot { width:7px; height:7px; border-radius:50%; background:var(--lana-ui-border-strong); }
+    .window-title { margin-left:8px; color:var(--lana-ui-text-muted); font-size:11px; font-weight:600; }
+    .app-shell { min-height:438px; display:grid; grid-template-columns:62px 190px minmax(0,1fr); }
+    .app-rail { padding:14px 9px; display:grid; align-content:start; justify-items:center; gap:10px; border-right:1px solid var(--lana-ui-border); background:var(--lana-ui-dark); }
+    .rail-mark { width:34px; height:34px; display:grid; place-items:center; margin-bottom:10px; border-radius:9px; background:var(--lana-ui-brand); color:#FFFFFF; font:700 15px Manrope,sans-serif; }
+    .rail-icon { width:34px; height:34px; display:grid; place-items:center; border-radius:8px; color:var(--lana-ui-dark-muted); }
+    .rail-icon.active { background:var(--lana-ui-brand); color:#FFFFFF; }
+    .rail-icon svg { width:17px; height:17px; }
+    .chat-list { border-right:1px solid var(--lana-ui-border); background:var(--lana-ui-surface); }
+    .chat-list-head { padding:16px 14px 12px; border-bottom:1px solid var(--lana-ui-border); }
+    .chat-list-head strong { display:block; font-size:13px; }
+    .chat-list-head span { color:var(--lana-ui-text-muted); font-size:10px; }
+    .chat-row { padding:13px 12px; display:grid; grid-template-columns:34px 1fr; gap:9px; border-bottom:1px solid var(--lana-ui-border); }
+    .chat-row.active { background:var(--lana-ui-brand-soft); }
+    .channel-avatar { width:34px; height:34px; display:grid; place-items:center; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface); }
+    .channel-avatar svg { width:18px; height:18px; }
+    .chat-meta { min-width:0; }
+    .chat-meta strong,.chat-meta span { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .chat-meta strong { font-size:10px; }
+    .chat-meta span { color:var(--lana-ui-text-muted); font-size:9px; }
+    .conversation { min-width:0; display:flex; flex-direction:column; }
+    .conversation-head { min-height:58px; padding:11px 15px; display:flex; align-items:center; gap:9px; border-bottom:1px solid var(--lana-ui-border); }
+    .conversation-head strong { display:block; font-size:11px; }
+    .conversation-head span { display:block; color:var(--lana-ui-text-muted); font-size:9px; }
+    .conversation-body { flex:1; padding:18px 16px 13px; background:var(--lana-ui-surface-subtle); }
+    .message { max-width:85%; margin-bottom:10px; padding:9px 11px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface); color:var(--lana-ui-text-secondary); font-size:10px; }
+    .message.out { margin-left:auto; border-color:color-mix(in srgb,var(--lana-ui-brand) 18%,var(--lana-ui-border)); background:var(--lana-ui-brand-soft); color:var(--lana-ui-text); }
+    .quote-card { margin-top:14px; padding:12px; border:1px solid var(--lana-ui-border-strong); border-radius:10px; background:var(--lana-ui-surface); }
+    .quote-card-head { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+    .quote-card strong { font-size:11px; }
+    .status-pill { padding:3px 7px; border-radius:999px; background:var(--lana-ui-success-soft); color:var(--lana-ui-success); font-size:8px; font-weight:700; }
+    .quote-lines { margin-top:10px; display:grid; gap:6px; }
+    .quote-line { display:flex; justify-content:space-between; color:var(--lana-ui-text-muted); font-size:9px; }
+    .quote-total { padding-top:7px; border-top:1px solid var(--lana-ui-border); color:var(--lana-ui-text); font-weight:700; }
+    .stage-callout { position:absolute; right:-22px; bottom:8px; width:210px; padding:13px 14px; display:flex; align-items:center; gap:10px; border:1px solid var(--lana-ui-border-strong); border-radius:11px; background:var(--lana-ui-surface); box-shadow:var(--lana-shadow); }
+    .stage-callout svg { width:20px; height:20px; flex:0 0 auto; color:var(--lana-ui-success); }
+    .stage-callout strong { display:block; font-size:11px; }
+    .stage-callout span { display:block; color:var(--lana-ui-text-muted); font-size:9px; }
+    .hero-visual {
+      position:relative;
+      z-index:1;
+      width:min(900px,136%);
+      max-width:none;
+      height:auto;
+      justify-self:center;
+      border:0;
+      border-radius:0;
+      background:transparent;
+      box-shadow:none;
+      transform-origin:50% 52%;
+      will-change:transform,opacity;
+    }
+    .product-stage .app-window,
+    .product-stage .stage-callout { display:none; }
 
-/* SECTIONS */
-.sec{padding:96px 40px;max-width:1240px;margin:0 auto}
-.sec-w{max-width:100%;padding:96px 40px}
-.chip{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:var(--p);font-family:'Urbanist',sans-serif;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.chip::before{content:'';width:20px;height:1.5px;background:var(--p)}
-.sec-h2{font-family:'Urbanist',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,54px);line-height:1.08;margin-bottom:16px}
-.sec-h2 em{font-style:normal;color:var(--p)}
-.sec-sub{font-size:17px;color:var(--ink3);line-height:1.65;max-width:520px}
+    .channel-strip { padding:24px 0; border-block:1px solid var(--lana-ui-border); background:var(--lana-ui-surface); }
+    .channel-strip-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .channel-strip-copy strong { display:block; font:700 16px Manrope,sans-serif; }
+    .channel-strip-copy span { color:var(--lana-ui-text-muted); font-size:13px; }
+    .channel-logos { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:10px; }
+    .channel-logo { min-height:46px; padding:0 14px; display:flex; align-items:center; gap:9px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface); font-size:13px; font-weight:650; }
+    .channel-logo svg { width:20px; height:20px; }
+    .channel-logo.whatsapp svg { color:#25D366; }
+    .channel-logo.messenger svg { color:#0866FF; }
+    .channel-logo.instagram svg { color:#C13584; }
 
-/* LANA ACRONYM (dark) */
-.lana-dark{background:var(--ink2);padding:96px 40px;position:relative;overflow:hidden}
-.lana-dark::before{content:'LANA';position:absolute;right:-40px;top:50%;transform:translateY(-50%);font-family:'Urbanist',sans-serif;font-weight:900;font-size:320px;color:rgba(255,255,255,.02);line-height:1;pointer-events:none;user-select:none}
-.ld-inner{max-width:1240px;margin:0 auto}
-.ld-chip{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);font-family:'Urbanist',sans-serif;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
-.ld-chip::before{content:'';width:20px;height:1.5px;background:rgba(255,255,255,.3)}
-.ld-h2{font-family:'Urbanist',sans-serif;font-weight:900;font-size:clamp(32px,4vw,52px);color:white;line-height:1.08;margin-bottom:52px;max-width:600px}
-.ld-h2 em{font-style:normal;color:var(--pl)}
-.ld-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:18px;overflow:hidden}
-.ld-card{padding:36px 28px;background:#1a1828;position:relative;overflow:hidden;transition:background .25s}
-.ld-card:hover{background:#221f38}
-.ld-card-ghost{position:absolute;right:-10px;bottom:-20px;font-family:'Urbanist',sans-serif;font-weight:900;font-size:110px;line-height:1;pointer-events:none;opacity:.06}
-.ld-step{font-size:10px;font-weight:700;color:rgba(255,255,255,.3);font-family:'Urbanist',sans-serif;letter-spacing:.07em;text-transform:uppercase;margin-bottom:16px}
-.ld-letter{font-family:'Urbanist',sans-serif;font-weight:900;font-size:48px;line-height:1;margin-bottom:6px}
-.ld-word{font-family:'Urbanist',sans-serif;font-weight:800;font-size:16px;color:white;margin-bottom:12px}
-.ld-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:18px}
-.ld-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:5px;font-family:'Urbanist',sans-serif;letter-spacing:.04em}
-.ld-features{margin-top:16px;display:flex;flex-direction:column;gap:7px}
-.ldf{font-size:12px;color:rgba(255,255,255,.55);display:flex;align-items:flex-start;gap:7px;line-height:1.4}
-.ldf::before{content:'→';color:rgba(255,255,255,.2);flex-shrink:0}
+    .platform-section,.ecommerce-section { overflow:hidden; background:var(--lana-ui-surface); }
+    .story-tabs {
+      margin-top:clamp(44px,6vw,72px);
+      display:grid;
+      grid-template-columns:minmax(280px,.58fr) minmax(0,1.42fr);
+      align-items:start;
+      gap:clamp(32px,5vw,72px);
+    }
+    .story-tablist { position:relative; display:grid; border-top:1px solid var(--lana-ui-border); }
+    .story-tab-indicator { position:absolute; z-index:2; top:0; right:-1px; width:2px; height:var(--story-indicator-size,104px); border-radius:2px; background:var(--lana-ui-brand); pointer-events:none; transform:translateY(var(--story-indicator-offset,0)); transition:height var(--lana-motion-standard) var(--lana-motion-ease),transform var(--lana-motion-standard) var(--lana-motion-ease); }
+    .story-tab {
+      position:relative;
+      width:100%;
+      min-height:104px;
+      padding:20px 4px 20px 0;
+      display:grid;
+      grid-template-columns:36px 1fr 20px;
+      align-items:center;
+      gap:12px;
+      border:0;
+      border-bottom:1px solid var(--lana-ui-border);
+      border-radius:0;
+      background:transparent;
+      color:var(--lana-ui-text-secondary);
+      font:inherit;
+      text-align:left;
+      cursor:pointer;
+      transition:padding-left var(--lana-motion-standard) var(--lana-motion-ease),color var(--lana-motion-fast) ease,background-color var(--lana-motion-fast) ease;
+    }
+    .story-tab:hover { padding-left:8px; color:var(--lana-ui-text); }
+    .story-tab.is-active { padding-left:8px; background:color-mix(in srgb,var(--lana-ui-brand-soft) 52%,transparent); color:var(--lana-ui-text); }
+    .story-tab-number { align-self:start; padding-top:3px; color:var(--lana-ui-text-muted); font:700 12px/1.35 "JetBrains Mono",monospace; letter-spacing:.04em; transition:color .2s ease; }
+    .story-tab.is-active .story-tab-number { color:var(--lana-ui-brand); }
+    .story-tab-label { min-width:0; }
+    .story-tab-kicker { display:block; color:var(--lana-ui-text-muted); font-size:12px; font-weight:600; line-height:1.35; transition:color .2s ease; }
+    .story-tab.is-active .story-tab-kicker { color:var(--lana-ui-brand); }
+    .story-tab strong { display:block; margin-top:6px; color:inherit; font:700 clamp(17px,1.45vw,19px)/1.3 Manrope,sans-serif; }
+    .story-tab-chevron { width:18px; height:18px; color:var(--lana-ui-text-muted); transform:rotate(-90deg); transition:transform var(--lana-motion-standard) var(--lana-motion-ease),color var(--lana-motion-fast) ease; }
+    .story-tab.is-active .story-tab-chevron { color:var(--lana-ui-brand); transform:translateX(4px) rotate(-90deg); }
+    .story-panels { position:relative; min-width:0; padding-top:34px; }
+    .story-panels::before { content:attr(data-step); position:absolute; top:2px; right:0; color:var(--lana-ui-text-muted); font:700 11px/1 "JetBrains Mono",monospace; letter-spacing:.08em; }
+    .story-panel { min-height:566px; display:flex; flex-direction:column; justify-content:center; }
+    .story-panel[hidden] { display:none; }
+    .story-panel.is-leaving { animation:storyPanelOut var(--lana-motion-fast) ease both; }
+    .story-panel p { max-width:760px; margin:0 0 20px; color:var(--lana-ui-text-secondary); font-size:clamp(16px,1.45vw,18px); line-height:1.7; }
+    .story-panel-media { min-width:0; margin:0; display:flex; align-items:center; justify-content:center; }
+    .story-panel-media img { width:100%; height:auto; max-height:540px; display:block; object-fit:contain; }
+    .story-panel:not([hidden]):not(.is-leaving) p { animation:storyCopyIn var(--lana-motion-standard) var(--lana-motion-ease) both; }
+    .story-panel:not([hidden]):not(.is-leaving) .story-panel-media { animation:storyMediaIn .46s var(--lana-motion-ease) .04s both; }
 
-/* FLOW STEPS */
-.flow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:56px;position:relative}
-.flow-grid::before{content:'';position:absolute;top:33px;left:calc(10% + 34px);right:calc(10% + 34px);height:1.5px;background:linear-gradient(90deg,var(--pxl),var(--pxl));opacity:.35;z-index:0}
-.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 14px;position:relative;z-index:1}
-.fstep-ico{width:68px;height:68px;border-radius:50%;background:white;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px;transition:all .25s;box-shadow:0 2px 14px rgba(9,9,15,.06)}
-.fstep:hover .fstep-ico{border-color:var(--p);box-shadow:0 6px 24px rgba(91,47,212,.15);transform:translateY(-4px)}
-.fstep-pill{font-size:9px;font-weight:700;color:var(--p);font-family:'Urbanist',sans-serif;letter-spacing:.07em;text-transform:uppercase;margin-bottom:7px;background:var(--pa);padding:3px 10px;border-radius:100px;display:inline-block}
-.fstep-title{font-family:'Urbanist',sans-serif;font-weight:800;font-size:14px;color:var(--ink);margin-bottom:6px}
-.fstep-desc{font-size:12px;color:var(--ink4);line-height:1.55}
+    .motion-ready [data-reveal] {
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity var(--lana-motion-slow) var(--lana-motion-ease),transform var(--lana-motion-slow) var(--lana-motion-ease);
+      transition-delay:var(--reveal-delay,0ms);
+      will-change:opacity,transform;
+    }
+    .motion-ready [data-reveal].is-visible { opacity:1; transform:translateY(0); }
+    .motion-ready .section-label[data-reveal]::before { transform:scaleX(0); transform-origin:left; transition:transform var(--lana-motion-standard) var(--lana-motion-ease) calc(var(--reveal-delay,0ms) + 110ms); }
+    .motion-ready .section-label[data-reveal].is-visible::before { transform:scaleX(1); }
+    .motion-ready .hero-content { animation:heroContentIn .74s cubic-bezier(.22,1,.36,1) both; }
+    .motion-ready .hero-visual { animation:heroVisualIn .9s var(--lana-motion-ease) .08s both; }
+    .motion-ready .product-stage { transform:translate3d(0,var(--hero-parallax,0),0); transition:transform 80ms linear; }
+    .motion-ready .channel-logo,.motion-ready .proof-item { transition:transform .24s ease,border-color .24s ease,background-color .24s ease; }
+    .motion-ready .channel-logo:hover,.motion-ready .proof-item:hover { transform:translateY(-3px); }
+    .motion-ready .benchmark tbody tr { transition:background-color var(--lana-motion-fast) ease; }
+    .motion-ready .benchmark tbody tr:hover { background:var(--lana-ui-surface-subtle); }
+    .motion-ready .package-card { transition:border-color var(--lana-motion-standard) ease,transform var(--lana-motion-standard) var(--lana-motion-ease); }
+    .motion-ready .package-card:focus-within { border-color:var(--lana-ui-brand); transform:translateY(-3px); }
 
-/* FEATURE CARDS */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
-.fc{background:white;border:1px solid var(--line);border-radius:16px;padding:28px;transition:all .22s;position:relative;overflow:hidden}
-.fc::before{content:'';position:absolute;inset:0;border-radius:16px;border:1.5px solid var(--p);opacity:0;transition:opacity .2s}
-.fc:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(91,47,212,.09)}
-.fc:hover::before{opacity:1}
-.fc-pillar{font-size:10px;font-weight:700;color:var(--p);font-family:'Urbanist',sans-serif;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:6px}
-.fc-ico{font-size:30px;margin-bottom:12px;display:block}
-.fc-title{font-family:'Urbanist',sans-serif;font-weight:800;font-size:17px;color:var(--ink);margin-bottom:8px}
-.fc-desc{font-size:13px;color:var(--ink4);line-height:1.65}
+    @keyframes heroContentIn {
+      from { opacity:0; transform:translateY(22px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    @keyframes heroVisualIn {
+      from { opacity:0; transform:translate3d(32px,18px,0) scale(.96); }
+      to { opacity:1; transform:translate3d(0,0,0) scale(1); }
+    }
+    @keyframes storyCopyIn { from { opacity:0; transform:translate3d(var(--story-offset,22px),6px,0); } to { opacity:1; transform:translate3d(0,0,0); } }
+    @keyframes storyMediaIn { from { opacity:0; transform:translate3d(var(--story-offset,22px),10px,0) scale(.985); } to { opacity:1; transform:translate3d(0,0,0) scale(1); } }
+    @keyframes storyPanelOut { from { opacity:1; transform:translate3d(0,0,0); } to { opacity:0; transform:translate3d(var(--story-exit-offset,-10px),-3px,0); } }
 
-/* DEMO PREVIEW SECTION */
-.demo-sec{background:var(--ink2);padding:96px 40px;position:relative;overflow:hidden}
-.demo-sec::before{content:'';position:absolute;top:-30%;left:-15%;width:70%;height:160%;background:radial-gradient(circle,rgba(91,47,212,.15) 0%,transparent 60%);pointer-events:none}
-.demo-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
-.demo-t .chip{color:rgba(255,255,255,.45)}
-.demo-t .chip::before{background:rgba(255,255,255,.3)}
-.demo-t .sec-h2{color:white}
-.demo-t .sec-sub{color:rgba(255,255,255,.5)}
-.btn-demo-big{background:var(--p);color:white;border:none;padding:16px 32px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .25s;display:flex;align-items:center;gap:9px;box-shadow:0 6px 28px rgba(91,47,212,.4);margin-top:32px}
-.btn-demo-big:hover{background:var(--p2);transform:translateY(-2px)}
-.demo-mockup{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:20px}
-.dm-bar{display:flex;align-items:center;gap:7px;padding:8px 12px;background:rgba(255,255,255,.06);border-radius:8px;margin-bottom:16px}
-.dm-dot{width:8px;height:8px;border-radius:50%}
-.dm-steps{display:flex;flex-direction:column;gap:7px}
-.dm-step{display:flex;align-items:center;gap:11px;padding:10px 13px;border-radius:9px}
-.dm-step.done{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2)}
-.dm-step.active{background:rgba(91,47,212,.18);border:1px solid rgba(91,47,212,.3)}
-.dm-step.idle{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
-.dm-ico{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.dm-title{font-family:'Urbanist',sans-serif;font-size:12px;font-weight:700;color:white;margin-bottom:1px}
-.dm-sub{font-size:10px;color:rgba(255,255,255,.35)}
-.dm-badge{font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;font-family:'Urbanist',sans-serif;margin-left:auto;white-space:nowrap}
+    .meta-section { background:var(--lana-ui-dark); color:var(--lana-ui-dark-text); }
+    .meta-grid { display:grid; grid-template-columns:1fr .82fr; align-items:center; gap:64px; }
+    .meta-badge { display:inline-flex; align-items:center; gap:10px; margin-bottom:22px; color:#84ADFF; font-size:13px; font-weight:700; }
+    .meta-badge svg { width:32px; height:32px; }
+    .meta-section h2 { margin:0; font:700 clamp(36px,4.8vw,58px)/1.04 Manrope,sans-serif; letter-spacing:-.045em; }
+    .meta-section p { max-width:640px; margin:22px 0 0; color:var(--lana-ui-dark-muted); font-size:18px; }
+    .meta-note { margin-top:22px; padding-left:14px; border-left:2px solid #84ADFF; color:var(--lana-ui-dark-muted); font-size:12px; }
+    .meta-status { padding:22px; border:1px solid var(--lana-ui-dark-border); border-radius:14px; background:var(--lana-ui-dark-subtle); }
+    .meta-status h3 { margin:0 0 14px; font:700 15px Manrope,sans-serif; }
+    .meta-row { min-height:54px; display:flex; align-items:center; justify-content:space-between; gap:18px; border-top:1px solid var(--lana-ui-dark-border); }
+    .meta-row:first-of-type { border-top:0; }
+    .meta-channel { display:flex; align-items:center; gap:10px; font-size:13px; font-weight:600; }
+    .meta-channel svg { width:19px; height:19px; }
+    .meta-state { color:#86EFAC; font-size:11px; font-weight:700; text-align:right; }
+    .meta-state.review { color:#FEC84B; }
 
-/* PRICING */
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:52px}
-.pc{background:white;border:1.5px solid var(--line);border-radius:18px;padding:36px 30px;position:relative;transition:all .22s}
-.pc:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(91,47,212,.1)}
-.pc.featured{background:var(--p);border-color:var(--p)}
-.pc-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#F59E0B;color:var(--ink);font-size:10px;font-weight:700;padding:4px 14px;border-radius:100px;font-family:'Urbanist',sans-serif;letter-spacing:.05em;white-space:nowrap}
-.pc-name{font-family:'Urbanist',sans-serif;font-weight:900;font-size:20px;margin-bottom:5px}
-.pc-sub{font-size:13px;margin-bottom:22px;color:var(--ink3)}
-.pc.featured .pc-sub{color:rgba(255,255,255,.6)}
-.pc-price{margin-bottom:26px}
-.pc-amount{font-family:'Urbanist',sans-serif;font-weight:900;font-size:44px;color:var(--p);line-height:1}
-.pc.featured .pc-amount{color:white}
-.pc-period{font-size:13px;color:var(--ink4);margin-left:3px}
-.pc.featured .pc-period{color:rgba(255,255,255,.5)}
-.pc-list{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
-.pci{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--ink3)}
-.pci-y{color:var(--green)}
-.pci-n{color:var(--line)}
-.pc.featured .pci{color:rgba(255,255,255,.75)}
-.btn-pc{width:100%;padding:13px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .2s}
-.btn-pc-p{background:white;color:var(--p);border:none}
-.btn-pc-p:hover{background:var(--off)}
-.btn-pc-g{background:transparent;border:1.5px solid var(--pxl);color:var(--p)}
-.btn-pc-g:hover{background:var(--pa);border-color:var(--p)}
+    .benchmark-head { display:flex; align-items:end; justify-content:space-between; gap:32px; }
+    .benchmark-note { max-width:340px; margin:0; color:var(--lana-ui-text-muted); font-size:12px; }
+    .benchmark-wrap { margin-top:44px; overflow-x:auto; border:1px solid var(--lana-ui-border); border-radius:14px; background:var(--lana-ui-surface); box-shadow:var(--lana-shadow); }
+    .benchmark { width:100%; min-width:920px; border-collapse:collapse; }
+    .benchmark th,.benchmark td { padding:15px 16px; border-bottom:1px solid var(--lana-ui-border); text-align:left; vertical-align:top; }
+    .benchmark th { background:var(--lana-ui-surface-subtle); color:var(--lana-ui-text-secondary); font-size:12px; font-weight:700; }
+    .benchmark th:first-child { width:190px; }
+    .benchmark th.lana-col { background:var(--lana-ui-brand-soft); color:var(--lana-ui-brand); }
+    .benchmark td { color:var(--lana-ui-text-secondary); font-size:12px; }
+    .benchmark td:first-child { color:var(--lana-ui-text); font-weight:700; }
+    .benchmark td.lana-col { background:color-mix(in srgb,var(--lana-ui-brand-soft) 58%,var(--lana-ui-surface)); color:var(--lana-ui-text); font-weight:600; }
+    .benchmark tr:last-child td { border-bottom:0; }
+    .benchmark a { color:inherit; text-decoration-thickness:1px; text-underline-offset:3px; }
+    .benchmark-source { margin-top:14px; color:var(--lana-ui-text-muted); font-size:11px; }
+    .benchmark-mobile-hint { display:none; margin:0 0 10px; color:var(--lana-ui-text-muted); font-size:11px; font-weight:600; }
 
-/* CTA SECTION */
-.cta-sec{background:var(--ink);padding:96px 40px;text-align:center;position:relative;overflow:hidden}
-.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(91,47,212,.2) 0%,transparent 65%);pointer-events:none}
-.cta-inner{max-width:700px;margin:0 auto;position:relative;z-index:1}
-.cta-h2{font-family:'Urbanist',sans-serif;font-weight:900;font-size:clamp(36px,5vw,62px);color:white;line-height:1.05;margin-bottom:16px}
-.cta-h2 em{font-style:normal;color:var(--pl)}
-.cta-sub{font-size:17px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:36px}
-.cta-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-cta-w{background:white;color:var(--p);border:none;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .2s}
-.btn-cta-w:hover{background:var(--off);transform:translateY(-1px)}
-.btn-cta-o{background:transparent;color:white;border:1.5px solid rgba(255,255,255,.2);padding:13px 26px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .2s}
-.btn-cta-o:hover{border-color:rgba(255,255,255,.5)}
+    .packages-section { background:var(--lana-ui-surface-subtle); }
+    .packages-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.55fr); align-items:end; gap:40px; }
+    .packages-head .section-intro { margin:0; }
+    .packages-grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-items:stretch; gap:16px; }
+    .package-card { padding:28px; display:flex; flex-direction:column; border:1px solid var(--lana-ui-border-strong); border-radius:16px; background:var(--lana-ui-surface); }
+    .package-card.is-featured { border-color:var(--lana-ui-brand); }
+    .package-topline { min-height:24px; display:flex; align-items:center; justify-content:space-between; gap:12px; color:var(--lana-ui-text-muted); font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+    .package-recommended { color:var(--lana-ui-brand); }
+    .package-card h3 { margin:16px 0 0; font:700 25px/1.15 Manrope,sans-serif; letter-spacing:-.025em; }
+    .package-billing { position:relative; isolation:isolate; margin-top:20px; padding:3px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface-subtle); }
+    .package-billing::before { content:""; position:absolute; z-index:-1; top:3px; bottom:3px; left:3px; width:calc(50% - 4.5px); border:1px solid var(--lana-ui-border-strong); border-radius:7px; background:var(--lana-ui-surface); transform:translateX(0); transition:transform var(--lana-motion-standard) var(--lana-motion-ease); }
+    .package-billing.is-monthly::before { transform:translateX(calc(100% + 3px)); }
+    .package-billing button { min-height:38px; padding:8px 10px; border:1px solid transparent; border-radius:7px; background:transparent; color:var(--lana-ui-text-secondary); font:650 12px/1 Inter,sans-serif; cursor:pointer; transition:color var(--lana-motion-fast) ease,transform var(--lana-motion-fast) var(--lana-motion-ease); }
+    .package-billing button:hover { color:var(--lana-ui-text); }
+    .package-billing button:active { transform:scale(.97); }
+    .package-billing button.is-active { color:var(--lana-ui-text); }
+    .package-billing button span { margin-left:3px; color:var(--lana-ui-brand); font-size:10px; }
+    .package-billing button:focus-visible { outline:3px solid color-mix(in srgb,var(--lana-ui-brand) 22%,transparent); outline-offset:2px; }
+    .package-price-wrap { min-height:86px; }
+    .package-price { margin-top:18px; display:flex; align-items:baseline; gap:7px; }
+    .package-price strong { font:700 clamp(36px,4vw,48px)/1 Manrope,sans-serif; letter-spacing:-.045em; }
+    .package-price span { color:var(--lana-ui-text-muted); font-size:12px; }
+    .package-billing-detail { margin:8px 0 0; color:var(--lana-ui-text-muted); font-size:11px; line-height:1.4; }
+    .package-price,.package-billing-detail { transition:opacity var(--lana-motion-fast) ease,transform var(--lana-motion-fast) var(--lana-motion-ease); }
+    .package-price-wrap.is-changing .package-price,.package-price-wrap.is-changing .package-billing-detail { opacity:0; transform:translateY(-7px); }
+    .package-price-wrap.is-entering .package-price,.package-price-wrap.is-entering .package-billing-detail { animation:packagePriceIn var(--lana-motion-standard) var(--lana-motion-ease) both; }
+    .package-price-wrap.is-entering .package-billing-detail { animation-delay:35ms; }
+    .package-summary { min-height:66px; margin:16px 0 0; color:var(--lana-ui-text-secondary); font-size:13px; line-height:1.6; }
+    .package-list { margin:22px 0 28px; padding:22px 0 0; display:grid; gap:13px; border-top:1px solid var(--lana-ui-border); list-style:none; }
+    .package-list li { position:relative; padding-left:24px; color:var(--lana-ui-text-secondary); font-size:12px; line-height:1.55; }
+    .package-list svg { position:absolute; top:1px; left:0; width:16px; height:16px; color:var(--lana-ui-success); }
+    .package-card .button { width:100%; margin-top:auto; }
+    .package-note { margin:12px 0 0; color:var(--lana-ui-text-muted); font-size:10px; line-height:1.45; text-align:center; }
+    .packages-footnote { max-width:920px; margin:18px auto 0; color:var(--lana-ui-text-muted); font-size:11px; line-height:1.55; text-align:center; }
 
-/* FOOTER */
-footer{background:var(--ink2);padding:60px 40px 32px}
-.footer-inner{max-width:1240px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.07)}
-.footer-brand{font-family:'Urbanist',sans-serif;font-weight:900;font-size:20px;color:white;letter-spacing:.1em;margin-bottom:10px}
-.footer-tagline{font-size:13px;color:rgba(255,255,255,.3);line-height:1.6;max-width:260px;margin-bottom:12px}
-.footer-col h4{font-family:'Urbanist',sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
-.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:10px;transition:color .15s}
-.footer-col a:hover{color:white}
-.footer-bottom{padding-top:26px;display:flex;align-items:center;justify-content:space-between}
-.footer-copy{font-size:12px;color:rgba(255,255,255,.2)}
-.footer-legal{display:flex;gap:18px}
-.footer-legal a{font-size:12px;color:rgba(255,255,255,.2);text-decoration:none}
-/* LANA meaning in footer */
-.footer-lana{display:flex;gap:20px;margin-top:8px}
-.fl-item{font-size:11px;color:rgba(255,255,255,.2);font-family:'Urbanist',sans-serif;font-weight:700}
-.fl-item span{font-weight:400;color:rgba(255,255,255,.12)}
+    @keyframes packagePriceIn { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:translateY(0); } }
 
-/* DEMO OVERLAY */
-#demo-overlay{display:none;position:fixed;inset:0;z-index:9999;flex-direction:column}
-.do-bar{background:#09090F;padding:0 20px;height:48px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:1px solid rgba(91,47,212,.3)}
-.do-l{display:flex;align-items:center;gap:14px;font-family:'Urbanist',sans-serif}
-.do-logo{display:flex;align-items:center;gap:8px}
-.do-mark{width:24px;height:24px;background:var(--p);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px}
-.do-name{font-weight:900;font-size:15px;color:white;letter-spacing:.1em}
-.do-sep{width:1px;height:18px;background:rgba(255,255,255,.12)}
-.do-badge{font-size:11px;font-weight:700;background:rgba(91,47,212,.3);color:var(--pxl);padding:3px 10px;border-radius:100px;border:1px solid rgba(91,47,212,.4);letter-spacing:.04em}
-.do-desc{font-size:12px;color:rgba(255,255,255,.3);font-family:'Instrument Sans',sans-serif}
-.do-close{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .2s}
-.do-close:hover{background:rgba(255,255,255,.13)}
-#demo-iframe{flex:1;border:none;width:100%;background:var(--off)}
+    .final-cta { padding:clamp(72px,9vw,108px) 0; }
+    .final-card { padding:clamp(34px,6vw,66px); display:grid; grid-template-columns:1fr auto; align-items:center; gap:40px; border:1px solid var(--lana-ui-border-strong); border-radius:18px; background:var(--lana-ui-surface); }
+    .final-card h2 { max-width:720px; margin:0; font:700 clamp(34px,4.5vw,54px)/1.05 Manrope,sans-serif; letter-spacing:-.045em; }
+    .final-card p { max-width:650px; margin:16px 0 0; color:var(--lana-ui-text-secondary); }
+    .final-actions { display:grid; gap:10px; min-width:190px; }
 
-/* REVEAL */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
-.rv.in{opacity:1;transform:translateY(0)}
+    .site-footer { border-top:1px solid var(--lana-ui-border); background:var(--lana-ui-surface); }
+    .footer-inner { min-height:108px; display:flex; align-items:center; gap:28px; }
+    .footer-inner .brand img { width:110px; }
+    .footer-copy { color:var(--lana-ui-text-muted); font-size:12px; }
+    .footer-links { margin-left:auto; display:flex; flex-wrap:wrap; justify-content:flex-end; gap:18px; }
+    .footer-links a { position:relative; color:var(--lana-ui-text-secondary); font-size:12px; text-decoration:none; }
+    .footer-links a::after { content:""; position:absolute; right:0; bottom:-4px; left:0; height:1px; background:var(--lana-ui-brand); transform:scaleX(0); transform-origin:left; transition:transform var(--lana-motion-standard) var(--lana-motion-ease); }
+    .footer-links a:hover::after,.footer-links a:focus-visible::after { transform:scaleX(1); }
 
-@media(max-width:1024px){.ld-grid,.flow-grid{grid-template-columns:repeat(2,1fr)}.flow-grid::before{display:none}.feat-grid,.price-grid{grid-template-columns:repeat(2,1fr)}.demo-inner{grid-template-columns:1fr}.jc-arr:nth-child(4){display:none}}
-@media(max-width:680px){.feat-grid,.price-grid{grid-template-columns:1fr}.ld-grid,.footer-top{grid-template-columns:1fr}.nav-links{display:none}.hero{padding:80px 20px 50px}.sec{padding:70px 20px}.jc-arr{display:none}.jc-steps{flex-wrap:wrap;justify-content:center}.jcs{width:45%;min-width:130px}}
-</style>
+    body.demo-open { overflow:hidden; }
+    .demo-overlay {
+      position:fixed;
+      inset:0;
+      z-index:500;
+      padding:24px;
+      display:grid;
+      place-items:center;
+      background:rgba(16,24,40,.72);
+    }
+    .demo-overlay[hidden] { display:none; }
+    .demo-dialog {
+      width:min(100%,980px);
+      height:min(760px,calc(100dvh - 48px));
+      display:grid;
+      grid-template-columns:minmax(270px,350px) minmax(360px,430px);
+      justify-content:center;
+      align-items:center;
+      gap:clamp(34px,6vw,74px);
+    }
+    .demo-context { color:#FFFFFF; }
+    .demo-context-label { display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:700; letter-spacing:.02em; }
+    .demo-context-label::before { content:""; width:22px; height:2px; background:#C4B5FD; }
+    .demo-context h2 { margin:18px 0 14px; font:700 clamp(34px,4.5vw,50px)/1.04 Manrope,Inter,sans-serif; letter-spacing:-.045em; }
+    .demo-context p { margin:0; color:#D0D5DD; font-size:15px; }
+    .demo-context-list { margin:26px 0 0; padding:0; display:grid; gap:13px; list-style:none; }
+    .demo-context-list li { display:flex; align-items:center; gap:10px; color:#EAECF0; font-size:13px; font-weight:600; }
+    .demo-context-list svg { width:18px; height:18px; color:#C4B5FD; flex:none; }
+    .demo-phone {
+      width:min(100%,410px);
+      height:min(720px,calc(100dvh - 48px));
+      min-height:560px;
+      padding:8px;
+      position:relative;
+      border:1px solid #344054;
+      border-radius:34px;
+      background:#171A21;
+      box-shadow:0 28px 70px rgba(0,0,0,.32);
+    }
+    .demo-phone::before { content:""; position:absolute; z-index:2; top:12px; left:50%; width:76px; height:5px; border-radius:999px; background:#344054; transform:translateX(-50%); }
+    .demo-screen { height:100%; overflow:hidden; display:grid; grid-template-rows:auto auto minmax(0,1fr) auto auto; border-radius:27px; background:#F5F7FA; }
+    .demo-topbar { min-height:78px; padding:24px 14px 12px; display:grid; grid-template-columns:40px 1fr 40px; align-items:center; gap:9px; border-bottom:1px solid var(--lana-ui-border); background:var(--lana-ui-surface); }
+    .demo-avatar { width:40px; height:40px; display:grid; place-items:center; border-radius:50%; background:var(--lana-ui-brand); color:#FFFFFF; font:700 16px Manrope,sans-serif; }
+    .demo-channel strong,.demo-channel span { display:block; }
+    .demo-channel strong { font-size:13px; }
+    .demo-channel span { color:var(--lana-ui-text-muted); font-size:10px; }
+    .demo-close { width:40px; height:40px; display:grid; place-items:center; border:0; border-radius:50%; background:transparent; color:var(--lana-ui-text-secondary); }
+    .demo-close:hover { background:var(--lana-ui-surface-subtle); }
+    .demo-close svg { width:20px; height:20px; }
+    .demo-progress { padding:10px 14px; border-bottom:1px solid var(--lana-ui-border); background:var(--lana-ui-surface); }
+    .demo-progress-copy { display:flex; justify-content:space-between; gap:10px; color:var(--lana-ui-text-secondary); font-size:10px; font-weight:700; }
+    .demo-progress-track { height:4px; margin-top:7px; overflow:hidden; border-radius:999px; background:var(--lana-ui-border); }
+    .demo-progress-value { width:0; height:100%; border-radius:inherit; background:var(--lana-ui-brand); transition:width .25s ease; }
+    .demo-messages { padding:16px 13px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; overscroll-behavior:contain; }
+    .demo-message { max-width:86%; padding:10px 12px; flex:none; border:1px solid var(--lana-ui-border); border-radius:13px; background:var(--lana-ui-surface); color:var(--lana-ui-text); font-size:12px; line-height:1.48; box-shadow:0 1px 2px rgba(16,24,40,.04); }
+    .demo-message.assistant { align-self:flex-start; border-bottom-left-radius:4px; }
+    .demo-message.user { align-self:flex-end; border-color:#D8CCFA; border-bottom-right-radius:4px; background:var(--lana-ui-brand-soft); }
+    .demo-message-image { width:100%; max-height:180px; margin-bottom:8px; display:block; border-radius:8px; object-fit:cover; }
+    .demo-message-text { display:block; }
+    .demo-message.loading { display:flex; align-items:center; gap:8px; color:var(--lana-ui-text-muted); }
+    .demo-loading-dot { width:6px; height:6px; border-radius:50%; background:var(--lana-ui-brand); animation:demo-pulse 1s ease-in-out infinite alternate; }
+    @keyframes demo-pulse { to { opacity:.25; } }
+    .demo-consent { margin:0 13px 12px; padding:13px; border:1px solid #D8CCFA; border-radius:12px; background:var(--lana-ui-brand-soft); }
+    .demo-consent strong { display:block; font-size:12px; }
+    .demo-consent p { margin:5px 0 10px; color:var(--lana-ui-text-secondary); font-size:10px; line-height:1.45; }
+    .demo-consent label { display:flex; align-items:flex-start; gap:8px; color:var(--lana-ui-text-secondary); font-size:10px; }
+    .demo-consent input { width:16px; height:16px; margin:1px 0 0; accent-color:var(--lana-ui-brand); flex:none; }
+    .demo-consent .button { width:100%; min-height:40px; margin-top:11px; font-size:11px; }
+    .demo-consent .button:disabled { cursor:not-allowed; opacity:.45; transform:none; }
+    .demo-quick-replies { padding:0 13px 10px; display:flex; gap:7px; overflow-x:auto; scrollbar-width:thin; }
+    .demo-quick-replies:empty { display:none; }
+    .demo-quick-reply { min-height:34px; padding:7px 10px; flex:none; border:1px solid #BDA7F4; border-radius:999px; background:var(--lana-ui-surface); color:var(--lana-ui-brand-hover); font-size:10px; font-weight:700; }
+    .demo-composer { min-height:66px; padding:9px 10px max(9px,env(safe-area-inset-bottom)); display:grid; grid-template-columns:42px 1fr 42px; align-items:end; gap:8px; border-top:1px solid var(--lana-ui-border); background:var(--lana-ui-surface); }
+    .demo-attachment-preview { grid-column:1/-1; padding:8px; display:grid; grid-template-columns:44px minmax(0,1fr) 30px; align-items:center; gap:9px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface-subtle); }
+    .demo-attachment-preview[hidden] { display:none; }
+    .demo-attachment-preview img { width:44px; height:44px; border-radius:8px; object-fit:cover; }
+    .demo-attachment-copy { min-width:0; }
+    .demo-attachment-copy strong,.demo-attachment-copy span { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .demo-attachment-copy strong { font-size:10px; }
+    .demo-attachment-copy span { margin-top:3px; color:var(--lana-ui-text-muted); font-size:8px; }
+    .demo-attachment-remove { width:30px; height:30px; display:grid; place-items:center; border:0; border-radius:50%; background:transparent; color:var(--lana-ui-text-secondary); }
+    .demo-attachment-remove:hover { background:var(--lana-ui-border); }
+    .demo-attachment-remove svg { width:15px; height:15px; }
+    .demo-attach { width:42px; height:42px; display:grid; place-items:center; border:1px solid var(--lana-ui-border-strong); border-radius:50%; background:var(--lana-ui-surface); color:var(--lana-ui-text-secondary); }
+    .demo-attach:hover { border-color:var(--lana-ui-brand); color:var(--lana-ui-brand); }
+    .demo-attach:disabled { border-color:var(--lana-ui-border); background:var(--lana-ui-surface-subtle); color:var(--lana-ui-text-muted); cursor:not-allowed; }
+    .demo-attach svg { width:18px; height:18px; }
+    .demo-input { width:100%; max-height:92px; min-height:42px; padding:11px 12px; resize:none; border:1px solid var(--lana-ui-border-strong); border-radius:12px; background:var(--lana-ui-surface); color:var(--lana-ui-text); font:12px/1.45 Inter,sans-serif; }
+    .demo-input:disabled { background:var(--lana-ui-surface-subtle); }
+    .demo-send { width:42px; height:42px; display:grid; place-items:center; border:1px solid var(--lana-ui-brand); border-radius:50%; background:var(--lana-ui-brand); color:#FFFFFF; }
+    .demo-send:disabled { border-color:var(--lana-ui-border); background:var(--lana-ui-border); cursor:not-allowed; }
+    .demo-send svg { width:17px; height:17px; }
+    .demo-order-card { width:94%; flex:none; align-self:flex-start; overflow:hidden; border:1px solid #BDA7F4; border-radius:13px; background:var(--lana-ui-surface); }
+    .demo-order-head { padding:11px 12px; display:flex; justify-content:space-between; align-items:center; gap:10px; background:var(--lana-ui-brand-soft); }
+    .demo-order-head span { color:var(--lana-ui-brand-hover); font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+    .demo-order-head strong { font-size:12px; }
+    .demo-order-body { padding:12px; display:grid; gap:7px; }
+    .demo-order-row { display:flex; justify-content:space-between; gap:14px; color:var(--lana-ui-text-secondary); font-size:10px; }
+    .demo-order-row strong { max-width:62%; color:var(--lana-ui-text); text-align:right; }
+    .demo-order-total { margin-top:5px; padding-top:9px; border-top:1px solid var(--lana-ui-border); font-size:12px; }
+    .demo-disclaimer { margin:0; padding:0 12px 12px; color:var(--lana-ui-text-muted); font-size:9px; line-height:1.4; }
+    .demo-reset { margin:2px 0 0; align-self:center; border:0; background:transparent; color:var(--lana-ui-brand); font-size:10px; font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+
+    @media (max-width:1020px) {
+      .hero-grid { grid-template-columns:1fr; }
+      .hero-copy { max-width:760px; }
+      .product-stage { width:min(900px,100%); min-height:0; margin-inline:auto; }
+      .hero-visual { width:100%; }
+      .meta-grid { grid-template-columns:1fr; }
+      .story-tabs { grid-template-columns:minmax(260px,.7fr) minmax(0,1.3fr); gap:32px; }
+      .meta-status { max-width:620px; }
+      .packages-head { grid-template-columns:1fr; align-items:start; gap:18px; }
+      .packages-grid { grid-template-columns:1fr; }
+      .package-summary { min-height:0; }
+      .final-card { grid-template-columns:1fr; }
+      .final-actions { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+
+    @media (max-width:1100px) {
+      .desktop-nav,.header-actions .button { display:none; }
+      .header-actions { margin-left:auto; }
+      .menu-button { display:flex; }
+      .desktop-nav.open {
+        position:fixed;
+        inset:70px 0 auto;
+        padding:18px 14px 24px;
+        display:grid;
+        gap:4px;
+        border-bottom:1px solid var(--lana-ui-border);
+        background:var(--lana-ui-surface);
+        box-shadow:var(--lana-shadow);
+      }
+      .desktop-nav.open a { min-height:44px; padding:10px 14px; display:flex; align-items:center; border-radius:8px; }
+      .desktop-nav.open a:hover { background:var(--lana-ui-surface-subtle); }
+    }
+
+    @media (max-width:780px) {
+      .container { width:min(calc(100% - 28px),var(--container)); }
+      .header-inner { gap:14px; }
+      .brand img { width:108px; }
+      .meta-partner-lockup { margin-left:12px; padding-left:12px; }
+      .meta-partner-logo { width:72px; }
+      .desktop-nav,.header-actions .button { display:none; }
+      .header-actions { margin-left:auto; }
+      .menu-button { display:flex; }
+      .desktop-nav.open {
+        position:fixed;
+        inset:70px 0 auto;
+        padding:18px 14px 24px;
+        display:grid;
+        gap:4px;
+        border-bottom:1px solid var(--lana-ui-border);
+        background:var(--lana-ui-surface);
+        box-shadow:var(--lana-shadow);
+      }
+      .desktop-nav.open a { min-height:44px; padding:10px 14px; display:flex; align-items:center; border-radius:8px; }
+      .desktop-nav.open a:hover { background:var(--lana-ui-surface-subtle); }
+      .hero { padding-top:48px; }
+      .hero h1 { font-size:clamp(40px,11.5vw,54px); }
+      .product-stage { min-height:0; }
+      .hero-visual { width:calc(100% + 28px); margin-inline:-14px; }
+      .product-stage::before { inset:18px -30px 20px 35px; }
+      .app-shell { grid-template-columns:52px 150px minmax(0,1fr); min-width:610px; }
+      .app-window { overflow-x:auto; }
+      .stage-callout { right:12px; bottom:-16px; }
+      .channel-strip-inner { align-items:flex-start; flex-direction:column; }
+      .channel-logos { justify-content:flex-start; }
+      .story-tabs { grid-template-columns:1fr; gap:28px; }
+      .story-tablist { grid-auto-flow:column; grid-auto-columns:minmax(248px,82vw); overflow-x:auto; overscroll-behavior-inline:contain; scroll-snap-type:inline mandatory; scrollbar-width:thin; }
+      .story-tab-indicator { top:auto; right:auto; bottom:0; left:0; width:var(--story-indicator-size,248px); height:2px; transform:translateX(var(--story-indicator-offset,0)); }
+      .story-tab { min-height:92px; padding-block:16px; scroll-snap-align:start; }
+      .story-panel { min-height:0; }
+      .story-panel-media { width:calc(100% + 20px); margin-inline:-10px; }
+      .benchmark-head { align-items:flex-start; flex-direction:column; }
+      .benchmark-mobile-hint { display:block; }
+      .footer-inner { padding:28px 0; align-items:flex-start; flex-direction:column; }
+      .footer-links { margin-left:0; justify-content:flex-start; }
+      .demo-dialog { grid-template-columns:1fr; }
+      .demo-context { display:none; }
+    }
+
+    @media (max-width:520px) {
+      .brand img { width:92px; height:34px; }
+      .meta-partner-lockup { margin-left:9px; padding-left:9px; }
+      .meta-partner-logo { width:64px; }
+      .meta-partner-status { max-width:105px; margin-top:3px; font-size:7px; line-height:1.15; white-space:normal; }
+      .section { padding:68px 0; }
+      .hero-actions,.final-actions { grid-template-columns:1fr; display:grid; }
+      .hero-actions .button,.final-actions .button { width:100%; }
+      .hero-proof { display:grid; }
+      .product-stage { min-height:0; }
+      .app-shell { min-width:560px; }
+      .channel-logo { width:100%; }
+      .channel-logos { width:100%; }
+      .story-tablist { grid-auto-columns:minmax(238px,86vw); }
+      .story-tab { grid-template-columns:30px 1fr 18px; gap:9px; padding:15px 4px 15px 0; }
+      .story-tab:hover { padding-left:4px; }
+      .story-tab.is-active { padding-left:4px; }
+      .story-panel p { margin-bottom:12px; font-size:16px; }
+      .meta-status { padding:16px; }
+      .final-card { padding:28px 20px; }
+      .demo-overlay { padding:0; background:var(--lana-ui-surface); }
+      .demo-dialog { width:100%; height:100dvh; display:block; }
+      .demo-phone { width:100%; height:100dvh; min-height:0; padding:0; border:0; border-radius:0; box-shadow:none; }
+      .demo-phone::before { display:none; }
+      .demo-screen { border-radius:0; }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; animation:none!important; }
+      .motion-ready [data-reveal] { opacity:1; transform:none; }
+      .page-progress { display:none; }
+    }
+  </style>
 </head>
-<body>
-
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-logo">
-    <div class="nav-mark">🧵</div>
-    <span class="nav-brand">LANA</span>
-  </div>
-  <div class="nav-links">
-    <a href="#pilares">Pilares</a>
-    <a href="#flujo">El flujo</a>
-    <a href="#funciones">Funciones</a>
-    <a href="#precios">Precios</a>
-  </div>
-  <div class="nav-cta">
-    <button class="btn-nav-o" onclick="openDemo()">Ver demo</button>
-    <button class="btn-nav" onclick="openDemo()">▶ Probar ahora</button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-badge"><span class="badge-dot"></span>Sistema integral para talleres de artículos promocionales</div>
-  <h1 class="hero-h1">De lead a entrega,<br><em>todo en una sola plataforma</em></h1>
-  <p class="hero-sub">LANA automatiza el ciclo completo de ventas de tu taller: captura leads, convierte visitas en cotizaciones, cultiva al cliente y cierra la venta con firma digital.</p>
-  <div class="hero-actions">
-    <button class="btn-hero" onclick="openDemo()">▶ Probar demo interactivo</button>
-    <button class="btn-hero-g">Hablar con ventas →</button>
-  </div>
-  <div class="journey-card rv">
-    <div class="jc-label">El acrónimo · Así funciona LANA</div>
-    <div class="jc-steps">
-      <div class="jcs">
-        <span class="jcs-ico">🧲</span>
-        <div class="jcs-letter">L</div>
-        <div class="jcs-word">Leads</div>
-        <div class="jcs-desc">Catálogo digital activo 24/7</div>
-      </div>
-      <div class="jc-arr">→</div>
-      <div class="jcs">
-        <span class="jcs-ico">🎯</span>
-        <div class="jcs-letter">A</div>
-        <div class="jcs-word">Acquisition</div>
-        <div class="jcs-desc">Convierte visitas en cotizaciones</div>
-      </div>
-      <div class="jc-arr">→</div>
-      <div class="jcs">
-        <span class="jcs-ico">💬</span>
-        <div class="jcs-letter">N</div>
-        <div class="jcs-word">Nurturing</div>
-        <div class="jcs-desc">El asesor confirma y cultiva</div>
-      </div>
-      <div class="jc-arr">→</div>
-      <div class="jcs">
-        <span class="jcs-ico">🏆</span>
-        <div class="jcs-letter">A</div>
-        <div class="jcs-word">Accomplishment</div>
-        <div class="jcs-desc">OT firmada · producción lista</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- STATS -->
-<div style="background:white;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:48px 40px">
-  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);text-align:center;gap:0">
-    <div style="padding:0 20px;border-right:1px solid var(--line)">
-      <div style="font-family:'Urbanist',sans-serif;font-weight:900;font-size:44px;color:var(--p);line-height:1">100%</div>
-      <div style="font-size:13px;color:var(--ink4);margin-top:6px;line-height:1.4">Flujo digital<br>sin papel</div>
-    </div>
-    <div style="padding:0 20px;border-right:1px solid var(--line)">
-      <div style="font-family:'Urbanist',sans-serif;font-weight:900;font-size:44px;color:var(--p);line-height:1">&lt;2h</div>
-      <div style="font-size:13px;color:var(--ink4);margin-top:6px;line-height:1.4">Solicitud a<br>cotización confirmada</div>
-    </div>
-    <div style="padding:0 20px;border-right:1px solid var(--line)">
-      <div style="font-family:'Urbanist',sans-serif;font-weight:900;font-size:44px;color:var(--p);line-height:1">13+</div>
-      <div style="font-size:13px;color:var(--ink4);margin-top:6px;line-height:1.4">Tipos de artículos<br>configurables</div>
-    </div>
-    <div style="padding:0 20px">
-      <div style="font-family:'Urbanist',sans-serif;font-weight:900;font-size:44px;color:var(--p);line-height:1">0</div>
-      <div style="font-size:13px;color:var(--ink4);margin-top:6px;line-height:1.4">Llamadas para<br>cotizar</div>
-    </div>
-  </div>
-</div>
-
-<!-- STRIP -->
-<div class="strip">
-  <div class="strip-inner">
-    <div class="strip-tag">🪡 Bordado</div>
-    <div class="strip-tag">🎨 DTF</div>
-    <div class="strip-tag">🖨️ Serigrafía</div>
-    <div class="strip-tag">♨️ Sublimación</div>
-    <div class="strip-tag">✂️ Vinil Textil</div>
-    <div class="strip-tag">🖼️ Impresión UV</div>
-    <div class="strip-tag">🔆 Grabado Láser</div>
-    <div class="strip-tag">🖨️ Impresión Digital</div>
-    <div class="strip-tag">✂️ Corte & Troquelado</div>
-    <div class="strip-tag">👔 Camisas · Polos</div>
-    <div class="strip-tag">🧢 Gorras · Caps</div>
-    <div class="strip-tag">☕ Tazas · Termos</div>
-    <div class="strip-tag">🏴 Lonas · Banners</div>
-    <div class="strip-tag">🖼️ Viniles · Stickers</div>
-    <!-- duplicate for loop -->
-    <div class="strip-tag">🪡 Bordado</div>
-    <div class="strip-tag">🎨 DTF</div>
-    <div class="strip-tag">🖨️ Serigrafía</div>
-    <div class="strip-tag">♨️ Sublimación</div>
-    <div class="strip-tag">✂️ Vinil Textil</div>
-    <div class="strip-tag">🖼️ Impresión UV</div>
-    <div class="strip-tag">🔆 Grabado Láser</div>
-    <div class="strip-tag">🖨️ Impresión Digital</div>
-    <div class="strip-tag">✂️ Corte & Troquelado</div>
-    <div class="strip-tag">👔 Camisas · Polos</div>
-    <div class="strip-tag">🧢 Gorras · Caps</div>
-    <div class="strip-tag">☕ Tazas · Termos</div>
-    <div class="strip-tag">🏴 Lonas · Banners</div>
-    <div class="strip-tag">🖼️ Viniles · Stickers</div>
-  </div>
-</div>
-
-<!-- LANA ACRONYM (dark) -->
-<div class="lana-dark" id="pilares">
-  <div class="ld-inner">
-    <div class="ld-chip">Los 4 pilares</div>
-    <div class="ld-h2">Cada letra es una etapa<br>de tu <em>ciclo de ventas</em></div>
-    <div class="ld-grid rv">
-      <div class="ld-card">
-        <div class="ld-step">01 —</div>
-        <div class="ld-letter" style="color:#9B77FF">L</div>
-        <div class="ld-word">Leads</div>
-        <div class="ld-desc">Tu taller nunca cierra. El catálogo digital captura prospectos en cualquier momento — desde cualquier dispositivo.</div>
-        <div class="ld-badge" style="background:rgba(155,119,255,.12);color:#9B77FF">Catálogo siempre activo</div>
-        <div class="ld-features">
-          <div class="ldf">13 tipos de artículos configurables</div>
-          <div class="ldf">Filtros por técnica y categoría</div>
-          <div class="ldf">Mercancía propia del cliente</div>
-        </div>
-        <div class="ld-card-ghost">L</div>
-      </div>
-      <div class="ld-card">
-        <div class="ld-step">02 —</div>
-        <div class="ld-letter" style="color:#F0C862">A</div>
-        <div class="ld-word">Acquisition</div>
-        <div class="ld-desc">El configurador convierte la intención en una cotización real, con grupos de diseño, zonas de arte y técnicas validadas.</div>
-        <div class="ld-badge" style="background:rgba(240,200,98,.1);color:#F0C862">Cotizador inteligente</div>
-        <div class="ld-features">
-          <div class="ldf">Grupos de diseño por prenda</div>
-          <div class="ldf">Zonas visuales + carga de arte</div>
-          <div class="ldf">Folio automático con especificaciones</div>
-        </div>
-        <div class="ld-card-ghost">A</div>
-      </div>
-      <div class="ld-card">
-        <div class="ld-step">03 —</div>
-        <div class="ld-letter" style="color:#4ADE80">N</div>
-        <div class="ld-word">Nurturing</div>
-        <div class="ld-desc">El asesor confirma precios, envía la cotización final y mantiene al cliente informado hasta que acepta la propuesta.</div>
-        <div class="ld-badge" style="background:rgba(74,222,128,.1);color:#4ADE80">Panel del asesor</div>
-        <div class="ld-features">
-          <div class="ldf">Vista interna con arte adjunto</div>
-          <div class="ldf">Precios de decorado por grupo</div>
-          <div class="ldf">Cotización final con desglose</div>
-        </div>
-        <div class="ld-card-ghost">N</div>
-      </div>
-      <div class="ld-card">
-        <div class="ld-step">04 —</div>
-        <div class="ld-letter" style="color:#FF8FAB">A</div>
-        <div class="ld-word">Accomplishment</div>
-        <div class="ld-desc">La venta se cierra. El cliente firma digitalmente la Orden de Trabajo y la producción queda autorizada al instante.</div>
-        <div class="ld-badge" style="background:rgba(255,143,171,.1);color:#FF8FAB">Cierre total</div>
-        <div class="ld-features">
-          <div class="ldf">Firma digital en OT</div>
-          <div class="ldf">Orden de Compra por proveedor</div>
-          <div class="ldf">FlowShop: programación de producción</div>
-        </div>
-        <div class="ld-card-ghost">A</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- EL FLUJO -->
-<section class="sec" id="flujo">
-  <div class="chip">El flujo completo</div>
-  <div class="sec-h2">Del primer clic a la<br><em>producción autorizada</em></div>
-  <p class="sec-sub">Cinco pasos que el cliente experimenta solo, y tu equipo ejecuta con precisión — sin llamadas, sin WhatsApps de aclaración.</p>
-  <div class="flow-grid rv">
-    <div class="fstep">
-      <div class="fstep-ico">🛍️</div>
-      <div class="fstep-pill">LEADS · 01</div>
-      <div class="fstep-title">Catálogo</div>
-      <div class="fstep-desc">El cliente explora prendas, gorras, tazas, lonas y más con sus técnicas disponibles</div>
-    </div>
-    <div class="fstep">
-      <div class="fstep-ico">🎨</div>
-      <div class="fstep-pill">ACQUISITION · 02</div>
-      <div class="fstep-title">Configurador</div>
-      <div class="fstep-desc">Crea grupos de diseño, marca zonas en la prenda y sube el arte</div>
-    </div>
-    <div class="fstep">
-      <div class="fstep-ico">📄</div>
-      <div class="fstep-pill">NURTURING · 03</div>
-      <div class="fstep-title">Cotización</div>
-      <div class="fstep-desc">El asesor confirma precios de decorado y envía la cotización final</div>
-    </div>
-    <div class="fstep">
-      <div class="fstep-ico">✍️</div>
-      <div class="fstep-pill">ACCOMPLISHMENT · 04</div>
-      <div class="fstep-title">Orden de Trabajo</div>
-      <div class="fstep-desc">El cliente firma digitalmente y autoriza inicio de producción</div>
-    </div>
-    <div class="fstep">
-      <div class="fstep-ico">⚙️</div>
-      <div class="fstep-pill">PRODUCCIÓN · 05</div>
-      <div class="fstep-title">FlowShop</div>
-      <div class="fstep-desc">OC al proveedor + trabajo programado según disponibilidad del taller</div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<div class="sec-w" style="background:var(--off);padding:96px 40px" id="funciones">
-  <div class="sec" style="padding:0">
-    <div class="chip">Funciones clave</div>
-    <div class="sec-h2">Todo lo que necesita<br>tu taller, <em>en un solo lugar</em></div>
-    <div class="feat-grid rv">
-      <div class="fc">
-        <div class="fc-pillar">🧲 LEADS</div>
-        <span class="fc-ico">🛍️</span>
-        <div class="fc-title">Catálogo Digital</div>
-        <div class="fc-desc">13 tipos de artículos: camisas Oxford, polos, gorras, tazas, termos, lonas vinílicas, viniles impresos y más. Filtros por técnica. Compatible con mercancía propia del cliente.</div>
-      </div>
-      <div class="fc">
-        <div class="fc-pillar">🎯 ACQUISITION</div>
-        <span class="fc-ico">🎨</span>
-        <div class="fc-title">Configurador por Grupos</div>
-        <div class="fc-desc">El cliente distribuye piezas en grupos de diseño, marca la zona en la prenda (Pecho Izq, Espalda Alta, Frente de gorra…), elige técnica y sube el arte directamente.</div>
-      </div>
-      <div class="fc">
-        <div class="fc-pillar">🎯 ACQUISITION</div>
-        <span class="fc-ico">🔒</span>
-        <div class="fc-title">Validación Inteligente</div>
-        <div class="fc-desc">El sistema solo muestra técnicas compatibles con los productos del grupo. Previene combinaciones imposibles: no puedes poner serigrafía en una lona ni bordado en un vinil.</div>
-      </div>
-      <div class="fc">
-        <div class="fc-pillar">💬 NURTURING</div>
-        <span class="fc-ico">🔐</span>
-        <div class="fc-title">Vista del Asesor</div>
-        <div class="fc-desc">Panel interno exclusivo. El asesor ve el arte adjunto por zona, confirma precios de decorado por grupo y genera la cotización final con desglose: prenda + decorado = total.</div>
-      </div>
-      <div class="fc">
-        <div class="fc-pillar">🏆 ACCOMPLISHMENT</div>
-        <span class="fc-ico">✍️</span>
-        <div class="fc-title">Firma Digital</div>
-        <div class="fc-desc">El cliente revisa la Orden de Trabajo completa, confirma cantidades, precios y diseños, y firma desde su dispositivo. Producción queda autorizada al instante.</div>
-      </div>
-      <div class="fc">
-        <div class="fc-pillar">🏆 ACCOMPLISHMENT</div>
-        <span class="fc-ico">📦</span>
-        <div class="fc-title">OC + FlowShop</div>
-        <div class="fc-desc">Genera automáticamente la Orden de Compra agrupada por proveedor. Programa el trabajo en FlowShop según la capacidad disponible del taller y el tipo de servicio.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- DEMO SECTION -->
-<div class="demo-sec">
-  <div class="demo-inner">
-    <div class="demo-t">
-      <div class="chip">Demo interactivo</div>
-      <div class="sec-h2">Pruébalo ahora,<br>sin registrarte</div>
-      <p class="sec-sub">Haz el pedido completo como si fueras un cliente real. Configura diseños, sube arte, aprueba la cotización y genera la Orden de Trabajo — todo funcional.</p>
-      <button class="btn-demo-big" onclick="openDemo()">▶ Abrir demo interactivo</button>
-      <div style="margin-top:14px;font-size:12px;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:6px">⏱ El demo se reinicia solo · Sin registro · Sin tarjeta</div>
-    </div>
-    <div class="demo-mockup">
-      <div class="dm-bar">
-        <div class="dm-dot" style="background:#FF5F57"></div>
-        <div class="dm-dot" style="background:#FEBC2E"></div>
-        <div class="dm-dot" style="background:#28C840"></div>
-        <span style="font-size:11px;color:rgba(255,255,255,.3);margin-left:8px;font-family:'Urbanist',sans-serif;font-size:11px">LANA · Demo</span>
-      </div>
-      <div class="dm-steps">
-        <div class="dm-step done">
-          <div class="dm-ico" style="background:rgba(16,185,129,.2)">✅</div>
-          <div><div class="dm-title">Catálogo y carrito</div><div class="dm-sub">3 prendas seleccionadas</div></div>
-          <div class="dm-badge" style="background:rgba(16,185,129,.2);color:#4ADE80">✓ LISTO</div>
-        </div>
-        <div class="dm-step active">
-          <div class="dm-ico" style="background:rgba(91,47,212,.25)">🎨</div>
-          <div><div class="dm-title">Configurando Diseño A</div><div class="dm-sub">Pecho Izq · Bordado · 8×8cm</div></div>
-          <div class="dm-badge" style="background:rgba(91,47,212,.25);color:var(--pl)">ACTIVO</div>
-        </div>
-        <div class="dm-step idle">
-          <div class="dm-ico" style="background:rgba(255,255,255,.06)">📄</div>
-          <div><div class="dm-title">Cotización del asesor</div><div class="dm-sub">Pendiente</div></div>
-          <div class="dm-badge" style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.25)">PENDIENTE</div>
-        </div>
-        <div class="dm-step idle">
-          <div class="dm-ico" style="background:rgba(255,255,255,.06)">✍️</div>
-          <div><div class="dm-title">OT · OC · FlowShop</div><div class="dm-sub">Al finalizar la cotización</div></div>
-          <div class="dm-badge" style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.25)">PENDIENTE</div>
+<body id="top">
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <div class="page-progress" aria-hidden="true"><span></span></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-lockup" aria-label="LANA, proveedor tecnológico verificado por Meta">
+        <a class="brand" href="#top" aria-label="LANA, inicio">
+          <img src="https://app.get-lana.com/icons/LANACLARO.png" alt="LANA">
+        </a>
+        <div class="meta-partner-lockup" aria-label="Meta, proveedor tecnológico verificado">
+          <img class="meta-partner-logo" src="https://app.get-lana.com/assets/meta-logo-official.png" width="1694" height="377" alt="Meta">
+          <span class="meta-partner-status">Proveedor tecnológico verificado</span>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- PRICING -->
-<section class="sec" id="precios">
-  <div class="chip">Precios</div>
-  <div class="sec-h2">El plan ideal para<br><em>tu taller</em></div>
-  <p class="sec-sub">Sin contratos anuales forzosos. Cancela cuando quieras.</p>
-  <div class="price-grid rv">
-    <div class="pc">
-      <div class="pc-name">Básico</div>
-      <div class="pc-sub">Para talleres que están comenzando</div>
-      <div class="pc-price"><span class="pc-amount">$599</span><span class="pc-period">MXN/mes</span></div>
-      <div class="pc-list">
-        <div class="pci"><span class="pci-y">✓</span> Catálogo hasta 50 productos</div>
-        <div class="pci"><span class="pci-y">✓</span> Configurador con grupos</div>
-        <div class="pci"><span class="pci-y">✓</span> Cotizaciones ilimitadas</div>
-        <div class="pci"><span class="pci-y">✓</span> 1 usuario asesor</div>
-        <div class="pci" style="opacity:.45"><span class="pci-n">✗</span> FlowShop y OC por proveedor</div>
+      <nav class="desktop-nav" id="mainNav" aria-label="Navegación principal">
+        <a href="#plataforma">Plataforma</a>
+        <a href="#flujo">Cómo funciona</a>
+        <a href="#ecommerce">Cotizador online</a>
+        <a href="#meta">Canales Meta</a>
+        <a href="#comparativa">Comparativa</a>
+        <a href="#paquetes">Paquetes</a>
+      </nav>
+      <div class="header-actions">
+        <a class="button button-primary" href="mailto:hola@lana.mx?subject=Quiero%20conocer%20LANA">Solicitar demo</a>
+        <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
       </div>
-      <button class="btn-pc btn-pc-g" onclick="openRegistro('basico')">Probar gratis 15 días →</button>
     </div>
-    <div class="pc featured">
-      <div class="pc-badge">⭐ MÁS POPULAR</div>
-      <div class="pc-name" style="color:white">Pro</div>
-      <div class="pc-sub">Para talleres en crecimiento</div>
-      <div class="pc-price"><span class="pc-amount">$999</span><span class="pc-period">MXN/mes</span></div>
-      <div class="pc-list">
-        <div class="pci"><span class="pci-y">✓</span> Todo en Básico</div>
-        <div class="pci"><span class="pci-y">✓</span> Catálogo ilimitado</div>
-        <div class="pci"><span class="pci-y">✓</span> FlowShop completo</div>
-        <div class="pci"><span class="pci-y">✓</span> OC automática por proveedor</div>
-        <div class="pci"><span class="pci-y">✓</span> Hasta 5 usuarios asesores</div>
-      </div>
-      <button class="btn-pc btn-pc-p" onclick="openRegistro('pro')">Probar gratis 15 días →</button>
-    </div>
-    <div class="pc">
-      <div class="pc-name">Empresarial</div>
-      <div class="pc-sub">Para grupos de talleres o franquicias</div>
-      <div class="pc-price"><span class="pc-amount">$1,999</span><span class="pc-period">MXN/mes</span></div>
-      <div class="pc-list">
-        <div class="pci"><span class="pci-y">✓</span> Todo en Pro</div>
-        <div class="pci"><span class="pci-y">✓</span> Multi-sucursal</div>
-        <div class="pci"><span class="pci-y">✓</span> API para integración propia</div>
-        <div class="pci"><span class="pci-y">✓</span> Usuarios ilimitados</div>
-        <div class="pci"><span class="pci-y">✓</span> Soporte prioritario dedicado</div>
-      </div>
-      <button class="btn-pc btn-pc-g">Contactar ventas →</button>
-    </div>
-  </div>
-</section>
+  </header>
 
-<!-- CTA FINAL -->
-<div class="cta-sec" id="cta">
-  <div class="cta-inner">
-    <div class="cta-h2">Tu taller vende<br>mientras <em>duermes</em></div>
-    <p class="cta-sub">El cliente cotiza, configura y firma — tú solo produces. Sin llamadas, sin WhatsApps interminables, sin errores de especificación.</p>
-    <div class="cta-actions">
-      <button class="btn-cta-w" onclick="openDemo()">▶ Probar demo gratuito</button>
-      <button class="btn-cta-o">Agendar demostración →</button>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand">LANA</div>
-        <div class="footer-lana">
-          <div class="fl-item">L· <span>Leads</span></div>
-          <div class="fl-item">A· <span>Acquisition</span></div>
-          <div class="fl-item">N· <span>Nurturing</span></div>
-          <div class="fl-item">A· <span>Accomplishment</span></div>
+  <main id="main">
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-kicker"><span aria-hidden="true"></span>Operación comercial para artículos promocionales</div>
+          <h1>Responde, cotiza y vende <em>con IA</em> desde un solo lugar.</h1>
+          <p class="hero-copy">LANA conecta WhatsApp, Messenger e Instagram para responder clientes y preparar cotizaciones automáticamente.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:hola@lana.mx?subject=Quiero%20una%20demostración%20de%20LANA">
+              Solicitar una demostración
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+            <a class="button" href="#demo-producto" data-demo-open>Explorar el producto</a>
+          </div>
+          <div class="hero-proof" aria-label="Capacidades principales">
+            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v11H8l-4 3V5Z"/></svg></span>Bandeja omnicanal</div>
+            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h14v18H5zM8 7h8M8 11h5M8 16h3"/></svg></span>Cotización técnica</div>
+            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16v13H4zM8 7V4h8v3M8 12h8M8 16h5"/></svg></span>Producción conectada</div>
+          </div>
         </div>
-        <div class="footer-tagline" style="margin-top:10px">Sistema de gestión para talleres de artículos promocionales. Guadalajara, México.</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.2);margin-top:6px">hola@lana.mx</div>
+
+        <div class="product-stage">
+          <img class="hero-visual" src="https://app.get-lana.com/assets/lana-hero-omnichannel-original.png" width="1539" height="1022" loading="eager" fetchpriority="high" decoding="async" alt="WhatsApp Business, Messenger e Instagram convergen en la bandeja de LANA y se convierten en una cotización para 40 polos bordados.">
+          <div class="app-window">
+            <div class="window-bar"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">LANA · Conversaciones</span></div>
+            <div class="app-shell">
+              <aside class="app-rail" aria-hidden="true">
+                <span class="rail-mark">L</span>
+                <span class="rail-icon active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v11H8l-4 3V5Z"/></svg></span>
+                <span class="rail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 9h16M9 9v11"/></svg></span>
+                <span class="rail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h14v18H5zM8 7h8M8 11h5M8 16h3"/></svg></span>
+              </aside>
+              <div class="chat-list">
+                <div class="chat-list-head"><strong>Conversaciones</strong><span>Todos los canales</span></div>
+                <div class="chat-row active">
+                  <span class="channel-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+                  <span class="chat-meta"><strong>Grupo Vértice</strong><span>Necesito 40 polos bordados…</span></span>
+                </div>
+                <div class="chat-row">
+                  <span class="channel-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#0866FF"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/></svg></span>
+                  <span class="chat-meta"><strong>Café Central</strong><span>¿Tienen mandiles en negro?</span></span>
+                </div>
+                <div class="chat-row">
+                  <span class="channel-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#C13584"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4z"/></svg></span>
+                  <span class="chat-meta"><strong>Estudio Norte</strong><span>Respondió una historia</span></span>
+                </div>
+              </div>
+              <section class="conversation">
+                <div class="conversation-head"><span class="channel-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/></svg></span><span><strong>Grupo Vértice</strong><span>WhatsApp Business · LANA activa</span></span></div>
+                <div class="conversation-body">
+                  <div class="message">Necesito 40 polos azul marino con nuestro logo bordado en pecho izquierdo.</div>
+                  <div class="message out">Encontré dos modelos compatibles. Puedo mostrarte colores, tallas y precio por volumen antes de preparar la cotización.</div>
+                  <div class="quote-card">
+                    <div class="quote-card-head"><strong>Cotización LANA-1842</strong><span class="status-pill">Lista para revisar</span></div>
+                    <div class="quote-lines">
+                      <div class="quote-line"><span>40 polos ejecutivos</span><b>$12,760</b></div>
+                      <div class="quote-line"><span>Bordado · 8 × 8 cm</span><b>$2,400</b></div>
+                      <div class="quote-line quote-total"><span>Total estimado</span><b>$15,160</b></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="stage-callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span><strong>Sin volver a capturar datos</strong><span>El pedido avanza con todo su contexto.</span></span></div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Producto</h4>
-        <a href="#pilares">Los 4 pilares</a>
-        <a href="#flujo">El flujo</a>
-        <a href="#funciones">Funciones</a>
-        <a href="#precios">Precios</a>
+    </section>
+
+    <section class="channel-strip" aria-labelledby="channel-strip-title">
+      <div class="container channel-strip-inner">
+        <div class="channel-strip-copy"><strong id="channel-strip-title">Tus clientes eligen el canal. LANA conserva el contexto.</strong><span>Una sola operación para conversaciones, catálogo y seguimiento.</span></div>
+        <div class="channel-logos">
+          <div class="channel-logo whatsapp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Business</div>
+          <div class="channel-logo messenger"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/></svg>Messenger</div>
+          <div class="channel-logo instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4z"/></svg>Instagram</div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Recursos</h4>
-        <a href="#" onclick="openDemo();return false">Demo interactivo</a>
-        <a href="#">Documentación</a>
-        <a href="#">Soporte</a>
+    </section>
+
+    <section class="section platform-section" id="plataforma">
+      <div class="container">
+        <span class="section-label">Chat conectado</span>
+        <h2 class="section-heading">Convierte cada conversación en una venta bien organizada.</h2>
+        <p class="section-intro">LANA reúne tus canales, el seguimiento comercial y la cotización en un mismo flujo para responder más rápido y avanzar cada oportunidad.</p>
+
+        <div class="story-tabs" data-story-tabs>
+          <div class="story-tablist" role="tablist" aria-label="Capacidades de mensajería y venta">
+            <button class="story-tab is-active" id="chat-tab-1" type="button" role="tab" aria-selected="true" aria-controls="chat-panel-1" data-story-tab>
+              <span class="story-tab-number">01</span><span class="story-tab-label"><span class="story-tab-kicker">Conversaciones con contexto</span><strong>Unifica tus canales</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <button class="story-tab" id="chat-tab-2" type="button" role="tab" aria-selected="false" aria-controls="chat-panel-2" tabindex="-1" data-story-tab>
+              <span class="story-tab-number">02</span><span class="story-tab-label"><span class="story-tab-kicker">Seguimiento comercial visible</span><strong>Ordena cada oportunidad</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <button class="story-tab" id="chat-tab-3" type="button" role="tab" aria-selected="false" aria-controls="chat-panel-3" tabindex="-1" data-story-tab>
+              <span class="story-tab-number">03</span><span class="story-tab-label"><span class="story-tab-kicker">Venta desde la conversación</span><strong>Cotiza desde el chat</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div class="story-panels">
+            <article class="story-panel" id="chat-panel-1" role="tabpanel" aria-labelledby="chat-tab-1" tabindex="0">
+              <p>Centraliza WhatsApp Business, Messenger e Instagram en una sola bandeja. La IA de LANA conoce tu catálogo, precios y reglas de negocio para responder con contexto, dar seguimiento y convertir conversaciones en pedidos.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-chat-meta-transparent.png" width="1536" height="1024" loading="lazy" decoding="async" alt="WhatsApp Business, Messenger e Instagram conectados a una bandeja de LANA donde la IA responde con contexto."></figure>
+            </article>
+            <article class="story-panel" id="chat-panel-2" role="tabpanel" aria-labelledby="chat-tab-2" tabindex="0" hidden>
+              <p>Visualiza cada conversación desde el primer contacto hasta la cotización, el pedido, la producción y el cierre. Tu equipo sabe qué necesita el cliente, quién lo atiende y cuál es la siguiente acción.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-chat-pipeline-transparent.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Conversaciones organizadas en un tablero por etapas: nuevo, cotización, pedido, producción y listo."></figure>
+            </article>
+            <article class="story-panel" id="chat-panel-3" role="tabpanel" aria-labelledby="chat-tab-3" tabindex="0" hidden>
+              <p>Selecciona productos, cantidades y personalización directamente desde la conversación para generar cotizaciones y órdenes de trabajo con menos captura manual y más velocidad para cerrar.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-chat-cotizacion-transparent.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Una conversación de LANA se convierte en una cotización al seleccionar un producto, cantidad y técnica de personalización."></figure>
+            </article>
+          </div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Empresa</h4>
-        <a href="#">Acerca de LANA</a>
-        <a href="#">Blog</a>
-        <a href="#">Contacto</a>
+    </section>
+
+    <section class="section" id="flujo">
+      <div class="container">
+        <span class="section-label">De la venta a producción</span>
+        <h2 class="section-heading">Cada venta activa automáticamente el siguiente paso.</h2>
+        <p class="section-intro">Cuando el cliente aprueba y paga, LANA convierte la cotización en una Orden de Trabajo, organiza las compras y programa la producción sin volver a capturar información.</p>
+
+        <div class="story-tabs" data-story-tabs>
+          <div class="story-tablist" role="tablist" aria-label="Flujo de la venta a producción">
+            <button class="story-tab is-active" id="flow-tab-1" type="button" role="tab" aria-selected="true" aria-controls="flow-panel-1" data-story-tab>
+              <span class="story-tab-number">01</span><span class="story-tab-label"><span class="story-tab-kicker">Continuidad operativa</span><strong>Genera la Orden de Trabajo</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <button class="story-tab" id="flow-tab-2" type="button" role="tab" aria-selected="false" aria-controls="flow-panel-2" tabindex="-1" data-story-tab>
+              <span class="story-tab-number">02</span><span class="story-tab-label"><span class="story-tab-kicker">Automatización después del pago</span><strong>Activa compras y producción</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <button class="story-tab" id="flow-tab-3" type="button" role="tab" aria-selected="false" aria-controls="flow-panel-3" tabindex="-1" data-story-tab>
+              <span class="story-tab-number">03</span><span class="story-tab-label"><span class="story-tab-kicker">Abastecimiento sin doble captura</span><strong>Conecta cada compra</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <button class="story-tab" id="flow-tab-4" type="button" role="tab" aria-selected="false" aria-controls="flow-panel-4" tabindex="-1" data-story-tab>
+              <span class="story-tab-number">04</span><span class="story-tab-label"><span class="story-tab-kicker">Producción bajo control</span><strong>Controla el Workflow</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div class="story-panels">
+            <article class="story-panel" id="flow-panel-1" role="tabpanel" aria-labelledby="flow-tab-1" tabindex="0">
+              <p>Al aprobarse la cotización, LANA crea la Orden de Trabajo con el producto, las cantidades, la técnica y los datos del cliente listos para continuar.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-cotizacion-a-orden-trabajo-transparent.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Una cotización aprobada en LANA se convierte en la orden de trabajo OT-1842."></figure>
+            </article>
+            <article class="story-panel" id="flow-panel-2" role="tabpanel" aria-labelledby="flow-tab-2" tabindex="0" hidden>
+              <p>Cuando se confirma el pago, LANA genera la Orden de Compra necesaria y envía el trabajo al flujo de producción de forma automática.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-orden-trabajo-pagada-automatizacion-transparent.png" width="1536" height="1024" loading="lazy" decoding="async" alt="El pago de una orden de trabajo activa automáticamente una orden de compra y el Workflow de producción."></figure>
+            </article>
+            <article class="story-panel" id="flow-panel-3" role="tabpanel" aria-labelledby="flow-tab-3" tabindex="0" hidden>
+              <p>La Orden de Compra conserva el proveedor, las cantidades y los productos del pedido para abastecer el trabajo sin duplicar capturas.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-orden-compra-transparent.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Orden de compra de LANA para 40 polos azul marino lista para enviarse al proveedor."></figure>
+            </article>
+            <article class="story-panel" id="flow-panel-4" role="tabpanel" aria-labelledby="flow-tab-4" tabindex="0" hidden>
+              <p>Programa la Orden de Trabajo según la capacidad del taller, consulta las fechas y sigue cada etapa hasta control de calidad.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-workflow-produccion-transparent.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Workflow de producción de LANA con capacidad del taller, calendario y etapas de la orden OT-1842."></figure>
+            </article>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 LANA — Todos los derechos reservados</div>
-      <div class="footer-legal">
-        <a href="#">Privacidad</a>
-        <a href="#">Términos</a>
+    </section>
+
+    <section class="section meta-section" id="meta">
+      <div class="container meta-grid">
+        <div>
+          <div class="meta-badge"><svg viewBox="0 0 36 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M3 18c0-8 3.4-14 7.5-14 4 0 6.2 5.2 8.5 10 2.2 4.6 4.5 7 7.4 7 3.7 0 6.6-5.2 6.6-12"/></svg>Integraciones mediante APIs oficiales de Meta</div>
+          <h2>Los canales de Meta, conectados con la operación real del negocio.</h2>
+          <p>LANA trabaja sobre WhatsApp Business Platform, Messenger Platform e Instagram Messaging API para recibir conversaciones, conservar historial y coordinar la atención desde un mismo lugar.</p>
+          <div class="meta-note">Meta aprobó los permisos avanzados de mensajería de la app de LANA y verificó al negocio como proveedor de tecnología.</div>
+        </div>
+        <aside class="meta-status" aria-label="Estado de canales Meta">
+          <h3>Estado de integración</h3>
+          <div class="meta-row"><span class="meta-channel"><svg viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118"/></svg>WhatsApp Business</span><span class="meta-state">Disponible</span></div>
+          <div class="meta-row"><span class="meta-channel"><svg viewBox="0 0 24 24" fill="#0866FF" aria-hidden="true"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/></svg>Messenger</span><span class="meta-state">Acceso aprobado</span></div>
+          <div class="meta-row"><span class="meta-channel"><svg viewBox="0 0 24 24" fill="#C13584" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919"/></svg>Instagram</span><span class="meta-state">Acceso aprobado</span></div>
+        </aside>
       </div>
+    </section>
+
+    <section class="section" id="comparativa">
+      <div class="container">
+        <div class="benchmark-head">
+          <div><span class="section-label">Benchmark de categoría</span><h2 class="section-heading">La diferencia aparece después del mensaje.</h2></div>
+          <p class="benchmark-note">Comparativa de posicionamiento basada en las páginas públicas oficiales de cada plataforma, consultadas en agosto de 2026. Las funciones y planes pueden cambiar.</p>
+        </div>
+        <p class="benchmark-mobile-hint">Desliza horizontalmente para comparar todas las plataformas.</p>
+        <div class="benchmark-wrap" role="region" aria-label="Comparativa de LANA con plataformas similares" tabindex="0">
+          <table class="benchmark">
+            <thead><tr><th>Capacidad</th><th class="lana-col">LANA</th><th><a href="https://manychat.com/" target="_blank" rel="noopener">Manychat</a></th><th><a href="https://respond.io/" target="_blank" rel="noopener">respond.io</a></th><th><a href="https://sleekflow.io/" target="_blank" rel="noopener">SleekFlow</a></th><th><a href="https://www.kommo.com/es/" target="_blank" rel="noopener">Kommo</a></th></tr></thead>
+            <tbody>
+              <tr><td>Enfoque principal</td><td class="lana-col">Operación completa para talleres de personalización</td><td>Automatización de marketing conversacional</td><td>Bandeja omnicanal y automatización</td><td>CRM conversacional y comercio</td><td>CRM de ventas por mensajería</td></tr>
+              <tr><td>Canales sociales</td><td class="lana-col">WhatsApp, Messenger e Instagram conectados al pedido</td><td>Instagram, WhatsApp, Messenger y otros</td><td>WhatsApp, Instagram, Messenger y otros</td><td>WhatsApp, Instagram, Messenger y otros</td><td>WhatsApp, Instagram y otros</td></tr>
+              <tr><td>Catálogo especializado</td><td class="lana-col">Nativo para prendas y promocionales</td><td>Generalista</td><td>Catálogos Meta dentro del chat</td><td>Catálogo y enlaces de pago</td><td>Catálogo de WhatsApp</td></tr>
+              <tr><td>Cotizador visual</td><td class="lana-col">Productos, cantidades, diseños, técnicas y zonas</td><td>No especializado en producción</td><td>Requiere integración externa</td><td>Requiere integración externa</td><td>Requiere personalización o integración</td></tr>
+              <tr><td>Después de la venta</td><td class="lana-col">Firma, orden de trabajo, compras y FlowShop</td><td>Continúa en herramientas externas</td><td>Continúa en CRM o integraciones</td><td>Continúa en integraciones</td><td>Pipeline CRM y automatizaciones</td></tr>
+              <tr><td>Mejor encaje</td><td class="lana-col">Talleres de bordado, impresión y artículos promocionales</td><td>Marcas y creadores centrados en redes</td><td>Equipos con alto volumen de conversaciones</td><td>Comercio y servicio omnicanal</td><td>Equipos comerciales que venden por chat</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="benchmark-source">LANA no busca reemplazar una bandeja generalista: cubre el tramo operativo que esas plataformas suelen dejar a un ERP, un cotizador o procesos manuales.</p>
+      </div>
+    </section>
+
+    <section class="section ecommerce-section" id="ecommerce">
+      <div class="container">
+        <span class="section-label">Cotizador e-commerce</span>
+        <h2 class="section-heading">Tus clientes cotizan solos. LANA protege tus precios.</h2>
+        <p class="section-intro">Publica un catálogo conectado a tus reglas de precio y deja que cada cliente configure, cotice y reciba un documento profesional sin esperar a un asesor.</p>
+
+        <div class="story-tabs" data-story-tabs>
+          <div class="story-tablist" role="tablist" aria-label="Flujo del cotizador e-commerce">
+            <button class="story-tab is-active" id="ecommerce-tab-1" type="button" role="tab" aria-selected="true" aria-controls="ecommerce-panel-1" data-story-tab>
+              <span class="story-tab-number">01</span><span class="story-tab-label"><span class="story-tab-kicker">Catálogo de autoservicio</span><strong>Define precios y márgenes</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <button class="story-tab" id="ecommerce-tab-2" type="button" role="tab" aria-selected="false" aria-controls="ecommerce-panel-2" tabindex="-1" data-story-tab>
+              <span class="story-tab-number">02</span><span class="story-tab-label"><span class="story-tab-kicker">Personalización visual</span><strong>Configura cada diseño</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <button class="story-tab" id="ecommerce-tab-3" type="button" role="tab" aria-selected="false" aria-controls="ecommerce-panel-3" tabindex="-1" data-story-tab>
+              <span class="story-tab-number">03</span><span class="story-tab-label"><span class="story-tab-kicker">Cotización automática con IA</span><strong>Calcula precios al instante</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <button class="story-tab" id="ecommerce-tab-4" type="button" role="tab" aria-selected="false" aria-controls="ecommerce-panel-4" tabindex="-1" data-story-tab>
+              <span class="story-tab-number">04</span><span class="story-tab-label"><span class="story-tab-kicker">Documento comercial</span><strong>Entrega una cotización formal</strong></span><svg class="story-tab-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+          <div class="story-panels">
+            <article class="story-panel" id="ecommerce-panel-1" role="tabpanel" aria-labelledby="ecommerce-tab-1" tabindex="0">
+              <p>Ofrece una tienda en línea donde cada cliente explora productos y cotiza por su cuenta. Define precios fijos, escalas por volumen, costos de personalización y márgenes para que cada cálculo respete las reglas de tu negocio.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-ecommerce-catalogo-precios-transparent.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Catálogo e-commerce con productos, precios fijos, escalas por volumen y márgenes protegidos."></figure>
+            </article>
+            <article class="story-panel" id="ecommerce-panel-2" role="tabpanel" aria-labelledby="ecommerce-tab-2" tabindex="0" hidden>
+              <p>El cliente puede elegir bordado, impresión, DTF u otras técnicas, cargar su logotipo y marcar con precisión dónde debe colocarse en la prenda.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-ecommerce-personalizacion-transparent.png" width="1642" height="958" loading="lazy" decoding="async" alt="Configurador visual de un polo con técnicas de personalización y zonas para colocar el logotipo."></figure>
+            </article>
+            <article class="story-panel" id="ecommerce-panel-3" role="tabpanel" aria-labelledby="ecommerce-tab-3" tabindex="0" hidden>
+              <p>Con el producto y el diseño configurados, la IA de LANA aplica automáticamente tus reglas, escalas y costos para mostrar un total claro al instante.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-ecommerce-cotizacion-ia-transparent.png" width="1821" height="864" loading="lazy" decoding="async" alt="La IA de LANA transforma una solicitud configurada en un desglose de precios automático."></figure>
+            </article>
+            <article class="story-panel" id="ecommerce-panel-4" role="tabpanel" aria-labelledby="ecommerce-tab-4" tabindex="0" hidden>
+              <p>Al terminar, LANA genera un documento profesional con folio, productos, personalización, desglose y total para que el cliente lo revise o lo comparta.</p>
+              <figure class="story-panel-media"><img src="https://app.get-lana.com/assets/lana-ecommerce-documento-transparent.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Documento formal de cotización con folio, producto personalizado, subtotal y total listo para enviarse."></figure>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section packages-section" id="paquetes">
+      <div class="container">
+        <div class="packages-head">
+          <div><span class="section-label">Paquetes LANA</span><h2 class="section-heading">Empieza con mensajería. Escala hasta toda tu operación.</h2></div>
+          <p class="section-intro">Tres niveles claros para vender por chat, conectar el taller completo o estandarizar la operación de varias sucursales.</p>
+        </div>
+        <div class="packages-grid">
+          <article class="package-card" data-package-card data-monthly-price="1200" data-annual-monthly-price="900" data-annual-total="10800">
+            <div class="package-topline"><span>Mensajería comercial</span></div>
+            <h3>LANA Chat IA</h3>
+            <div class="package-billing" role="group" aria-label="Tipo de pago para LANA Chat IA">
+              <button class="is-active" type="button" data-package-period="annual" aria-pressed="true">Anual <span>−25%</span></button>
+              <button type="button" data-package-period="monthly" aria-pressed="false">Mensual</button>
+            </div>
+            <div class="package-price-wrap" aria-live="polite">
+              <div class="package-price"><strong data-package-price>$900</strong><span>MXN / mes</span></div>
+              <p class="package-billing-detail" data-package-detail>Un pago de $10,800 MXN al año.</p>
+            </div>
+            <p class="package-summary">Convierte tus canales Meta en un equipo de ventas que responde con el contexto real de tu negocio.</p>
+            <ul class="package-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>WhatsApp Business, Messenger e Instagram en una sola bandeja.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Agentes de IA capacitados con tu catálogo, condiciones, preguntas frecuentes y estilo de atención.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Catálogo interno con precios fijos, márgenes y escalas por volumen.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Reglas de arte para bordado, serigrafía, DTF, sublimación, vinil, lona y otros servicios.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Seguimiento por etapas y cotización rápida desde la conversación.</li>
+            </ul>
+            <a class="button" href="mailto:hola@lana.mx?subject=Quiero%20LANA%20Chat%20IA">Elegir Chat IA</a>
+          </article>
+
+          <article class="package-card is-featured" data-package-card data-monthly-price="2800" data-annual-monthly-price="2300" data-annual-total="27600">
+            <div class="package-topline"><span>Operación completa</span><span class="package-recommended">Más completo</span></div>
+            <h3>LANA Operación</h3>
+            <div class="package-billing" role="group" aria-label="Tipo de pago para LANA Operación">
+              <button class="is-active" type="button" data-package-period="annual" aria-pressed="true">Anual <span>−18%</span></button>
+              <button type="button" data-package-period="monthly" aria-pressed="false">Mensual</button>
+            </div>
+            <div class="package-price-wrap" aria-live="polite">
+              <div class="package-price"><strong data-package-price>$2,300</strong><span>MXN / mes</span></div>
+              <p class="package-billing-detail" data-package-detail>Un pago de $27,600 MXN al año.</p>
+            </div>
+            <p class="package-summary">Conecta ventas, administración y producción para trabajar con una sola fuente de información.</p>
+            <ul class="package-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Todo lo incluido en LANA Chat IA.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Catálogo e-commerce, cotizador de autoservicio y configuración visual de diseños.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Cotizaciones, aprobaciones, Órdenes de Trabajo, ventas y remisiones.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Clientes, pagos, compras, proveedores e inventario conectados.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Workflow de producción, calendario, capacidad y reportes operativos.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Facturación CFDI 4.0 con PDF, XML, correo, cancelaciones y complementos de pago.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Mensajes masivos y administración de campañas de Meta.</li>
+            </ul>
+            <a class="button button-primary" href="mailto:hola@lana.mx?subject=Quiero%20LANA%20Operación">Elegir Operación</a>
+            <p class="package-note">Los timbres fiscales se pagan por separado.</p>
+          </article>
+
+          <article class="package-card" data-package-card data-monthly-price="4500" data-annual-monthly-price="3800" data-annual-total="45600">
+            <div class="package-topline"><span>Escala empresarial</span></div>
+            <h3>LANA Multisucursal</h3>
+            <div class="package-billing" role="group" aria-label="Tipo de pago para LANA Multisucursal">
+              <button class="is-active" type="button" data-package-period="annual" aria-pressed="true">Anual <span>−16%</span></button>
+              <button type="button" data-package-period="monthly" aria-pressed="false">Mensual</button>
+            </div>
+            <div class="package-price-wrap" aria-live="polite">
+              <div class="package-price"><strong data-package-price>$3,800</strong><span>MXN / mes</span></div>
+              <p class="package-billing-detail" data-package-detail>Un pago de $45,600 MXN al año.</p>
+            </div>
+            <p class="package-summary">Lleva el mismo proceso comercial y operativo a todas tus sucursales con una implementación coordinada.</p>
+            <ul class="package-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Todo lo incluido en LANA Operación.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Configuración para operar múltiples sucursales con procesos consistentes.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Usuarios, roles y permisos para separar responsabilidades por equipo.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Acompañamiento para homologar catálogos, reglas de precio, arte y producción.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Soporte prioritario para la puesta en marcha de la operación.</li>
+            </ul>
+            <a class="button" href="mailto:hola@lana.mx?subject=Quiero%20LANA%20Multisucursal">Elegir Multisucursal</a>
+            <p class="package-note">Los timbres fiscales se pagan por separado.</p>
+          </article>
+        </div>
+        <p class="packages-footnote">Precios en pesos mexicanos. Los planes anuales se cobran en un solo pago. El consumo de mensajería de Meta, timbres CFDI y otros servicios de terceros se cobran por separado cuando corresponda.</p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container final-card">
+        <div><h2>Haz que cada canal termine en una venta bien producida.</h2><p>Conoce cómo LANA puede ordenar conversaciones, cotizaciones y producción sin obligar a tu equipo a cambiar entre sistemas.</p></div>
+        <div class="final-actions"><a class="button button-primary" href="mailto:hola@lana.mx?subject=Quiero%20conocer%20LANA">Solicitar demo</a><a class="button" href="#demo-producto" data-demo-open>Ver producto</a></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="demo-overlay" id="demoProducto" hidden>
+    <div class="demo-dialog" id="demo-producto" role="dialog" aria-modal="true" aria-labelledby="demoTitle" aria-describedby="demoDescription">
+      <section class="demo-context">
+        <span class="demo-context-label">Demostración interactiva</span>
+        <h2 id="demoTitle">De un mensaje a una orden clara.</h2>
+        <p id="demoDescription">Escribe como lo haría un cliente. LANA organizará los datos del pedido, preparará la cotización y generará una orden ficticia para revisión.</p>
+        <ul class="demo-context-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Contexto configurado como en Capacitar IA</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Respuestas de Claude con catálogo ficticio validado</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Sin compra, registro ni almacenamiento</li>
+        </ul>
+      </section>
+      <section class="demo-phone" aria-label="Simulación de conversación en un teléfono">
+        <div class="demo-screen">
+          <header class="demo-topbar">
+            <span class="demo-avatar" aria-hidden="true">L</span>
+            <span class="demo-channel"><strong>LANA · Canal WhatsApp</strong><span>Demostración, no es una conversación real</span></span>
+            <button class="demo-close" id="demoClose" type="button" aria-label="Cerrar demostración">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </header>
+          <div class="demo-progress" aria-live="polite">
+            <div class="demo-progress-copy"><span>Datos del pedido</span><span id="demoProgressText">0% completo</span></div>
+            <div class="demo-progress-track"><div class="demo-progress-value" id="demoProgressValue"></div></div>
+          </div>
+          <div class="demo-messages" id="demoMessages" aria-live="polite" aria-label="Mensajes de la demostración"></div>
+          <div>
+            <section class="demo-consent" id="demoConsent">
+              <strong>Antes de comenzar</strong>
+              <p>Los mensajes de esta demostración se envían a Anthropic para generar la respuesta. LANA no guarda esta conversación. Las imágenes permanecen en tu dispositivo y no se envían ni se guardan. No escribas datos personales.</p>
+              <label><input type="checkbox" id="demoConsentCheck">Entiendo que es una simulación y acepto el envío de mis mensajes a Anthropic.</label>
+              <button class="button button-primary" id="demoConsentButton" type="button" disabled>Entiendo y comenzar</button>
+            </section>
+            <div class="demo-quick-replies" id="demoQuickReplies" aria-label="Respuestas sugeridas"></div>
+          </div>
+          <form class="demo-composer" id="demoForm">
+            <div class="demo-attachment-preview" id="demoAttachmentPreview" aria-live="polite" hidden>
+              <img id="demoAttachmentImage" alt="Vista previa de la imagen adjunta">
+              <span class="demo-attachment-copy"><strong id="demoAttachmentName"></strong><span>Vista previa local · no se envía ni se guarda</span></span>
+              <button class="demo-attachment-remove" id="demoAttachmentRemove" type="button" aria-label="Quitar imagen adjunta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+            </div>
+            <input id="demoAttachmentInput" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+            <button class="demo-attach" id="demoAttach" type="button" aria-label="Adjuntar una imagen" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.4 11.6-8.9 8.9a6 6 0 0 1-8.5-8.5l9.6-9.6a4 4 0 0 1 5.7 5.7l-9.6 9.6a2 2 0 0 1-2.8-2.8l8.9-8.9"/></svg></button>
+            <textarea class="demo-input" id="demoInput" rows="1" maxlength="600" placeholder="Describe el pedido…" aria-label="Mensaje para LANA" disabled></textarea>
+            <button class="demo-send" id="demoSend" type="submit" aria-label="Enviar mensaje" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
   </div>
-</footer>
 
-<!-- DEMO OVERLAY -->
-<div id="demo-overlay">
-  <div class="do-bar">
-    <div class="do-l">
-      <div class="do-logo">
-        <div class="do-mark">🧵</div>
-        <span class="do-name">LANA</span>
-      </div>
-      <div class="do-sep"></div>
-      <span class="do-badge">▶ DEMO INTERACTIVO</span>
-      <span class="do-desc">Flujo real del cliente — catálogo · configurador · cotización · OT · FlowShop</span>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand" href="#top" aria-label="LANA, volver al inicio"><img src="https://app.get-lana.com/icons/LANACLARO.png" alt="LANA"></a>
+      <span class="footer-copy">Plataforma para talleres de artículos promocionales · México</span>
+      <nav class="footer-links" aria-label="Enlaces del pie"><a href="#plataforma">Plataforma</a><a href="#ecommerce">Cotizador online</a><a href="#paquetes">Paquetes</a><a href="#comparativa">Comparativa</a><a href="mailto:hola@lana.mx">Contacto</a><a href="https://app.get-lana.com/privacidad.html">Privacidad</a></nav>
     </div>
-    <button class="do-close" onclick="closeDemo()">✕ Cerrar</button>
-  </div>
-  <iframe id="demo-iframe" src="lana-demo.html"></iframe>
-</div>
+  </footer>
 
-<!-- REGISTRO MODAL -->
-<div id="registro-overlay" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(9,9,15,.7);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px">
-  <div style="background:white;border-radius:20px;padding:40px;width:100%;max-width:440px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.2)">
-    <button onclick="closeRegistro()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#9898B2;line-height:1">✕</button>
-    <div style="text-align:center;margin-bottom:28px">
-      <div style="width:44px;height:44px;background:#5B2FD4;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin:0 auto 14px">🧵</div>
-      <div style="font-family:'Urbanist',sans-serif;font-weight:900;font-size:22px;color:#09090F">Empieza gratis 15 días</div>
-      <div id="reg-plan-badge" style="display:inline-block;margin-top:6px;background:#EDE9FE;color:#5B2FD4;font-size:12px;font-weight:700;padding:4px 12px;border-radius:100px;font-family:'Urbanist',sans-serif"></div>
-    </div>
+  <script src="https://app.get-lana.com/supabase-config.js"></script>
+  <script>
+    (function () {
+      var menuButton = document.getElementById("menuButton");
+      var mainNav = document.getElementById("mainNav");
+      function closeMenu() {
+        mainNav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Abrir menú");
+        document.body.classList.remove("menu-open");
+      }
+      menuButton.addEventListener("click", function () {
+        var opening = !mainNav.classList.contains("open");
+        mainNav.classList.toggle("open", opening);
+        menuButton.setAttribute("aria-expanded", String(opening));
+        menuButton.setAttribute("aria-label", opening ? "Cerrar menú" : "Abrir menú");
+        document.body.classList.toggle("menu-open", opening);
+      });
+      mainNav.addEventListener("click", function (event) {
+        if (event.target.closest("a")) closeMenu();
+      });
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 780) closeMenu();
+      });
 
-    <div id="reg-form">
-      <div style="margin-bottom:16px">
-        <div style="font-size:11px;font-weight:700;color:#9898B2;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-family:'Urbanist',sans-serif">Nombre del taller</div>
-        <input id="reg-nombre" type="text" placeholder="Ej: Bordados García" style="width:100%;border:1.5px solid #E4E4EE;border-radius:10px;padding:11px 14px;font-size:14px;outline:none;font-family:'Instrument Sans',sans-serif;transition:border .2s" onfocus="this.style.borderColor='#5B2FD4'" onblur="this.style.borderColor='#E4E4EE'">
-      </div>
-      <div style="margin-bottom:16px">
-        <div style="font-size:11px;font-weight:700;color:#9898B2;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-family:'Urbanist',sans-serif">Email</div>
-        <input id="reg-email" type="email" placeholder="tu@taller.com" style="width:100%;border:1.5px solid #E4E4EE;border-radius:10px;padding:11px 14px;font-size:14px;outline:none;font-family:'Instrument Sans',sans-serif;transition:border .2s" onfocus="this.style.borderColor='#5B2FD4'" onblur="this.style.borderColor='#E4E4EE'">
-      </div>
-      <div style="margin-bottom:24px">
-        <div style="font-size:11px;font-weight:700;color:#9898B2;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-family:'Urbanist',sans-serif">Contraseña</div>
-        <input id="reg-pass" type="password" placeholder="Mínimo 8 caracteres" style="width:100%;border:1.5px solid #E4E4EE;border-radius:10px;padding:11px 14px;font-size:14px;outline:none;font-family:'Instrument Sans',sans-serif;transition:border .2s" onfocus="this.style.borderColor='#5B2FD4'" onblur="this.style.borderColor='#E4E4EE'">
-      </div>
-      <div id="reg-error" style="display:none;background:#FEF2F2;color:#DC2626;border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:16px"></div>
-      <button onclick="handleRegistro()" id="reg-btn" style="width:100%;background:#5B2FD4;color:white;border:none;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Urbanist',sans-serif;transition:all .2s">
-        Crear mi cuenta gratis →
-      </button>
-      <div style="text-align:center;margin-top:14px;font-size:12px;color:#9898B2">Sin tarjeta requerida · 15 días gratis · Cancela cuando quieras</div>
-    </div>
+      var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var storyResizeHandlers = [];
 
-    <div id="reg-loading" style="display:none;text-align:center;padding:20px 0">
-      <div style="font-size:32px;margin-bottom:12px">⏳</div>
-      <div style="font-family:'Urbanist',sans-serif;font-weight:700;color:#09090F">Creando tu cuenta...</div>
-      <div style="font-size:13px;color:#9898B2;margin-top:6px">Esto toma unos segundos</div>
-    </div>
+      document.querySelectorAll("[data-story-tabs]").forEach(function (group) {
+        var tabs = Array.from(group.querySelectorAll("[data-story-tab]"));
+        var panels = Array.from(group.querySelectorAll("[role='tabpanel']"));
+        var tablist = group.querySelector(".story-tablist");
+        var panelContainer = group.querySelector(".story-panels");
+        var indicator = document.createElement("span");
+        var currentIndex = Math.max(0, tabs.findIndex(function (tab) { return tab.classList.contains("is-active"); }));
+        var switchTimer = null;
 
-    <div id="reg-success" style="display:none;text-align:center;padding:10px 0">
-      <div style="font-size:48px;margin-bottom:16px">📧</div>
-      <div style="font-family:'Urbanist',sans-serif;font-weight:900;font-size:20px;color:#09090F;margin-bottom:8px">Revisa tu correo</div>
-      <div style="font-size:14px;color:#52526A;margin-bottom:24px">Te enviamos un link de confirmación a tu email.<br>Haz clic en él para activar tu cuenta y entrar a LANA.</div>
-      <div style="background:#F0FDF4;border-radius:10px;padding:12px;font-size:13px;color:#166534">✓ Cuenta creada · Confirma tu email para continuar</div>
-    </div>
-  </div>
-</div>
+        indicator.className = "story-tab-indicator";
+        indicator.setAttribute("aria-hidden", "true");
+        tablist.appendChild(indicator);
 
-<!-- SUPABASE SDK -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-// Supabase init
-const SUPA_URL = 'https://lgjdzaqjrmmzyrenevfm.supabase.co';
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnamR6YXFqcm1tenlyZW5ldmZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3MjE3MjIsImV4cCI6MjA5NDI5NzcyMn0.hMwcuvEqNN7DglKj5pCSn9vWgfze5BrvO5JbBecju-Y';
-let sb = null;
-try{ sb = window.supabase.createClient(SUPA_URL, SUPA_KEY); }catch(e){ console.warn('Supabase no disponible'); }
+        function updateIndicator(tab) {
+          window.requestAnimationFrame(function () {
+            var horizontal = window.innerWidth <= 780;
+            var offset = horizontal ? tab.offsetLeft : tab.offsetTop;
+            var size = horizontal ? tab.offsetWidth : tab.offsetHeight;
+            tablist.style.setProperty("--story-indicator-offset", String(offset) + "px");
+            tablist.style.setProperty("--story-indicator-size", String(size) + "px");
+          });
+        }
 
-let regPlan = 'pro';
+        function activateTab(nextTab, moveFocus, scrollTab, immediate) {
+          var nextIndex = tabs.indexOf(nextTab);
+          if (switchTimer || (nextIndex === currentIndex && !immediate)) return;
+          group.style.setProperty("--story-offset", nextIndex >= currentIndex ? "22px" : "-22px");
+          group.style.setProperty("--story-exit-offset", nextIndex >= currentIndex ? "-10px" : "10px");
+          tabs.forEach(function (tab) {
+            var active = tab === nextTab;
+            tab.classList.toggle("is-active", active);
+            tab.setAttribute("aria-selected", String(active));
+            tab.tabIndex = active ? 0 : -1;
+          });
+          updateIndicator(nextTab);
 
-function openRegistro(plan){
-  regPlan = plan || 'pro';
-  const badges = {basico:'Plan Básico — $599 MXN/mes', pro:'Plan Pro — $999 MXN/mes'};
-  document.getElementById('reg-plan-badge').textContent = badges[regPlan] || badges.pro;
-  document.getElementById('reg-form').style.display = 'block';
-  document.getElementById('reg-loading').style.display = 'none';
-  document.getElementById('reg-success').style.display = 'none';
-  document.getElementById('reg-error').style.display = 'none';
-  document.getElementById('reg-nombre').value = '';
-  document.getElementById('reg-email').value = '';
-  document.getElementById('reg-pass').value = '';
-  document.getElementById('registro-overlay').style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  setTimeout(()=>document.getElementById('reg-nombre').focus(), 100);
-}
+          var previousPanel = panels[currentIndex];
+          var nextPanel = panels[nextIndex];
+          function commitPanel() {
+            panels.forEach(function (panel) {
+              panel.classList.remove("is-leaving");
+              panel.hidden = panel !== nextPanel;
+            });
+            switchTimer = null;
+          }
+          if (immediate || reducedMotion || previousPanel === nextPanel) {
+            commitPanel();
+          } else {
+            previousPanel.classList.add("is-leaving");
+            switchTimer = window.setTimeout(commitPanel, 155);
+          }
+          if (panelContainer) panelContainer.dataset.step = String(nextIndex + 1).padStart(2, "0") + " / " + String(tabs.length).padStart(2, "0");
+          if (scrollTab && window.innerWidth <= 780) {
+            nextTab.scrollIntoView({ behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"nearest", inline:"center" });
+          }
+          currentIndex = nextIndex;
+          if (moveFocus) nextTab.focus();
+        }
 
-function closeRegistro(){
-  document.getElementById('registro-overlay').style.display = 'none';
-  document.body.style.overflow = '';
-}
+        tabs.forEach(function (tab, index) {
+          tab.addEventListener("click", function () { activateTab(tab, false, true); });
+          tab.addEventListener("keydown", function (event) {
+            var nextIndex = null;
+            if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+            if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+            if (event.key === "Home") nextIndex = 0;
+            if (event.key === "End") nextIndex = tabs.length - 1;
+            if (nextIndex === null) return;
+            event.preventDefault();
+            activateTab(tabs[nextIndex], true, true);
+          });
+        });
+        storyResizeHandlers.push(function () { updateIndicator(tabs[currentIndex]); });
+        activateTab(tabs[currentIndex], false, false, true);
+      });
+      window.addEventListener("resize", function () {
+        storyResizeHandlers.forEach(function (updateStoryIndicator) { updateStoryIndicator(); });
+      }, { passive:true });
 
-async function handleRegistro(){
-  const nombre = document.getElementById('reg-nombre').value.trim();
-  const email  = document.getElementById('reg-email').value.trim();
-  const pass   = document.getElementById('reg-pass').value.trim();
-  const errEl  = document.getElementById('reg-error');
+      document.querySelectorAll("[data-package-card]").forEach(function (card) {
+        var buttons = Array.from(card.querySelectorAll("[data-package-period]"));
+        var billingControl = card.querySelector(".package-billing");
+        var priceWrap = card.querySelector(".package-price-wrap");
+        var price = card.querySelector("[data-package-price]");
+        var detail = card.querySelector("[data-package-detail]");
+        var updateTimer = null;
+        var enterTimer = null;
 
-  errEl.style.display = 'none';
+        function money(value) {
+          return "$" + Number(value).toLocaleString("es-MX", { maximumFractionDigits:0 });
+        }
 
-  if(!nombre){ errEl.textContent='Ingresa el nombre de tu taller.'; errEl.style.display='block'; return; }
-  if(!email || !email.includes('@')){ errEl.textContent='Ingresa un email válido.'; errEl.style.display='block'; return; }
-  if(pass.length < 8){ errEl.textContent='La contraseña debe tener al menos 8 caracteres.'; errEl.style.display='block'; return; }
-  if(!sb){ errEl.textContent='Error de conexión. Intenta de nuevo.'; errEl.style.display='block'; return; }
+        function selectPeriod(period, animate) {
+          billingControl.classList.toggle("is-monthly", period === "monthly");
+          buttons.forEach(function (button) {
+            var active = button.dataset.packagePeriod === period;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", String(active));
+          });
 
-  document.getElementById('reg-form').style.display = 'none';
-  document.getElementById('reg-loading').style.display = 'block';
+          function commitPrice() {
+            if (period === "annual") {
+              price.textContent = money(card.dataset.annualMonthlyPrice);
+              detail.textContent = "Un pago de " + money(card.dataset.annualTotal) + " MXN al año.";
+            } else {
+              price.textContent = money(card.dataset.monthlyPrice);
+              detail.textContent = "Cobro mensual de " + money(card.dataset.monthlyPrice) + " MXN.";
+            }
+            priceWrap.classList.remove("is-changing");
+            if (animate && !reducedMotion) {
+              priceWrap.classList.remove("is-entering");
+              void priceWrap.offsetWidth;
+              priceWrap.classList.add("is-entering");
+              window.clearTimeout(enterTimer);
+              enterTimer = window.setTimeout(function () { priceWrap.classList.remove("is-entering"); }, 340);
+            }
+          }
 
-  try{
-    // 1. Crear usuario en Supabase Auth
-    const {data:authData, error:authError} = await sb.auth.signUp({email, password:pass});
-    if(authError) throw new Error(authError.message);
+          window.clearTimeout(updateTimer);
+          window.clearTimeout(enterTimer);
+          priceWrap.classList.remove("is-entering");
+          if (animate && !reducedMotion) {
+            priceWrap.classList.add("is-changing");
+            updateTimer = window.setTimeout(commitPrice, 150);
+          } else {
+            commitPrice();
+          }
+        }
 
-    // 2. Guardar datos del tenant para después de confirmar email
-    localStorage.setItem('lana_pending_nombre', nombre);
-    localStorage.setItem('lana_pending_plan', regPlan);
+        buttons.forEach(function (button, index) {
+          button.addEventListener("click", function () {
+            if (button.getAttribute("aria-pressed") === "true") return;
+            selectPeriod(button.dataset.packagePeriod, true);
+          });
+          button.addEventListener("keydown", function (event) {
+            if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+            event.preventDefault();
+            var direction = event.key === "ArrowRight" ? 1 : -1;
+            var nextButton = buttons[(index + direction + buttons.length) % buttons.length];
+            nextButton.focus();
+            selectPeriod(nextButton.dataset.packagePeriod, true);
+          });
+        });
+        selectPeriod("annual", false);
+      });
 
-    // 3. Mostrar mensaje de confirmación — no redirigir hasta que confirme
-    document.getElementById('reg-loading').style.display = 'none';
-    document.getElementById('reg-success').style.display = 'block';
+      if (!reducedMotion) {
+        document.documentElement.classList.add("motion-ready");
+        var revealTargets = Array.from(document.querySelectorAll(".section-label,.section-heading,.section-intro,.story-tablist,.story-panels,.meta-grid > *,.benchmark-wrap,.package-card,.final-card > *,.channel-strip-copy,.channel-logo,.footer-inner > *"));
+        revealTargets.forEach(function (target, index) {
+          target.setAttribute("data-reveal", "");
+          target.style.setProperty("--reveal-delay", String((index % 4) * 55) + "ms");
+        });
 
-  }catch(e){
-    document.getElementById('reg-loading').style.display = 'none';
-    document.getElementById('reg-form').style.display = 'block';
-    errEl.textContent = e.message || 'Error inesperado. Intenta de nuevo.';
-    errEl.style.display = 'block';
-  }
-}
+        if ("IntersectionObserver" in window) {
+          var revealObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          }, { threshold:.14, rootMargin:"0px 0px -8% 0px" });
+          revealTargets.forEach(function (target) { revealObserver.observe(target); });
+        } else {
+          revealTargets.forEach(function (target) { target.classList.add("is-visible"); });
+        }
+      }
 
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeRegistro(); });
-</script>
+      var navLinks = Array.from(mainNav.querySelectorAll("a[href^='#']"));
+      var navSections = navLinks.map(function (link) {
+        return { link:link, section:document.getElementById(link.getAttribute("href").slice(1)) };
+      }).filter(function (item) { return item.section; });
 
-<script>
-// Demo
-function openDemo(){
-  document.getElementById('demo-overlay').style.display='flex';
-  document.body.style.overflow='hidden';
-  const i=document.getElementById('demo-iframe'); i.src=i.src;
-}
-function closeDemo(){
-  document.getElementById('demo-overlay').style.display='none';
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){ closeDemo(); closeRegistro(); }});
+      function setCurrentNav(activeLink) {
+        navLinks.forEach(function (link) {
+          var current = link === activeLink;
+          link.classList.toggle("is-current", current);
+          if (current) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+      }
 
-// Scroll reveal
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
-},{threshold:0.08});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+      if ("IntersectionObserver" in window) {
+        var sectionObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var match = navSections.find(function (item) { return item.section === entry.target; });
+            if (match) setCurrentNav(match.link);
+          });
+        }, { rootMargin:"-18% 0px -70% 0px", threshold:0 });
+        navSections.forEach(function (item) { sectionObserver.observe(item.section); });
+      }
 
-// Stagger cards
-document.querySelectorAll('.ld-card,.fstep,.fc,.pc,.jcs').forEach((el,i)=>{
-  el.style.transitionDelay=`${(i%5)*70}ms`;
-  el.classList.add('rv');
-  obs.observe(el);
-});
-</script>
+      var heroStage = document.querySelector(".product-stage");
+      var scrollFrame = null;
+      function updatePageMotion() {
+        document.body.classList.toggle("is-scrolled", window.scrollY > 18);
+        var scrollable = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        document.documentElement.style.setProperty("--page-progress", String(Math.min(1, Math.max(0, window.scrollY / scrollable))));
+        if (!reducedMotion && heroStage) {
+          heroStage.style.setProperty("--hero-parallax", String(Math.min(20, Math.max(0, window.scrollY * .025))) + "px");
+        }
+        scrollFrame = null;
+      }
+      function requestPageMotionUpdate() {
+        if (scrollFrame !== null) return;
+        scrollFrame = window.requestAnimationFrame(updatePageMotion);
+      }
+      updatePageMotion();
+      window.addEventListener("scroll", requestPageMotionUpdate, { passive:true });
+      window.addEventListener("resize", requestPageMotionUpdate, { passive:true });
+
+    })();
+  </script>
+  <script>
+    (function () {
+      var overlay = document.getElementById("demoProducto");
+      var closeButton = document.getElementById("demoClose");
+      var consent = document.getElementById("demoConsent");
+      var consentCheck = document.getElementById("demoConsentCheck");
+      var consentButton = document.getElementById("demoConsentButton");
+      var messagesElement = document.getElementById("demoMessages");
+      var quickRepliesElement = document.getElementById("demoQuickReplies");
+      var form = document.getElementById("demoForm");
+      var input = document.getElementById("demoInput");
+      var sendButton = document.getElementById("demoSend");
+      var attachButton = document.getElementById("demoAttach");
+      var attachmentInput = document.getElementById("demoAttachmentInput");
+      var attachmentPreview = document.getElementById("demoAttachmentPreview");
+      var attachmentImage = document.getElementById("demoAttachmentImage");
+      var attachmentName = document.getElementById("demoAttachmentName");
+      var attachmentRemove = document.getElementById("demoAttachmentRemove");
+      var progressText = document.getElementById("demoProgressText");
+      var progressValue = document.getElementById("demoProgressValue");
+      var lastFocused = null;
+      var accepted = false;
+      var busy = false;
+      var completed = false;
+      var sessionId = "";
+      var turnCount = 0;
+      var history = [];
+      var order = {};
+      var pendingAttachment = null;
+      var lastFailedRequest = null;
+      var lastErrorMessage = null;
+      var initialPrompts = ["Quiero 30 polos bordados", "Necesito uniformes para mi equipo", "Busco 50 termos con logotipo"];
+      var localMock = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname) && new URLSearchParams(window.location.search).get("demo_mock") === "1";
+
+      function makeSessionId() {
+        return window.crypto && window.crypto.randomUUID ? window.crypto.randomUUID() : "demo-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+      }
+
+      function createElement(tag, className, text) {
+        var element = document.createElement(tag);
+        if (className) element.className = className;
+        if (text !== undefined) element.textContent = text;
+        return element;
+      }
+
+      function scrollMessages() {
+        window.requestAnimationFrame(function () { messagesElement.scrollTop = messagesElement.scrollHeight; });
+      }
+
+      function addMessage(role, text, extraClass) {
+        var message = createElement("div", "demo-message " + role + (extraClass ? " " + extraClass : ""), text);
+        messagesElement.appendChild(message);
+        scrollMessages();
+        return message;
+      }
+
+      function addUserMessage(text, attachment) {
+        var message = createElement("div", "demo-message user" + (attachment ? " has-image" : ""));
+        if (attachment) {
+          var image = createElement("img", "demo-message-image");
+          image.src = attachment.preview;
+          image.alt = "Imagen adjunta: " + attachment.name;
+          message.appendChild(image);
+        }
+        message.appendChild(createElement("span", "demo-message-text", text || "Imagen adjunta para revisar"));
+        messagesElement.appendChild(message);
+        scrollMessages();
+        return message;
+      }
+
+      function showGreeting() {
+        addMessage("assistant", "Hola, soy LANA. Puedo ayudarte a convertir una idea en un pedido organizado. ¿Qué producto necesitas y cuántas piezas estás considerando?");
+      }
+
+      function renderQuickReplies(replies) {
+        quickRepliesElement.replaceChildren();
+        (replies || []).forEach(function (reply) {
+          var option = typeof reply === "string" ? { label:reply, action:null } : reply;
+          var button = createElement("button", "demo-quick-reply", option.label);
+          button.type = "button";
+          button.disabled = busy;
+          button.addEventListener("click", function () { option.action ? option.action() : sendMessage(option.label); });
+          quickRepliesElement.appendChild(button);
+        });
+      }
+
+      function setProgress(value) {
+        var safe = Math.max(0, Math.min(100, Number(value) || 0));
+        progressText.textContent = safe + "% completo";
+        progressValue.style.width = safe + "%";
+      }
+
+      function setBusy(value) {
+        busy = value;
+        var locked = !accepted || value || completed || turnCount >= 10 || Boolean(lastFailedRequest);
+        input.disabled = locked;
+        attachButton.disabled = locked;
+        attachmentInput.disabled = locked;
+        attachmentRemove.disabled = value;
+        sendButton.disabled = locked || (!input.value.trim() && !pendingAttachment);
+        quickRepliesElement.querySelectorAll("button").forEach(function (button) { button.disabled = value; });
+      }
+
+      function clearPendingAttachment() {
+        pendingAttachment = null;
+        attachmentInput.value = "";
+        attachmentImage.removeAttribute("src");
+        attachmentName.textContent = "";
+        attachmentPreview.hidden = true;
+        setBusy(busy);
+      }
+
+      function selectAttachment(file) {
+        if (!file) return;
+        if (!/^image\/(jpeg|png|webp)$/.test(file.type) || file.size > 5 * 1024 * 1024) {
+          addMessage("assistant", "Puedes adjuntar una imagen JPG, PNG o WebP de hasta 5 MB.");
+          attachmentInput.value = "";
+          return;
+        }
+        var reader = new FileReader();
+        reader.addEventListener("load", function () {
+          pendingAttachment = { name:file.name.slice(0,80), preview:String(reader.result || "") };
+          attachmentImage.src = pendingAttachment.preview;
+          attachmentName.textContent = pendingAttachment.name;
+          attachmentPreview.hidden = false;
+          setBusy(false);
+        });
+        reader.addEventListener("error", function () { addMessage("assistant", "No pudimos abrir esa imagen. Prueba con otro archivo."); });
+        reader.readAsDataURL(file);
+      }
+
+      function formatCurrency(value) {
+        return new Intl.NumberFormat("es-MX", { style:"currency", currency:"MXN", maximumFractionDigits:0 }).format(Number(value) || 0);
+      }
+
+      function orderRow(label, value, className) {
+        var row = createElement("div", "demo-order-row" + (className ? " " + className : ""));
+        row.appendChild(createElement("span", "", label));
+        row.appendChild(createElement("strong", "", value || "Por definir"));
+        return row;
+      }
+
+      function renderWorkOrder(workOrder) {
+        var card = createElement("section", "demo-order-card");
+        var head = createElement("div", "demo-order-head");
+        head.appendChild(createElement("span", "", "Orden de trabajo demo"));
+        head.appendChild(createElement("strong", "", workOrder.folio));
+        card.appendChild(head);
+        var body = createElement("div", "demo-order-body");
+        body.appendChild(orderRow("Producto", workOrder.product));
+        body.appendChild(orderRow("Cantidad", String(workOrder.quantity) + " piezas"));
+        body.appendChild(orderRow("Color y tallas", workOrder.color + " · " + workOrder.sizes));
+        body.appendChild(orderRow("Personalización", workOrder.technique + " · " + workOrder.position));
+        body.appendChild(orderRow("Diseño", workOrder.design));
+        body.appendChild(orderRow("Total estimado", formatCurrency(workOrder.total), "demo-order-total"));
+        card.appendChild(body);
+        card.appendChild(createElement("p", "demo-disclaimer", workOrder.disclaimer));
+        var reset = createElement("button", "demo-reset", "Iniciar otra demostración");
+        reset.type = "button";
+        reset.addEventListener("click", resetDemo);
+        card.appendChild(reset);
+        messagesElement.appendChild(card);
+        scrollMessages();
+      }
+
+      function openDemo(event) {
+        if (event) event.preventDefault();
+        lastFocused = document.activeElement;
+        overlay.hidden = false;
+        document.body.classList.add("demo-open");
+        closeButton.focus();
+      }
+
+      function closeDemo() {
+        overlay.hidden = true;
+        document.body.classList.remove("demo-open");
+        if (lastFocused && typeof lastFocused.focus === "function") lastFocused.focus();
+      }
+
+      function resetDemo() {
+        sessionId = makeSessionId();
+        turnCount = 0;
+        completed = false;
+        history = [];
+        order = {};
+        lastFailedRequest = null;
+        lastErrorMessage = null;
+        clearPendingAttachment();
+        messagesElement.replaceChildren();
+        setProgress(0);
+        showGreeting();
+        renderQuickReplies(accepted ? initialPrompts : []);
+        input.value = "";
+        setBusy(false);
+      }
+
+      function mockResponse(text, hasAttachment) {
+        var normalized = text.toLowerCase();
+        var next = Object.assign({}, order);
+        if (!next.product_id) {
+          next.product_id = normalized.includes("termo") ? "termo-acero" : "polo-ejecutivo";
+          next.quantity = Number((normalized.match(/\d+/) || [30])[0]);
+          next.technique = normalized.includes("bordad") ? "bordado" : null;
+        }
+        if (!next.color && /(negro|azul marino|blanco|gris|plata)/.test(normalized)) next.color = normalized.match(/negro|azul marino|blanco|gris|plata/)[0];
+        else if (!next.sizes && /(talla|tallas|ch a xl|mixtas)/.test(normalized)) next.sizes = text;
+        else if (!next.technique && /(bordado|dtf|serigraf)/.test(normalized)) next.technique = normalized.includes("dtf") ? "dtf" : normalized.includes("serigraf") ? "serigrafia" : "bordado";
+        else if (!next.position && /(pecho|frente|espalda)/.test(normalized)) next.position = text;
+        else if (!next.design && /(logotipo|diseño|logo|apoyo)/.test(normalized)) next.design = text;
+        if (hasAttachment) next.design = "Imagen adjunta para revisión de diseño";
+        order = next;
+        var fields = ["product_id","quantity","color","sizes","technique","position","design"];
+        var missing = fields.filter(function (field) { return !next[field]; });
+        var progress = Math.round((fields.length - missing.length) / fields.length * 100);
+        var reply = "Ya registré el producto y la cantidad. ¿En qué color lo necesitas?";
+        var quick = ["Negro", "Azul marino", "Blanco"];
+        if (missing[0] === "sizes") { reply = "Perfecto. ¿Cómo distribuimos las tallas?"; quick = ["Tallas mixtas CH a XL", "Todas talla M"]; }
+        if (missing[0] === "technique") { reply = "¿Qué técnica de personalización prefieres?"; quick = ["Bordado", "DTF", "Serigrafía"]; }
+        if (missing[0] === "position") { reply = "¿Dónde debe colocarse el diseño?"; quick = ["Pecho izquierdo", "Frente centrado", "Espalda"]; }
+        if (missing[0] === "design") { reply = "Solo falta el diseño. ¿Ya tienes un archivo o necesitas apoyo?"; quick = ["Tengo mi logotipo listo", "Necesito apoyo con el diseño"]; }
+        if (!missing.length) { reply = "El pedido está completo. El total estimado es de " + formatCurrency((next.quantity || 0) * 354 + 350) + ". ¿Quieres generar la orden de demostración?"; quick = ["Confirmar pedido de demostración", "Cambiar un dato"]; }
+        var confirmed = !missing.length && normalized.includes("confirmar");
+        return Promise.resolve({
+          reply: confirmed ? "Listo. Convertí la conversación en una orden estructurada para revisión." : reply,
+          order: next,
+          progress: progress,
+          quick_replies: confirmed ? [] : quick,
+          work_order: confirmed ? { folio:"DEMO-OT-LOCAL1", product:next.product_id === "termo-acero" ? "Termo de acero" : "Polo ejecutivo", quantity:next.quantity, color:next.color, sizes:next.sizes, technique:next.technique === "bordado" ? "Bordado" : next.technique, position:next.position, design:next.design, total:(next.quantity || 0) * 354 + 350, disclaimer:"Orden ficticia de demostración. No genera una compra ni una solicitud real." } : null
+        });
+      }
+
+      async function requestResponse(text, hasAttachment) {
+        if (localMock) return mockResponse(text, hasAttachment);
+        if (!window.LANA_SUPABASE_URL || !window.LANA_SUPABASE_ANON_KEY) throw new Error("La demostración no está configurada.");
+        var response;
+        try {
+          response = await fetch(window.LANA_SUPABASE_URL + "/functions/v1/demo-lana-chat", {
+            method:"POST",
+            headers:{ "Content-Type":"application/json", "apikey":window.LANA_SUPABASE_ANON_KEY },
+            body:JSON.stringify({ session_id:sessionId, messages:history, order:order, has_attachment:Boolean(hasAttachment) })
+          });
+        } catch (_error) {
+          throw new Error("No pudimos conectar con la demostración. Intenta nuevamente.");
+        }
+        var payload = await response.json().catch(function () { return {}; });
+        if (!response.ok) throw new Error(payload.error || "No fue posible continuar la demostración.");
+        return payload;
+      }
+
+      async function deliverRequest(requestDetails) {
+        if (lastErrorMessage) {
+          lastErrorMessage.remove();
+          lastErrorMessage = null;
+        }
+        renderQuickReplies([]);
+        setBusy(true);
+        var loading = addMessage("assistant", "LANA está organizando el pedido…", "loading");
+        loading.prepend(createElement("span", "demo-loading-dot"));
+        try {
+          var response = await requestResponse(requestDetails.text, requestDetails.hasAttachment);
+          loading.remove();
+          lastFailedRequest = null;
+          order = response.order || order;
+          addMessage("assistant", response.reply || "Continuemos con el pedido.");
+          history.push({ role:"assistant", content:response.reply || "Continuemos con el pedido." });
+          setProgress(response.progress);
+          renderQuickReplies(response.quick_replies || []);
+          if (response.work_order) {
+            completed = true;
+            renderWorkOrder(response.work_order);
+            input.placeholder = "Demostración finalizada";
+          }
+        } catch (error) {
+          loading.remove();
+          lastFailedRequest = requestDetails;
+          lastErrorMessage = addMessage("assistant", error && error.message ? error.message : "No pudimos continuar. Intenta nuevamente.");
+          renderQuickReplies([{ label:"Volver a intentar", action:retryLastRequest }]);
+        } finally {
+          setBusy(false);
+          if (!input.disabled) input.focus();
+        }
+      }
+
+      function retryLastRequest() {
+        if (!lastFailedRequest || busy) return;
+        deliverRequest(lastFailedRequest);
+      }
+
+      async function sendMessage(text) {
+        var clean = String(text || "").trim().slice(0, 600);
+        if (!accepted || busy || completed || lastFailedRequest || (!clean && !pendingAttachment) || turnCount >= 10) return;
+        var attachment = pendingAttachment;
+        var historyText = clean || "Adjunté una imagen para revisar el diseño.";
+        addUserMessage(clean, attachment);
+        history.push({ role:"user", content:historyText });
+        input.value = "";
+        turnCount += 1;
+        clearPendingAttachment();
+        await deliverRequest({ text:historyText, hasAttachment:Boolean(attachment) });
+      }
+
+      document.querySelectorAll("[data-demo-open]").forEach(function (button) { button.addEventListener("click", openDemo); });
+      closeButton.addEventListener("click", closeDemo);
+      overlay.addEventListener("click", function (event) { if (event.target === overlay) closeDemo(); });
+      document.addEventListener("keydown", function (event) { if (event.key === "Escape" && !overlay.hidden) closeDemo(); });
+      consentCheck.addEventListener("change", function () { consentButton.disabled = !consentCheck.checked; });
+      consentButton.addEventListener("click", function () {
+        if (!consentCheck.checked) return;
+        accepted = true;
+        consent.hidden = true;
+        renderQuickReplies(initialPrompts);
+        setBusy(false);
+        input.focus();
+      });
+      input.addEventListener("input", function () {
+        sendButton.disabled = !accepted || busy || completed || Boolean(lastFailedRequest) || (!input.value.trim() && !pendingAttachment) || turnCount >= 10;
+        input.style.height = "auto";
+        input.style.height = Math.min(input.scrollHeight, 92) + "px";
+      });
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && !event.shiftKey) { event.preventDefault(); form.requestSubmit(); }
+      });
+      attachButton.addEventListener("click", function () { if (!attachButton.disabled) attachmentInput.click(); });
+      attachmentInput.addEventListener("change", function () { selectAttachment(attachmentInput.files && attachmentInput.files[0]); });
+      attachmentRemove.addEventListener("click", clearPendingAttachment);
+      form.addEventListener("submit", function (event) { event.preventDefault(); sendMessage(input.value); });
+      resetDemo();
+    })();
+  </script>
 </body>
 </html>
