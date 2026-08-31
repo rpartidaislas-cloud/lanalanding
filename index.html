@@ -433,6 +433,14 @@
     .package-price-wrap.is-entering .package-price,.package-price-wrap.is-entering .package-billing-detail { animation:packagePriceIn var(--lana-motion-standard) var(--lana-motion-ease) both; }
     .package-price-wrap.is-entering .package-billing-detail { animation-delay:35ms; }
     .package-price-label { margin-top:20px; color:var(--lana-ui-brand); font-size:11px; font-weight:750; letter-spacing:.04em; text-transform:uppercase; }
+    .package-regular-price { margin-top:20px; padding:12px 14px; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:11px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface-soft); color:var(--lana-ui-text-muted); }
+    .package-regular-price > svg { width:18px; height:18px; }
+    .package-regular-copy { min-width:0; }
+    .package-regular-copy span { display:block; margin-bottom:2px; font-size:10px; font-weight:750; letter-spacing:.055em; text-transform:uppercase; }
+    .package-regular-copy strong { display:flex; align-items:baseline; gap:5px; color:var(--lana-ui-text-secondary); font:700 19px/1.2 Manrope,sans-serif; }
+    .package-regular-copy s { text-decoration-thickness:1.5px; text-decoration-color:var(--lana-ui-text-muted); }
+    .package-regular-copy small { font:500 10px/1.3 Inter,sans-serif; color:var(--lana-ui-text-muted); }
+    .package-regular-status { padding:5px 8px; border:1px solid var(--lana-ui-border); border-radius:999px; background:var(--lana-ui-surface); font-size:9px; font-weight:750; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; }
     .package-price-locked { min-height:86px; margin-top:20px; display:flex; align-items:center; gap:10px; color:var(--lana-ui-text-secondary); }
     .package-price-locked svg { width:22px; height:22px; color:var(--lana-ui-text-muted); }
     .package-price-locked strong { display:block; font:700 25px/1.2 Manrope,sans-serif; }
@@ -721,6 +729,8 @@
       .beta-dialog-head,.beta-form { padding-inline:18px; }
       .beta-form-actions { display:grid; }
       .beta-form-actions .button { width:100%; }
+      .package-regular-price { grid-template-columns:auto 1fr; }
+      .package-regular-status { grid-column:2; justify-self:start; }
       .demo-screen { border-radius:0; }
     }
 
@@ -1021,7 +1031,12 @@
           <article class="package-card is-beta">
             <div class="package-topline"><span>Mensajería comercial</span><span class="package-badge">Beta abierta</span></div>
             <h3>LANA Chat IA</h3>
-            <div class="package-price-label">Precio especial de lanzamiento Beta</div>
+            <div class="package-regular-price" aria-label="Precio regular bloqueado: 900 pesos mexicanos al mes">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              <div class="package-regular-copy"><span>Precio regular</span><strong><s>$900</s><small>MXN / mes</small></strong></div>
+              <span class="package-regular-status">Bloqueado en Beta</span>
+            </div>
+            <div class="package-price-label">Precio Fundador Beta disponible</div>
             <div class="package-price-wrap" aria-live="polite">
               <div class="package-price"><strong id="betaPrice">$499</strong><span>MXN / mes</span></div>
               <p class="package-billing-detail">IVA incluido. Cobro mensual, sin plazo forzoso.</p>
@@ -1100,7 +1115,7 @@
           <div class="beta-field"><label for="betaContact">Nombre del contacto</label><input id="betaContact" name="nombre_contacto" autocomplete="name" maxlength="100" required></div>
           <div class="beta-field"><label for="betaBusiness">Nombre del negocio</label><input id="betaBusiness" name="nombre_negocio" autocomplete="organization" maxlength="140" required></div>
           <div class="beta-field"><label for="betaEmail">Correo electrónico</label><input id="betaEmail" name="email" type="email" autocomplete="email" maxlength="180" required><small>Será el correo de acceso a LANA.</small></div>
-          <div class="beta-field"><label for="betaWhatsapp">WhatsApp con código de país</label><input id="betaWhatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="52 33 1234 5678" required></div>
+          <div class="beta-field"><label for="betaWhatsapp">WhatsApp</label><input id="betaWhatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="33 1234 5678" aria-describedby="betaWhatsappHelp" required><small id="betaWhatsappHelp">Si estás en México puedes escribir los 10 dígitos; agregaremos +52 automáticamente.</small></div>
           <div class="beta-field"><label for="betaCity">Ciudad</label><input id="betaCity" name="ciudad" autocomplete="address-level2" maxlength="100"></div>
           <div class="beta-field"><label for="betaCountry">País</label><input id="betaCountry" name="pais" autocomplete="country-name" maxlength="80" value="México"></div>
           <div class="beta-field is-wide"><label for="betaBusinessType">Tipo de negocio</label><select id="betaBusinessType" name="tipo_negocio"><option value="">Selecciona una opción</option><option>Taller de bordado</option><option>Artículos promocionales</option><option>Uniformes y ropa empresarial</option><option>Impresión y personalización</option><option>Agencia o distribuidor</option><option>Otro</option></select></div>
@@ -1486,10 +1501,10 @@
       }
       function openForm(){lastFocused=document.activeElement;setFormMode();formError.textContent="";overlay.hidden=false;document.body.classList.add("beta-form-open");window.setTimeout(function(){document.getElementById("betaContact").focus();},0);}
       function closeForm(){overlay.hidden=true;document.body.classList.remove("beta-form-open");if(lastFocused&&typeof lastFocused.focus==="function")lastFocused.focus();}
-      function formPayload(){var data=new FormData(form);return{nombre_contacto:String(data.get("nombre_contacto")||"").trim(),nombre_negocio:String(data.get("nombre_negocio")||"").trim(),email:String(data.get("email")||"").trim(),whatsapp:String(data.get("whatsapp")||"").trim(),ciudad:String(data.get("ciudad")||"").trim(),pais:String(data.get("pais")||"").trim(),tipo_negocio:String(data.get("tipo_negocio")||"").trim(),canales:data.getAll("canales"),reto_principal:String(data.get("reto_principal")||"").trim(),website:String(data.get("website")||""),privacidad_aceptada:document.getElementById("betaPrivacy").checked,origen:"get-lana.com",invitacion:invitationValid?invitationToken:""};}
+      function normalizeWhatsapp(value,country){var digits=String(value||"").replace(/[^0-9]/g,"");if(/^m[eé]xico$/i.test(String(country||"").trim())&&digits.length===10)digits="52"+digits;return digits;}
+      function formPayload(){var data=new FormData(form);var country=String(data.get("pais")||"").trim();return{nombre_contacto:String(data.get("nombre_contacto")||"").trim(),nombre_negocio:String(data.get("nombre_negocio")||"").trim(),email:String(data.get("email")||"").trim(),whatsapp:normalizeWhatsapp(data.get("whatsapp"),country),ciudad:String(data.get("ciudad")||"").trim(),pais:country,tipo_negocio:String(data.get("tipo_negocio")||"").trim(),canales:data.getAll("canales"),reto_principal:String(data.get("reto_principal")||"").trim(),website:String(data.get("website")||""),privacidad_aceptada:document.getElementById("betaPrivacy").checked,origen:"get-lana.com",invitacion:invitationValid?invitationToken:""};}
 
       openButton.addEventListener("click",openForm); closeButton.addEventListener("click",closeForm); cancelButton.addEventListener("click",closeForm);
-      overlay.addEventListener("click",function(event){if(event.target===overlay)closeForm();});
       document.addEventListener("keydown",function(event){if(event.key==="Escape"&&!overlay.hidden)closeForm();});
       form.addEventListener("submit",function(event){
         event.preventDefault(); formError.textContent=""; if(!form.reportValidity())return;
