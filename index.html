@@ -407,8 +407,12 @@
     .packages-grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-items:stretch; gap:16px; }
     .package-card { padding:28px; display:flex; flex-direction:column; border:1px solid var(--lana-ui-border-strong); border-radius:16px; background:var(--lana-ui-surface); }
     .package-card.is-featured { border-color:var(--lana-ui-brand); }
+    .package-card.is-beta { border-color:var(--lana-ui-brand); }
+    .package-card.is-locked { background:color-mix(in srgb,var(--lana-ui-surface-subtle) 58%,var(--lana-ui-surface)); }
     .package-topline { min-height:24px; display:flex; align-items:center; justify-content:space-between; gap:12px; color:var(--lana-ui-text-muted); font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
     .package-recommended { color:var(--lana-ui-brand); }
+    .package-badge { padding:4px 8px; display:inline-flex; align-items:center; gap:5px; border:1px solid color-mix(in srgb,var(--lana-ui-brand) 30%,var(--lana-ui-border)); border-radius:999px; background:var(--lana-ui-brand-soft); color:var(--lana-ui-brand); font-size:10px; font-weight:750; letter-spacing:.03em; }
+    .package-badge svg { width:12px; height:12px; }
     .package-card h3 { margin:16px 0 0; font:700 25px/1.15 Manrope,sans-serif; letter-spacing:-.025em; }
     .package-billing { position:relative; isolation:isolate; margin-top:20px; padding:3px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface-subtle); }
     .package-billing::before { content:""; position:absolute; z-index:-1; top:3px; bottom:3px; left:3px; width:calc(50% - 4.5px); border:1px solid var(--lana-ui-border-strong); border-radius:7px; background:var(--lana-ui-surface); transform:translateX(0); transition:transform var(--lana-motion-standard) var(--lana-motion-ease); }
@@ -428,13 +432,63 @@
     .package-price-wrap.is-changing .package-price,.package-price-wrap.is-changing .package-billing-detail { opacity:0; transform:translateY(-7px); }
     .package-price-wrap.is-entering .package-price,.package-price-wrap.is-entering .package-billing-detail { animation:packagePriceIn var(--lana-motion-standard) var(--lana-motion-ease) both; }
     .package-price-wrap.is-entering .package-billing-detail { animation-delay:35ms; }
+    .package-price-label { margin-top:20px; color:var(--lana-ui-brand); font-size:11px; font-weight:750; letter-spacing:.04em; text-transform:uppercase; }
+    .package-price-locked { min-height:86px; margin-top:20px; display:flex; align-items:center; gap:10px; color:var(--lana-ui-text-secondary); }
+    .package-price-locked svg { width:22px; height:22px; color:var(--lana-ui-text-muted); }
+    .package-price-locked strong { display:block; font:700 25px/1.2 Manrope,sans-serif; }
+    .package-price-locked span { display:block; margin-top:4px; color:var(--lana-ui-text-muted); font-size:11px; }
     .package-summary { min-height:66px; margin:16px 0 0; color:var(--lana-ui-text-secondary); font-size:13px; line-height:1.6; }
     .package-list { margin:22px 0 28px; padding:22px 0 0; display:grid; gap:13px; border-top:1px solid var(--lana-ui-border); list-style:none; }
     .package-list li { position:relative; padding-left:24px; color:var(--lana-ui-text-secondary); font-size:12px; line-height:1.55; }
     .package-list svg { position:absolute; top:1px; left:0; width:16px; height:16px; color:var(--lana-ui-success); }
     .package-card .button { width:100%; margin-top:auto; }
+    .package-card .button:disabled { border-color:var(--lana-ui-border); background:var(--lana-ui-surface-subtle); color:var(--lana-ui-text-muted); cursor:not-allowed; transform:none; }
     .package-note { margin:12px 0 0; color:var(--lana-ui-text-muted); font-size:10px; line-height:1.45; text-align:center; }
     .packages-footnote { max-width:920px; margin:18px auto 0; color:var(--lana-ui-text-muted); font-size:11px; line-height:1.55; text-align:center; }
+    .beta-context { margin-top:28px; padding:18px 20px; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:22px; border:1px solid color-mix(in srgb,var(--lana-ui-brand) 22%,var(--lana-ui-border)); border-radius:12px; background:var(--lana-ui-brand-soft); }
+    .beta-context strong { display:block; font:700 15px/1.35 Manrope,sans-serif; }
+    .beta-context p { max-width:760px; margin:5px 0 0; color:var(--lana-ui-text-secondary); font-size:12px; line-height:1.55; }
+    .beta-founder-copy { color:var(--lana-ui-brand-hover); font-size:11px; font-weight:700; text-align:right; }
+    .beta-availability { margin:18px 0 4px; padding:13px 14px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface-subtle); }
+    .beta-availability-head { display:flex; align-items:center; justify-content:space-between; gap:12px; color:var(--lana-ui-text-secondary); font-size:11px; }
+    .beta-availability-head strong { color:var(--lana-ui-text); }
+    .beta-availability-track { height:5px; margin-top:9px; overflow:hidden; border-radius:999px; background:var(--lana-ui-border); }
+    .beta-availability-value { width:0; height:100%; border-radius:inherit; background:var(--lana-ui-brand); transition:width .3s ease; }
+    .beta-result { margin:0 0 22px; padding:14px 16px; display:none; align-items:flex-start; gap:10px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface); color:var(--lana-ui-text-secondary); font-size:13px; }
+    .beta-result.is-visible { display:flex; }
+    .beta-result.is-success { border-color:#ABEFC6; background:var(--lana-ui-success-soft); color:#067647; }
+    .beta-result.is-neutral { border-color:#B2DDFF; background:var(--lana-ui-info-soft); color:var(--lana-ui-info); }
+    .beta-result svg { width:18px; height:18px; flex:none; }
+
+    body.beta-form-open { overflow:hidden; }
+    .beta-overlay { position:fixed; inset:0; z-index:600; padding:24px; display:grid; place-items:center; background:rgba(16,24,40,.72); }
+    .beta-overlay[hidden] { display:none; }
+    .beta-dialog { width:min(100%,720px); max-height:calc(100dvh - 48px); overflow-y:auto; border:1px solid var(--lana-ui-border-strong); border-radius:16px; background:var(--lana-ui-surface); box-shadow:var(--lana-shadow-lg); }
+    .beta-dialog-head { padding:22px 24px 18px; display:grid; grid-template-columns:1fr 40px; gap:16px; border-bottom:1px solid var(--lana-ui-border); }
+    .beta-dialog-kicker { color:var(--lana-ui-brand); font-size:11px; font-weight:750; letter-spacing:.05em; text-transform:uppercase; }
+    .beta-dialog h2 { margin:5px 0 0; font:700 25px/1.2 Manrope,sans-serif; letter-spacing:-.025em; }
+    .beta-dialog-intro { margin:7px 0 0; color:var(--lana-ui-text-secondary); font-size:13px; }
+    .beta-close { width:40px; height:40px; display:grid; place-items:center; border:0; border-radius:8px; background:var(--lana-ui-surface-subtle); color:var(--lana-ui-text-secondary); }
+    .beta-close svg { width:18px; height:18px; }
+    .beta-form { padding:22px 24px 24px; }
+    .beta-form-grid { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .beta-field { display:grid; gap:6px; }
+    .beta-field.is-wide { grid-column:1/-1; }
+    .beta-field label,.beta-form legend { color:var(--lana-ui-text-secondary); font-size:11px; font-weight:700; }
+    .beta-field input,.beta-field select,.beta-field textarea { width:100%; min-height:44px; padding:10px 12px; border:1px solid var(--lana-ui-border-strong); border-radius:8px; background:var(--lana-ui-surface); color:var(--lana-ui-text); font:13px/1.4 Inter,sans-serif; }
+    .beta-field textarea { min-height:82px; resize:vertical; }
+    .beta-field small { color:var(--lana-ui-text-muted); font-size:10px; }
+    .beta-channels { grid-column:1/-1; margin:0; padding:0; border:0; }
+    .beta-channel-options { margin-top:7px; display:flex; flex-wrap:wrap; gap:8px; }
+    .beta-channel-options label { min-height:38px; padding:8px 10px; display:flex; align-items:center; gap:7px; border:1px solid var(--lana-ui-border); border-radius:8px; background:var(--lana-ui-surface-subtle); color:var(--lana-ui-text-secondary); font-size:11px; font-weight:600; }
+    .beta-channel-options input,.beta-consent input { width:16px; height:16px; accent-color:var(--lana-ui-brand); }
+    .beta-honeypot { position:absolute!important; width:1px!important; height:1px!important; overflow:hidden!important; clip:rect(0 0 0 0)!important; white-space:nowrap!important; }
+    .beta-consent { margin-top:18px; display:flex; align-items:flex-start; gap:9px; color:var(--lana-ui-text-secondary); font-size:11px; line-height:1.5; }
+    .beta-consent input { margin-top:1px; flex:none; }
+    .beta-form-error { min-height:20px; margin-top:12px; color:#B42318; font-size:12px; }
+    .beta-form-actions { margin-top:12px; display:flex; justify-content:flex-end; gap:9px; }
+    .beta-form-actions .button { min-width:150px; }
+    .beta-form-actions .button:disabled { opacity:.55; cursor:wait; transform:none; }
 
     @keyframes packagePriceIn { from { opacity:0; transform:translateY(9px); } to { opacity:1; transform:translateY(0); } }
 
@@ -567,6 +621,8 @@
       .packages-head { grid-template-columns:1fr; align-items:start; gap:18px; }
       .packages-grid { grid-template-columns:1fr; }
       .package-summary { min-height:0; }
+      .beta-context { grid-template-columns:1fr; }
+      .beta-founder-copy { text-align:left; }
       .final-card { grid-template-columns:1fr; }
       .final-actions { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
@@ -632,6 +688,8 @@
       .footer-links { margin-left:0; justify-content:flex-start; }
       .demo-dialog { grid-template-columns:1fr; }
       .demo-context { display:none; }
+      .beta-form-grid { grid-template-columns:1fr; }
+      .beta-field.is-wide,.beta-channels { grid-column:auto; }
     }
 
     @media (max-width:520px) {
@@ -658,6 +716,11 @@
       .demo-dialog { width:100%; height:100dvh; display:block; }
       .demo-phone { width:100%; height:100dvh; min-height:0; padding:0; border:0; border-radius:0; box-shadow:none; }
       .demo-phone::before { display:none; }
+      .beta-overlay { padding:0; background:var(--lana-ui-surface); }
+      .beta-dialog { width:100%; max-height:100dvh; min-height:100dvh; border:0; border-radius:0; box-shadow:none; }
+      .beta-dialog-head,.beta-form { padding-inline:18px; }
+      .beta-form-actions { display:grid; }
+      .beta-form-actions .button { width:100%; }
       .demo-screen { border-radius:0; }
     }
 
@@ -946,20 +1009,22 @@
     <section class="section packages-section" id="paquetes">
       <div class="container">
         <div class="packages-head">
-          <div><span class="section-label">Paquetes LANA</span><h2 class="section-heading">Empieza con mensajería. Escala hasta toda tu operación.</h2></div>
-          <p class="section-intro">Tres niveles claros para vender por chat, conectar el taller completo o estandarizar la operación de varias sucursales.</p>
+          <div><span class="section-label">Acceso Beta</span><h2 class="section-heading">Empieza hoy con LANA Chat IA.</h2></div>
+          <p class="section-intro">Abrimos 20 lugares para negocios que quieran usar el producto, trabajar directamente con soporte y ayudarnos a perfeccionarlo.</p>
+        </div>
+        <div class="beta-result" id="betaResult" role="status" aria-live="polite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span id="betaResultText"></span></div>
+        <div class="beta-context">
+          <div><strong>Una Beta es un producto funcional en etapa de mejora.</strong><p>Podrás trabajar con funciones reales desde el primer día. Algunas pantallas y flujos seguirán evolucionando con base en el uso y la retroalimentación de este grupo.</p></div>
+          <div class="beta-founder-copy">Los primeros 20 negocios obtienen condición de Fundador: 30% de descuento en futuros paquetes durante 12 meses.</div>
         </div>
         <div class="packages-grid">
-          <article class="package-card" data-package-card data-monthly-price="1200" data-annual-monthly-price="900" data-annual-total="10800">
-            <div class="package-topline"><span>Mensajería comercial</span></div>
+          <article class="package-card is-beta">
+            <div class="package-topline"><span>Mensajería comercial</span><span class="package-badge">Beta abierta</span></div>
             <h3>LANA Chat IA</h3>
-            <div class="package-billing" role="group" aria-label="Tipo de pago para LANA Chat IA">
-              <button class="is-active" type="button" data-package-period="annual" aria-pressed="true">Anual <span>−25%</span></button>
-              <button type="button" data-package-period="monthly" aria-pressed="false">Mensual</button>
-            </div>
+            <div class="package-price-label">Precio especial de lanzamiento Beta</div>
             <div class="package-price-wrap" aria-live="polite">
-              <div class="package-price"><strong data-package-price>$900</strong><span>MXN / mes</span></div>
-              <p class="package-billing-detail" data-package-detail>Un pago de $10,800 MXN al año.</p>
+              <div class="package-price"><strong id="betaPrice">$499</strong><span>MXN / mes</span></div>
+              <p class="package-billing-detail">IVA incluido. Cobro mensual, sin plazo forzoso.</p>
             </div>
             <p class="package-summary">Convierte tus canales Meta en un equipo de ventas que responde con el contexto real de tu negocio.</p>
             <ul class="package-list">
@@ -970,21 +1035,21 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Seguimiento por etapas y cotización rápida desde la conversación.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>E-commerce con catálogo, precios y cotizador de autoservicio.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Configurador Beta para organizar productos y diseños de forma visual.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Sin límites de conversaciones o cotizaciones en LANA durante la Beta.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Atención directa del equipo de soporte y cancelación cuando quieras.</li>
             </ul>
-            <a class="button" href="mailto:hola@lana.mx?subject=Quiero%20LANA%20Chat%20IA">Elegir Chat IA</a>
+            <div class="beta-availability" id="betaAvailability">
+              <div class="beta-availability-head"><span>Lugares de Fundador</span><strong id="betaAvailabilityText">Consultando disponibilidad...</strong></div>
+              <div class="beta-availability-track" aria-hidden="true"><div class="beta-availability-value" id="betaAvailabilityValue"></div></div>
+            </div>
+            <button class="button button-primary" id="betaOpenButton" type="button" data-beta-open>Reservar mi lugar</button>
+            <p class="package-note" id="betaActionNote">El pago confirma tu lugar y activa el proceso de acceso.</p>
           </article>
 
-          <article class="package-card is-featured" data-package-card data-monthly-price="2800" data-annual-monthly-price="2300" data-annual-total="27600">
-            <div class="package-topline"><span>Operación completa</span><span class="package-recommended">Más completo</span></div>
+          <article class="package-card is-locked">
+            <div class="package-topline"><span>Operación completa</span><span class="package-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Próximamente</span></div>
             <h3>LANA Operación</h3>
-            <div class="package-billing" role="group" aria-label="Tipo de pago para LANA Operación">
-              <button class="is-active" type="button" data-package-period="annual" aria-pressed="true">Anual <span>−18%</span></button>
-              <button type="button" data-package-period="monthly" aria-pressed="false">Mensual</button>
-            </div>
-            <div class="package-price-wrap" aria-live="polite">
-              <div class="package-price"><strong data-package-price>$2,300</strong><span>MXN / mes</span></div>
-              <p class="package-billing-detail" data-package-detail>Un pago de $27,600 MXN al año.</p>
-            </div>
+            <div class="package-price-locked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><strong>En preparación</strong><span>Precio disponible al abrir el paquete.</span></div></div>
             <p class="package-summary">Conecta ventas, administración y producción para trabajar con una sola fuente de información.</p>
             <ul class="package-list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Todo lo incluido en LANA Chat IA, incluido e-commerce y Configurador Beta.</li>
@@ -994,21 +1059,13 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Facturación CFDI 4.0 con PDF, XML, correo, cancelaciones y complementos de pago.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Mensajes masivos y administración de campañas de Meta.</li>
             </ul>
-            <a class="button button-primary" href="mailto:hola@lana.mx?subject=Quiero%20LANA%20Operación">Elegir Operación</a>
-            <p class="package-note">Los timbres fiscales se pagan por separado.</p>
+            <button class="button" type="button" disabled aria-disabled="true">Disponible próximamente</button>
           </article>
 
-          <article class="package-card" data-package-card data-monthly-price="4500" data-annual-monthly-price="3800" data-annual-total="45600">
-            <div class="package-topline"><span>Escala empresarial</span></div>
+          <article class="package-card is-locked">
+            <div class="package-topline"><span>Escala empresarial</span><span class="package-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Próximamente</span></div>
             <h3>LANA Multisucursal</h3>
-            <div class="package-billing" role="group" aria-label="Tipo de pago para LANA Multisucursal">
-              <button class="is-active" type="button" data-package-period="annual" aria-pressed="true">Anual <span>−16%</span></button>
-              <button type="button" data-package-period="monthly" aria-pressed="false">Mensual</button>
-            </div>
-            <div class="package-price-wrap" aria-live="polite">
-              <div class="package-price"><strong data-package-price>$3,800</strong><span>MXN / mes</span></div>
-              <p class="package-billing-detail" data-package-detail>Un pago de $45,600 MXN al año.</p>
-            </div>
+            <div class="package-price-locked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><strong>En preparación</strong><span>Precio disponible al abrir el paquete.</span></div></div>
             <p class="package-summary">Lleva el mismo proceso comercial y operativo a todas tus sucursales con una implementación coordinada.</p>
             <ul class="package-list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Todo lo incluido en LANA Operación.</li>
@@ -1017,11 +1074,10 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Acompañamiento para homologar catálogos, reglas de precio, arte y producción.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Soporte prioritario para la puesta en marcha de la operación.</li>
             </ul>
-            <a class="button" href="mailto:hola@lana.mx?subject=Quiero%20LANA%20Multisucursal">Elegir Multisucursal</a>
-            <p class="package-note">Los timbres fiscales se pagan por separado.</p>
+            <button class="button" type="button" disabled aria-disabled="true">Disponible próximamente</button>
           </article>
         </div>
-        <p class="packages-footnote">Precios en pesos mexicanos. Los planes anuales se cobran en un solo pago. El consumo de mensajería de Meta, timbres CFDI y otros servicios de terceros se cobran por separado cuando corresponda.</p>
+        <p class="packages-footnote">El precio de LANA Chat IA Beta incluye IVA. No incluye cargos que Meta u otros proveedores externos puedan aplicar por mensajería o servicios contratados directamente con ellos. La condición de Fundador no es un precio de por vida.</p>
       </div>
     </section>
 
@@ -1032,6 +1088,32 @@
       </div>
     </section>
   </main>
+
+  <div class="beta-overlay" id="betaOverlay" hidden>
+    <section class="beta-dialog" role="dialog" aria-modal="true" aria-labelledby="betaDialogTitle" aria-describedby="betaDialogIntro">
+      <header class="beta-dialog-head">
+        <div><div class="beta-dialog-kicker" id="betaDialogKicker">LANA Chat IA Beta</div><h2 id="betaDialogTitle">Reserva uno de los 20 lugares</h2><p class="beta-dialog-intro" id="betaDialogIntro">Cuéntanos quién usará LANA. Al continuar te llevaremos al pago seguro de Stripe.</p></div>
+        <button class="beta-close" id="betaClose" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </header>
+      <form class="beta-form" id="betaForm" novalidate>
+        <div class="beta-form-grid">
+          <div class="beta-field"><label for="betaContact">Nombre del contacto</label><input id="betaContact" name="nombre_contacto" autocomplete="name" maxlength="100" required></div>
+          <div class="beta-field"><label for="betaBusiness">Nombre del negocio</label><input id="betaBusiness" name="nombre_negocio" autocomplete="organization" maxlength="140" required></div>
+          <div class="beta-field"><label for="betaEmail">Correo electrónico</label><input id="betaEmail" name="email" type="email" autocomplete="email" maxlength="180" required><small>Será el correo de acceso a LANA.</small></div>
+          <div class="beta-field"><label for="betaWhatsapp">WhatsApp con código de país</label><input id="betaWhatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" maxlength="30" placeholder="52 33 1234 5678" required></div>
+          <div class="beta-field"><label for="betaCity">Ciudad</label><input id="betaCity" name="ciudad" autocomplete="address-level2" maxlength="100"></div>
+          <div class="beta-field"><label for="betaCountry">País</label><input id="betaCountry" name="pais" autocomplete="country-name" maxlength="80" value="México"></div>
+          <div class="beta-field is-wide"><label for="betaBusinessType">Tipo de negocio</label><select id="betaBusinessType" name="tipo_negocio"><option value="">Selecciona una opción</option><option>Taller de bordado</option><option>Artículos promocionales</option><option>Uniformes y ropa empresarial</option><option>Impresión y personalización</option><option>Agencia o distribuidor</option><option>Otro</option></select></div>
+          <fieldset class="beta-channels"><legend>Canales que utilizas actualmente</legend><div class="beta-channel-options"><label><input type="checkbox" name="canales" value="whatsapp">WhatsApp</label><label><input type="checkbox" name="canales" value="instagram">Instagram</label><label><input type="checkbox" name="canales" value="messenger">Messenger</label><label><input type="checkbox" name="canales" value="sitio_web">Sitio web</label><label><input type="checkbox" name="canales" value="mostrador">Mostrador</label></div></fieldset>
+          <div class="beta-field is-wide"><label for="betaChallenge">¿Qué te gustaría resolver primero con LANA?</label><textarea id="betaChallenge" name="reto_principal" maxlength="800" placeholder="Por ejemplo: responder más rápido, cotizar sin errores o dar seguimiento a cada prospecto."></textarea></div>
+          <div class="beta-honeypot" aria-hidden="true"><label for="betaWebsite">Sitio</label><input id="betaWebsite" name="website" tabindex="-1" autocomplete="off"></div>
+        </div>
+        <label class="beta-consent"><input id="betaPrivacy" name="privacidad_aceptada" type="checkbox" required><span>Acepto que LANA use estos datos para gestionar mi acceso, pago y soporte del programa Beta. Consulté el <a href="privacidad.html" target="_blank" rel="noopener">aviso de privacidad</a>.</span></label>
+        <div class="beta-form-error" id="betaFormError" role="alert" aria-live="assertive"></div>
+        <div class="beta-form-actions"><button class="button" id="betaCancel" type="button">Cancelar</button><button class="button button-primary" id="betaSubmit" type="submit">Continuar al pago</button></div>
+      </form>
+    </section>
+  </div>
 
   <div class="demo-overlay" id="demoProducto" hidden>
     <div class="demo-dialog" id="demo-producto" role="dialog" aria-modal="true" aria-labelledby="demoTitle" aria-describedby="demoDescription">
@@ -1334,6 +1416,97 @@
       window.addEventListener("scroll", requestPageMotionUpdate, { passive:true });
       window.addEventListener("resize", requestPageMotionUpdate, { passive:true });
 
+    })();
+  </script>
+  <script>
+    (function () {
+      var endpoint = (window.LANA_SUPABASE_URL || "https://lgjdzaqjrmmzyrenevfm.supabase.co") + "/functions/v1/lana-beta-public";
+      var overlay = document.getElementById("betaOverlay");
+      var closeButton = document.getElementById("betaClose");
+      var cancelButton = document.getElementById("betaCancel");
+      var openButton = document.getElementById("betaOpenButton");
+      var form = document.getElementById("betaForm");
+      var submitButton = document.getElementById("betaSubmit");
+      var formError = document.getElementById("betaFormError");
+      var title = document.getElementById("betaDialogTitle");
+      var intro = document.getElementById("betaDialogIntro");
+      var kicker = document.getElementById("betaDialogKicker");
+      var availabilityText = document.getElementById("betaAvailabilityText");
+      var availabilityValue = document.getElementById("betaAvailabilityValue");
+      var actionNote = document.getElementById("betaActionNote");
+      var result = document.getElementById("betaResult");
+      var resultText = document.getElementById("betaResultText");
+      var price = document.getElementById("betaPrice");
+      var lastFocused = null;
+      var state = { checkout_abierto:true, cupo_total:20, cupos_disponibles:null };
+      var invitationToken = new URLSearchParams(window.location.search).get("beta_invite") || "";
+      var invitationValid = false;
+      var localMode = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname) ? new URLSearchParams(window.location.search).get("beta_mock") : "";
+
+      function api(action, extra) {
+        if (localMode) {
+          if (action === "estado") return Promise.resolve({ ok:true, checkout_abierto:localMode!=="full", cupo_total:20, cupos_disponibles:localMode==="full"?0:7, cupos_ocupados:localMode==="full"?20:13, precio_mxn_centavos:49900 });
+          if (action === "validar_invitacion") return Promise.resolve({ ok:true, valida:true, solicitud:{ nombre_contacto:"María López",nombre_negocio:"Taller Norte",email:"maria@ejemplo.com",whatsapp:"523312345678",ciudad:"Guadalajara",pais:"México",tipo_negocio:"Taller de bordado",canales:["whatsapp"] } });
+          return Promise.resolve({ ok:true, solicitud_id:"mock" });
+        }
+        var headers = { "Content-Type":"application/json" };
+        if (window.LANA_SUPABASE_ANON_KEY) headers.apikey = window.LANA_SUPABASE_ANON_KEY;
+        return fetch(endpoint, { method:"POST", headers:headers, body:JSON.stringify(Object.assign({ accion:action }, extra||{})) })
+          .then(function(response){ return response.json().catch(function(){return {};}).then(function(out){ if(!response.ok || out.error){ var e=new Error(out.error||"No pudimos completar la solicitud."); e.codigo=out.codigo; throw e; } return out; }); });
+      }
+
+      function moneyFromCents(value) { return "$" + Math.round(Number(value||49900)/100).toLocaleString("es-MX"); }
+      function showResult(message, type) { resultText.textContent=message; result.className="beta-result is-visible "+(type==="success"?"is-success":"is-neutral"); }
+
+      function renderState(next) {
+        state=Object.assign({},state,next||{});
+        var total=Number(state.cupo_total)||20;
+        var available=state.cupos_disponibles;
+        var used=available===null?0:Math.max(0,total-Number(available));
+        if(state.precio_mxn_centavos) price.textContent=moneyFromCents(state.precio_mxn_centavos);
+        if(available===null||available===undefined){ availabilityText.textContent="Disponibilidad por confirmar"; availabilityValue.style.width="0%"; }
+        else { availabilityText.textContent=available>0?available+" de "+total+" disponibles":"Cupo fundador completo"; availabilityValue.style.width=Math.min(100,Math.round(used/total*100))+"%"; }
+        if(!state.checkout_abierto&&!invitationValid){ openButton.textContent="Unirme a la lista de espera"; openButton.classList.remove("button-primary"); actionNote.textContent="Te avisaremos cuando abramos un nuevo lugar de acceso."; }
+        else { openButton.textContent=invitationValid?"Activar mi invitación":"Reservar mi lugar"; openButton.classList.add("button-primary"); actionNote.textContent=invitationValid?"Tu invitación es personal y tiene vigencia limitada.":"El pago confirma tu lugar y activa el proceso de acceso."; }
+      }
+
+      function fillInvitation(data) {
+        Object.keys(data||{}).forEach(function(key){
+          if(key==="canales"){ form.querySelectorAll('[name="canales"]').forEach(function(input){input.checked=data.canales.indexOf(input.value)!==-1;}); return; }
+          var input=form.elements[key]; if(input&&data[key]!==null&&data[key]!==undefined) input.value=data[key];
+        });
+      }
+
+      function setFormMode(){
+        var waitlist=!state.checkout_abierto&&!invitationValid;
+        kicker.textContent=invitationValid?"Invitación personal":waitlist?"Lista de espera":"LANA Chat IA Beta";
+        title.textContent=invitationValid?"Activa tu acceso a LANA":waitlist?"Solicita el próximo lugar":"Reserva uno de los 20 lugares";
+        intro.textContent=invitationValid?"Confirma tus datos y continúa al pago seguro de Stripe.":waitlist?"Déjanos tus datos. Revisaremos cada solicitud y abriremos nuevos lugares gradualmente.":"Cuéntanos quién usará LANA. Al continuar te llevaremos al pago seguro de Stripe.";
+        submitButton.textContent=waitlist?"Enviar solicitud":"Continuar al pago";
+      }
+      function openForm(){lastFocused=document.activeElement;setFormMode();formError.textContent="";overlay.hidden=false;document.body.classList.add("beta-form-open");window.setTimeout(function(){document.getElementById("betaContact").focus();},0);}
+      function closeForm(){overlay.hidden=true;document.body.classList.remove("beta-form-open");if(lastFocused&&typeof lastFocused.focus==="function")lastFocused.focus();}
+      function formPayload(){var data=new FormData(form);return{nombre_contacto:String(data.get("nombre_contacto")||"").trim(),nombre_negocio:String(data.get("nombre_negocio")||"").trim(),email:String(data.get("email")||"").trim(),whatsapp:String(data.get("whatsapp")||"").trim(),ciudad:String(data.get("ciudad")||"").trim(),pais:String(data.get("pais")||"").trim(),tipo_negocio:String(data.get("tipo_negocio")||"").trim(),canales:data.getAll("canales"),reto_principal:String(data.get("reto_principal")||"").trim(),website:String(data.get("website")||""),privacidad_aceptada:document.getElementById("betaPrivacy").checked,origen:"get-lana.com",invitacion:invitationValid?invitationToken:""};}
+
+      openButton.addEventListener("click",openForm); closeButton.addEventListener("click",closeForm); cancelButton.addEventListener("click",closeForm);
+      overlay.addEventListener("click",function(event){if(event.target===overlay)closeForm();});
+      document.addEventListener("keydown",function(event){if(event.key==="Escape"&&!overlay.hidden)closeForm();});
+      form.addEventListener("submit",function(event){
+        event.preventDefault(); formError.textContent=""; if(!form.reportValidity())return;
+        var waitlist=!state.checkout_abierto&&!invitationValid; submitButton.disabled=true; submitButton.textContent=waitlist?"Enviando...":"Preparando pago...";
+        api(waitlist?"lista_espera":"crear_checkout",formPayload()).then(function(out){
+          if(waitlist){closeForm();showResult("Tu solicitud quedó registrada. Te contactaremos cuando abramos un lugar para tu negocio.","success");result.scrollIntoView({behavior:"smooth",block:"center"});}
+          else if(out.url){window.location.href=out.url;}
+          else if(localMode){closeForm();showResult("Modo de prueba local: el formulario está listo para crear el checkout de Stripe.","success");}
+        }).catch(function(error){if(error.codigo==="CUPO_COMPLETO"){state.checkout_abierto=false;state.cupos_disponibles=0;invitationValid=false;renderState(state);setFormMode();}formError.textContent=error.message||"No pudimos completar la solicitud.";})
+          .finally(function(){submitButton.disabled=false;setFormMode();});
+      });
+
+      var paymentResult=new URLSearchParams(window.location.search).get("beta_pago");
+      if(paymentResult==="exito")showResult("Pago confirmado. Te enviaremos por correo el enlace para crear tu contraseña y entrar a LANA.","success");
+      if(paymentResult==="cancelado")showResult("El pago no se completó. Tu lugar se mantiene reservado por unos minutos para que puedas intentarlo de nuevo.","neutral");
+      api("estado").then(renderState).catch(function(){availabilityText.textContent="Consulta el cupo al continuar";actionNote.textContent="Confirmaremos la disponibilidad antes de abrir el pago.";});
+      if(invitationToken){api("validar_invitacion",{invitacion:invitationToken}).then(function(out){if(!out.valida){showResult("La invitación no es válida o ya venció. Puedes registrarte en la lista de espera.","neutral");return;}invitationValid=true;fillInvitation(out.solicitud||{});renderState(state);showResult("Tu invitación está lista. Confirma tus datos para activar el acceso.","success");openForm();}).catch(function(){showResult("No pudimos validar la invitación. Intenta nuevamente o contacta a soporte.","neutral");});}
     })();
   </script>
   <script>
