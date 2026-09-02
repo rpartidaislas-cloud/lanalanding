@@ -462,6 +462,13 @@
     .beta-context strong { display:block; font:700 15px/1.35 Manrope,sans-serif; }
     .beta-context p { max-width:760px; margin:5px 0 0; color:var(--lana-ui-text-secondary); font-size:12px; line-height:1.55; }
     .beta-founder-copy { color:var(--lana-ui-brand-hover); font-size:11px; font-weight:700; text-align:right; }
+    .beta-founder-copy span { display:block; margin-bottom:3px; color:var(--lana-ui-brand); font-size:10px; letter-spacing:.045em; text-transform:uppercase; }
+    .beta-next-tier { margin-top:18px; padding:18px 20px; display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:18px; border:1px solid var(--lana-ui-border); border-radius:12px; background:var(--lana-ui-surface); }
+    .beta-next-tier-label { color:var(--lana-ui-brand); font-size:10px; font-weight:750; letter-spacing:.045em; text-transform:uppercase; }
+    .beta-next-tier strong { display:block; font:700 15px/1.35 Manrope,sans-serif; }
+    .beta-next-tier p { margin:4px 0 0; color:var(--lana-ui-text-secondary); font-size:12px; line-height:1.5; }
+    .beta-next-tier-price { color:var(--lana-ui-text); font:700 22px/1 Manrope,sans-serif; white-space:nowrap; }
+    .beta-next-tier-price small { display:block; margin-top:5px; color:var(--lana-ui-text-muted); font:500 10px/1.3 Inter,sans-serif; text-align:right; }
     .beta-availability { margin:18px 0 4px; padding:13px 14px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface-subtle); }
     .beta-availability-head { display:flex; align-items:center; justify-content:space-between; gap:12px; color:var(--lana-ui-text-secondary); font-size:11px; }
     .beta-availability-head strong { color:var(--lana-ui-text); }
@@ -499,6 +506,11 @@
     .beta-honeypot { position:absolute!important; width:1px!important; height:1px!important; overflow:hidden!important; clip:rect(0 0 0 0)!important; white-space:nowrap!important; }
     .beta-consent { margin-top:18px; display:flex; align-items:flex-start; gap:9px; color:var(--lana-ui-text-secondary); font-size:11px; line-height:1.5; }
     .beta-consent input { margin-top:1px; flex:none; }
+    .beta-checkout-legal { margin-top:18px; padding:16px 18px; border:1px solid var(--lana-ui-border); border-radius:12px; background:var(--lana-ui-surface-subtle); }
+    .beta-checkout-legal[hidden] { display:none; }
+    .beta-checkout-legal > strong { display:block; font:700 14px/1.35 Manrope,sans-serif; }
+    .beta-checkout-legal > p { margin:5px 0 0; color:var(--lana-ui-text-secondary); font-size:11px; line-height:1.5; }
+    .beta-checkout-legal .beta-consent { margin-top:13px; }
     .beta-form-error { min-height:20px; margin-top:12px; color:#B42318; font-size:12px; }
     .beta-form-actions { margin-top:12px; display:flex; justify-content:flex-end; gap:9px; }
     .beta-form-actions .button { min-width:150px; }
@@ -637,6 +649,8 @@
       .package-summary { min-height:0; }
       .beta-context { grid-template-columns:1fr; }
       .beta-founder-copy { text-align:left; }
+      .beta-next-tier { grid-template-columns:1fr; }
+      .beta-next-tier-price small { text-align:left; }
       .final-card { grid-template-columns:1fr; }
       .final-actions { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
@@ -1026,12 +1040,12 @@
       <div class="container">
         <div class="packages-head">
           <div><span class="section-label">Acceso Beta</span><h2 class="section-heading">Empieza hoy con LANA Chat IA.</h2></div>
-          <p class="section-intro">Abrimos 20 lugares para negocios que quieran usar el producto, trabajar directamente con soporte y ayudarnos a perfeccionarlo.</p>
+          <p class="section-intro">Abrimos 20 lugares Fundador Tier 1 para negocios que quieran usar el producto, recibir atención prioritaria y ayudarnos a perfeccionarlo.</p>
         </div>
         <div class="beta-result" id="betaResult" role="status" aria-live="polite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span id="betaResultText"></span></div>
         <div class="beta-context">
-          <div><strong>Una Beta es un producto funcional en etapa de mejora.</strong><p>Podrás trabajar con funciones reales desde el primer día. Algunas pantallas y flujos seguirán evolucionando con base en el uso y la retroalimentación de este grupo.</p></div>
-          <div class="beta-founder-copy">Los primeros 20 negocios obtienen condición de Fundador: 30% de descuento en futuros paquetes durante 12 meses.</div>
+          <div><strong>Una Beta es un producto funcional en etapa de mejora.</strong><p>Podrás trabajar con funciones reales desde el primer día. Pueden presentarse errores o ajustes mientras evolucionan las pantallas y los flujos; el equipo de LANA dará seguimiento a los reportes y trabajará en su corrección.</p></div>
+          <div class="beta-founder-copy"><span>Fundador Tier 1</span>Los primeros 20 negocios reciben atención prioritaria y conservan su precio mientras mantengan la suscripción activa y al corriente.</div>
         </div>
         <div class="packages-grid">
           <article class="package-card is-beta">
@@ -1042,7 +1056,7 @@
               <div class="package-regular-copy"><span>Precio regular</span><strong><s>$900</s><small>MXN / mes</small></strong></div>
               <span class="package-regular-status">Bloqueado en Beta</span>
             </div>
-            <div class="package-price-label">Precio Fundador Beta disponible</div>
+            <div class="package-price-label">Precio Fundador Tier 1</div>
             <div class="package-price-wrap" aria-live="polite">
               <div class="package-price"><strong id="betaPrice">$499</strong><span>MXN / mes</span></div>
               <p class="package-billing-detail">IVA incluido. El primer cobro se realiza al activar tu lugar.</p>
@@ -1051,7 +1065,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="17" rx="2"/><path d="m8 15 2 2 5-5"/></svg>
               <div><strong><span id="betaBonusDays">7</span> días adicionales sin costo</strong><span>Pagas hoy <span id="betaChargeToday">$499</span> y tu primer periodo dura <span id="betaInitialDays">37</span> días: 30 pagados más 7 adicionales. Después se renueva mensualmente.</span></div>
             </div>
-            <p class="package-summary">Convierte tus canales Meta en un equipo de ventas que responde con el contexto real de tu negocio.</p>
+            <p class="package-summary">Convierte tus canales Meta en un equipo de ventas que responde con el contexto real de tu negocio. Como Fundador Tier 1 tendrás atención prioritaria durante la Beta.</p>
             <ul class="package-list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>WhatsApp Business, Messenger e Instagram en una sola bandeja.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Agentes de IA capacitados con tu catálogo, condiciones, preguntas frecuentes y estilo de atención.</li>
@@ -1061,7 +1075,10 @@
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>E-commerce con catálogo, precios y cotizador de autoservicio.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Configurador Beta para organizar productos y diseños de forma visual.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Sin límites de conversaciones o cotizaciones en LANA durante la Beta.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Atención directa del equipo de soporte y cancelación cuando quieras.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Sin plazo forzoso: cancelación cuando quieras antes de la siguiente renovación.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Atención prioritaria y contacto directo con el equipo de LANA.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Precio de $499 garantizado mientras mantengas tu suscripción activa y al corriente.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Acceso a precios de fundador para los siguientes paquetes conforme se liberen.</li>
             </ul>
             <div class="beta-availability" id="betaAvailability">
               <div class="beta-availability-head"><span>Lugares de Fundador</span><strong id="betaAvailabilityText">Consultando disponibilidad...</strong></div>
@@ -1102,7 +1119,12 @@
             <button class="button" type="button" disabled aria-disabled="true">Disponible próximamente</button>
           </article>
         </div>
-        <p class="packages-footnote">El precio de LANA Chat IA Beta incluye IVA. No incluye cargos que Meta u otros proveedores externos puedan aplicar por mensajería o servicios contratados directamente con ellos. La condición de Fundador no es un precio de por vida.</p>
+        <div class="beta-next-tier" aria-label="Próxima apertura Fundador Tier 2">
+          <span class="beta-next-tier-label">Próxima apertura</span>
+          <div><strong>30 lugares Fundador Tier 2</strong><p>Cuando termine la apertura Tier 1 liberaremos un segundo grupo con acceso Beta y precio fundador propio.</p></div>
+          <div class="beta-next-tier-price">$799<small>MXN / mes · IVA incluido</small></div>
+        </div>
+        <p class="packages-footnote">El precio Fundador Tier 1 de LANA Chat IA incluye IVA y se mantiene mientras la suscripción permanezca activa, sin interrupciones y al corriente. No incluye cargos de Meta, timbres CFDI ni otros servicios externos. Los futuros paquetes tendrán precios de fundador y condiciones propios.</p>
       </div>
     </section>
 
@@ -1134,6 +1156,13 @@
           <div class="beta-honeypot" aria-hidden="true"><label for="betaWebsite">Sitio</label><input id="betaWebsite" name="website" tabindex="-1" autocomplete="off"></div>
         </div>
         <label class="beta-consent"><input id="betaPrivacy" name="privacidad_aceptada" type="checkbox" required><span>Acepto el tratamiento descrito en el <a href="privacidad.html#programa-beta" target="_blank" rel="noopener">aviso de privacidad</a> para gestionar mi solicitud, contactarme sobre LANA y, si decido contratar, procesar el pago seguro con Stripe, habilitar mi acceso y brindarme soporte.</span></label>
+        <div class="beta-checkout-legal" id="betaCheckoutLegal" data-checkout-consent>
+          <strong>Confirma las condiciones antes de pagar</strong>
+          <p>Plan Fundador Tier 1: $499 MXN al mes, IVA incluido. Cobro inmediato, 7 días adicionales sin costo y renovación mensual automática después del primer periodo de 37 días.</p>
+          <label class="beta-consent"><input id="betaAcknowledgement" name="beta_aceptada" type="checkbox" required><span>Entiendo que LANA Chat IA es una Beta funcional en la que pueden presentarse errores, cambios o interrupciones, y que debo revisar las respuestas y cotizaciones generadas por inteligencia artificial.</span></label>
+          <label class="beta-consent"><input id="betaTerms" name="terminos_aceptados" type="checkbox" required><span>He leído y acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos y condiciones</a> y el <a href="contrato-servicio.html" target="_blank" rel="noopener">Contrato de prestación de servicios digitales</a>, versión 2026-09-02.</span></label>
+          <label class="beta-consent"><input id="betaRenewal" name="renovacion_aceptada" type="checkbox" required><span>Autorizo el cargo de $499 MXN hoy y la renovación automática mensual. Entiendo que conservo el precio Fundador Tier 1 mientras la suscripción permanezca activa, sin interrupciones y al corriente.</span></label>
+        </div>
         <div class="beta-form-error" id="betaFormError" role="alert" aria-live="assertive"></div>
         <div class="beta-form-actions"><button class="button" id="betaCancel" type="button">Cancelar</button><button class="button button-primary" id="betaSubmit" type="submit">Continuar al pago</button></div>
       </form>
@@ -1197,13 +1226,14 @@
     <div class="container footer-inner">
       <a class="brand" href="#top" aria-label="LANA, volver al inicio"><img src="icons/LANACLARO.png" alt="LANA"></a>
       <span class="footer-copy">Plataforma para talleres de artículos promocionales · México</span>
-      <nav class="footer-links" aria-label="Enlaces del pie"><a href="#plataforma">Plataforma</a><a href="#ecommerce">Cotizador online</a><a href="#paquetes">Paquetes</a><a href="#comparativa">Comparativa</a><a href="mailto:contacto@get-lana.com">Contacto</a><a href="privacidad.html">Privacidad</a><a href="eliminacion-datos.html">Eliminar mis datos</a></nav>
+      <nav class="footer-links" aria-label="Enlaces del pie"><a href="#plataforma">Plataforma</a><a href="#ecommerce">Cotizador online</a><a href="#paquetes">Paquetes</a><a href="#comparativa">Comparativa</a><a href="mailto:contacto@get-lana.com">Contacto</a><a href="terminos.html">Términos</a><a href="contrato-servicio.html">Contrato</a><a href="privacidad.html">Privacidad</a><a href="eliminacion-datos.html">Eliminar mis datos</a></nav>
     </div>
   </footer>
 
   <script src="supabase-config.js"></script>
   <script>
     (function () {
+      var LEGAL_VERSION="2026-09-02";
       var menuButton = document.getElementById("menuButton");
       var mainNav = document.getElementById("mainNav");
       function closeMenu() {
@@ -1453,6 +1483,7 @@
       var form = document.getElementById("betaForm");
       var submitButton = document.getElementById("betaSubmit");
       var formError = document.getElementById("betaFormError");
+      var legal = document.getElementById("betaCheckoutLegal");
       var title = document.getElementById("betaDialogTitle");
       var intro = document.getElementById("betaDialogIntro");
       var kicker = document.getElementById("betaDialogKicker");
@@ -1511,6 +1542,9 @@
       }
 
       function setFormMode(){
+        var waitlist=!state.checkout_abierto&&!invitationValid;
+        legal.hidden=requestDemoMode||waitlist;
+        legal.querySelectorAll("input").forEach(function(input){input.required=!legal.hidden;input.disabled=legal.hidden;if(legal.hidden)input.checked=false;});
         if(requestDemoMode){
           kicker.textContent="Demostración personalizada";
           title.textContent="Solicita una demostración de LANA";
@@ -1518,7 +1552,6 @@
           submitButton.textContent="Enviar solicitud";
           return;
         }
-        var waitlist=!state.checkout_abierto&&!invitationValid;
         kicker.textContent=invitationValid?"Invitación personal":waitlist?"Lista de espera":"LANA Chat IA Beta";
         var freeDays=Math.max(0,Number(state.dias_gratis_adicionales)||7);
         title.textContent=invitationValid?"Activa tu acceso a LANA":waitlist?"Solicita acceso a la próxima apertura":"Reserva uno de los 20 lugares";
@@ -1528,7 +1561,7 @@
       function openForm(mode){requestDemoMode=mode==="demo";lastFocused=document.activeElement;setFormMode();formError.textContent="";overlay.hidden=false;document.body.classList.add("beta-form-open");window.setTimeout(function(){document.getElementById("betaContact").focus();},0);}
       function closeForm(){overlay.hidden=true;document.body.classList.remove("beta-form-open");if(lastFocused&&typeof lastFocused.focus==="function")lastFocused.focus();}
       function normalizeWhatsapp(value,country){var digits=String(value||"").replace(/[^0-9]/g,"");if(/^m[eé]xico$/i.test(String(country||"").trim())&&digits.length===10)digits="52"+digits;return digits;}
-      function formPayload(){var data=new FormData(form);var country=String(data.get("pais")||"").trim();return{nombre_contacto:String(data.get("nombre_contacto")||"").trim(),nombre_negocio:String(data.get("nombre_negocio")||"").trim(),email:String(data.get("email")||"").trim(),whatsapp:normalizeWhatsapp(data.get("whatsapp"),country),ciudad:String(data.get("ciudad")||"").trim(),pais:country,tipo_negocio:String(data.get("tipo_negocio")||"").trim(),canales:data.getAll("canales"),reto_principal:String(data.get("reto_principal")||"").trim(),website:String(data.get("website")||""),privacidad_aceptada:document.getElementById("betaPrivacy").checked,origen:"get-lana.com",invitacion:invitationValid?invitationToken:""};}
+      function formPayload(){var data=new FormData(form);var country=String(data.get("pais")||"").trim();return{nombre_contacto:String(data.get("nombre_contacto")||"").trim(),nombre_negocio:String(data.get("nombre_negocio")||"").trim(),email:String(data.get("email")||"").trim(),whatsapp:normalizeWhatsapp(data.get("whatsapp"),country),ciudad:String(data.get("ciudad")||"").trim(),pais:country,tipo_negocio:String(data.get("tipo_negocio")||"").trim(),canales:data.getAll("canales"),reto_principal:String(data.get("reto_principal")||"").trim(),website:String(data.get("website")||""),privacidad_aceptada:document.getElementById("betaPrivacy").checked,beta_aceptada:document.getElementById("betaAcknowledgement").checked,terminos_aceptados:document.getElementById("betaTerms").checked,renovacion_aceptada:document.getElementById("betaRenewal").checked,version_terminos:LEGAL_VERSION,version_contrato:LEGAL_VERSION,origen:"get-lana.com",invitacion:invitationValid?invitationToken:""};}
 
       openButton.addEventListener("click",function(){openForm("beta");});
       document.querySelectorAll("[data-demo-request-open]").forEach(function(button){button.addEventListener("click",function(event){event.preventDefault();openForm("demo");});});
