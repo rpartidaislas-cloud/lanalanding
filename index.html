@@ -1061,9 +1061,9 @@
               <div class="package-price"><strong id="betaPrice">$499</strong><span>MXN / mes</span></div>
               <p class="package-billing-detail">IVA incluido. El primer cobro se realiza al activar tu lugar.</p>
             </div>
-            <div class="beta-bonus" aria-label="Incluye siete días adicionales sin costo">
+            <div class="beta-bonus" aria-label="Incluye siete días de prueba gratuita">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18"/><rect x="3" y="4" width="18" height="17" rx="2"/><path d="m8 15 2 2 5-5"/></svg>
-              <div><strong><span id="betaBonusDays">7</span> días adicionales sin costo</strong><span>Pagas hoy <span id="betaChargeToday">$499</span> y tu primer periodo dura <span id="betaInitialDays">37</span> días: 30 pagados más 7 adicionales. Después se renueva mensualmente.</span></div>
+              <div><strong>Tus primeros <span id="betaBonusDays">7</span> días son gratis</strong><span>Hoy pagas <span id="betaChargeToday">$0</span>. El día <span id="betaInitialDays">8</span> se cobrarán $499 MXN, IVA incluido, y después se renovará mensualmente. Cancela antes y no se realizará ningún cargo.</span></div>
             </div>
             <p class="package-summary">Convierte tus canales Meta en un equipo de ventas que responde con el contexto real de tu negocio. Como Fundador Tier 1 tendrás atención prioritaria durante la Beta.</p>
             <ul class="package-list">
@@ -1084,8 +1084,8 @@
               <div class="beta-availability-head"><span>Lugares de Fundador</span><strong id="betaAvailabilityText">Consultando disponibilidad...</strong></div>
               <div class="beta-availability-track" aria-hidden="true"><div class="beta-availability-value" id="betaAvailabilityValue"></div></div>
             </div>
-            <button class="button button-primary" id="betaOpenButton" type="button" data-beta-open>Reservar mi lugar</button>
-            <p class="package-note" id="betaActionNote">El pago es inmediato. Tu primera renovación será 37 días después.</p>
+            <button class="button button-primary" id="betaOpenButton" type="button" data-beta-open>Comenzar 7 días gratis</button>
+            <p class="package-note" id="betaActionNote">Registra tu método de pago. Hoy pagas $0 y puedes cancelar antes del primer cobro.</p>
           </article>
 
           <article class="package-card is-locked">
@@ -1157,14 +1157,14 @@
         </div>
         <label class="beta-consent"><input id="betaPrivacy" name="privacidad_aceptada" type="checkbox" required><span>Acepto el tratamiento descrito en el <a href="privacidad.html#programa-beta" target="_blank" rel="noopener">aviso de privacidad</a> para gestionar mi solicitud, contactarme sobre LANA y, si decido contratar, procesar el pago seguro con Stripe, habilitar mi acceso y brindarme soporte.</span></label>
         <div class="beta-checkout-legal" id="betaCheckoutLegal" data-checkout-consent>
-          <strong>Confirma las condiciones antes de pagar</strong>
-          <p>Plan Fundador Tier 1: $499 MXN al mes, IVA incluido. Cobro inmediato, 7 días adicionales sin costo y renovación mensual automática después del primer periodo de 37 días.</p>
+          <strong>Confirma las condiciones antes de comenzar</strong>
+          <p>Plan Fundador Tier 1: primeros 7 días gratis. Hoy pagas $0; el día 8 se cobrarán $499 MXN, IVA incluido, y después habrá renovación mensual automática. Si cancelas antes, no se realizará ningún cargo.</p>
           <label class="beta-consent"><input id="betaAcknowledgement" name="beta_aceptada" type="checkbox" required><span>Entiendo que LANA Chat IA es una Beta funcional en la que pueden presentarse errores, cambios o interrupciones, y que debo revisar las respuestas y cotizaciones generadas por inteligencia artificial.</span></label>
-          <label class="beta-consent"><input id="betaTerms" name="terminos_aceptados" type="checkbox" required><span>He leído y acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos y condiciones</a> y el <a href="contrato-servicio.html" target="_blank" rel="noopener">Contrato de prestación de servicios digitales</a>, versión 2026-09-02.</span></label>
-          <label class="beta-consent"><input id="betaRenewal" name="renovacion_aceptada" type="checkbox" required><span>Autorizo el cargo de $499 MXN hoy y la renovación automática mensual. Entiendo que conservo el precio Fundador Tier 1 mientras la suscripción permanezca activa, sin interrupciones y al corriente.</span></label>
+          <label class="beta-consent"><input id="betaTerms" name="terminos_aceptados" type="checkbox" required><span>He leído y acepto los <a href="terminos.html" target="_blank" rel="noopener">Términos y condiciones</a> y el <a href="contrato-servicio.html" target="_blank" rel="noopener">Contrato de prestación de servicios digitales</a>, versión 2026-09-03.</span></label>
+          <label class="beta-consent"><input id="betaRenewal" name="renovacion_aceptada" type="checkbox" required><span>Autorizo registrar mi método de pago. Hoy se cobrarán $0; si no cancelo antes, el día 8 se cobrarán $499 MXN, IVA incluido, y después mensualmente. El beneficio Fundador Tier 1 se confirma con el primer pago exitoso y se conserva mientras la suscripción permanezca activa y al corriente.</span></label>
         </div>
         <div class="beta-form-error" id="betaFormError" role="alert" aria-live="assertive"></div>
-        <div class="beta-form-actions"><button class="button" id="betaCancel" type="button">Cancelar</button><button class="button button-primary" id="betaSubmit" type="submit">Continuar al pago</button></div>
+        <div class="beta-form-actions"><button class="button" id="betaCancel" type="button">Cancelar</button><button class="button button-primary" id="betaSubmit" type="submit">Comenzar gratis</button></div>
       </form>
     </section>
   </div>
@@ -1233,7 +1233,7 @@
   <script src="supabase-config.js"></script>
   <script>
     (function () {
-      var LEGAL_VERSION="2026-09-02";
+      var LEGAL_VERSION="2026-09-03";
       var menuButton = document.getElementById("menuButton");
       var mainNav = document.getElementById("mainNav");
       function closeMenu() {
@@ -1498,7 +1498,7 @@
       var initialDays = document.getElementById("betaInitialDays");
       var statusBadge = document.getElementById("betaStatusBadge");
       var lastFocused = null;
-      var state = { checkout_abierto:true, cupo_total:20, cupos_disponibles:null, dias_gratis_adicionales:7, primer_periodo_dias:37 };
+      var state = { checkout_abierto:true, cupo_total:20, cupos_disponibles:null, dias_prueba_gratis:7, primer_cobro_dia:8 };
       var invitationToken = new URLSearchParams(window.location.search).get("beta_invite") || "";
       var invitationValid = false;
       var requestDemoMode = false;
@@ -1506,7 +1506,7 @@
 
       function api(action, extra) {
         if (localMode) {
-          if (action === "estado") return Promise.resolve({ ok:true, checkout_abierto:localMode!=="full", cupo_total:20, cupos_disponibles:localMode==="full"?0:7, cupos_ocupados:localMode==="full"?20:13, precio_mxn_centavos:49900, dias_gratis_adicionales:7, primer_periodo_dias:37 });
+          if (action === "estado") return Promise.resolve({ ok:true, checkout_abierto:localMode!=="full", cupo_total:20, cupos_disponibles:localMode==="full"?0:7, cupos_ocupados:localMode==="full"?20:13, precio_mxn_centavos:49900, dias_prueba_gratis:7, primer_cobro_dia:8 });
           if (action === "validar_invitacion") return Promise.resolve({ ok:true, valida:true, solicitud:{ nombre_contacto:"María López",nombre_negocio:"Taller Norte",email:"maria@ejemplo.com",whatsapp:"523312345678",ciudad:"Guadalajara",pais:"México",tipo_negocio:"Taller de bordado",canales:["whatsapp"] } });
           return Promise.resolve({ ok:true, solicitud_id:"mock" });
         }
@@ -1524,14 +1524,14 @@
         var total=Number(state.cupo_total)||20;
         var available=state.cupos_disponibles;
         var used=available===null?0:Math.max(0,total-Number(available));
-        var freeDays=Math.max(0,Number(state.dias_gratis_adicionales)||7);
-        var firstPeriod=Math.max(30,Number(state.primer_periodo_dias)||30+freeDays);
-        if(state.precio_mxn_centavos){price.textContent=moneyFromCents(state.precio_mxn_centavos);chargeToday.textContent=moneyFromCents(state.precio_mxn_centavos);}
-        bonusDays.textContent=String(freeDays); initialDays.textContent=String(firstPeriod);
+        var freeDays=Math.max(1,Number(state.dias_prueba_gratis)||7);
+        var firstChargeDay=Math.max(2,Number(state.primer_cobro_dia)||freeDays+1);
+        if(state.precio_mxn_centavos)price.textContent=moneyFromCents(state.precio_mxn_centavos);
+        chargeToday.textContent="$0"; bonusDays.textContent=String(freeDays); initialDays.textContent=String(firstChargeDay);
         if(available===null||available===undefined){ availabilityText.textContent="Disponibilidad por confirmar"; availabilityValue.style.width="0%"; }
         else { availabilityText.textContent=available>0?available+" de "+total+" disponibles":"Cupo fundador completo"; availabilityValue.style.width=Math.min(100,Math.round(used/total*100))+"%"; }
         if(!state.checkout_abierto&&!invitationValid){ statusBadge.textContent="Lista de espera"; openButton.textContent="Enviar solicitud"; openButton.classList.remove("button-primary"); actionNote.textContent="Los 20 lugares están ocupados. Seguimos recibiendo solicitudes para las próximas aperturas."; }
-        else { statusBadge.textContent=invitationValid?"Invitación activa":"Beta abierta"; openButton.textContent=invitationValid?"Activar mi invitación":"Reservar mi lugar"; openButton.classList.add("button-primary"); actionNote.textContent=invitationValid?"Tu invitación es personal y tiene vigencia limitada.":"El pago es inmediato. Tu primera renovación será "+firstPeriod+" días después."; }
+        else { statusBadge.textContent=invitationValid?"Invitación activa":"Beta abierta"; openButton.textContent=invitationValid?"Activar mi invitación":"Comenzar "+freeDays+" días gratis"; openButton.classList.add("button-primary"); actionNote.textContent=invitationValid?"Tu invitación es personal y tiene vigencia limitada.":"Registra tu método de pago. Hoy pagas $0 y el primer cobro será el día "+firstChargeDay+"."; }
       }
 
       function fillInvitation(data) {
@@ -1553,10 +1553,10 @@
           return;
         }
         kicker.textContent=invitationValid?"Invitación personal":waitlist?"Lista de espera":"LANA Chat IA Beta";
-        var freeDays=Math.max(0,Number(state.dias_gratis_adicionales)||7);
+        var freeDays=Math.max(1,Number(state.dias_prueba_gratis)||7);
         title.textContent=invitationValid?"Activa tu acceso a LANA":waitlist?"Solicita acceso a la próxima apertura":"Reserva uno de los 20 lugares";
-        intro.textContent=invitationValid?"Confirma tus datos y continúa al pago seguro de Stripe.":waitlist?"Los 20 lugares están ocupados, pero seguimos recibiendo solicitudes. Déjanos tus datos para considerar tu negocio en la próxima apertura.":"Cuéntanos quién usará LANA. Pagarás hoy de forma segura con Stripe y recibirás "+freeDays+" días adicionales sin costo.";
-        submitButton.textContent=waitlist?"Enviar solicitud":"Continuar al pago";
+        intro.textContent=invitationValid?"Confirma tus datos y registra tu método de pago con Stripe. Hoy pagas $0.":waitlist?"Los 20 lugares están ocupados, pero seguimos recibiendo solicitudes. Déjanos tus datos para considerar tu negocio en la próxima apertura.":"Cuéntanos quién usará LANA. Tendrás "+freeDays+" días gratis; hoy pagas $0 y puedes cancelar antes del primer cobro.";
+        submitButton.textContent=waitlist?"Enviar solicitud":"Comenzar gratis";
       }
       function openForm(mode){requestDemoMode=mode==="demo";lastFocused=document.activeElement;setFormMode();formError.textContent="";overlay.hidden=false;document.body.classList.add("beta-form-open");window.setTimeout(function(){document.getElementById("betaContact").focus();},0);}
       function closeForm(){overlay.hidden=true;document.body.classList.remove("beta-form-open");if(lastFocused&&typeof lastFocused.focus==="function")lastFocused.focus();}
@@ -1571,7 +1571,7 @@
         event.preventDefault(); formError.textContent=""; if(!form.reportValidity())return;
         var waitlist=!state.checkout_abierto&&!invitationValid;
         var action=requestDemoMode?"solicitar_demo":waitlist?"lista_espera":"crear_checkout";
-        submitButton.disabled=true; submitButton.textContent=requestDemoMode||waitlist?"Enviando...":"Preparando pago...";
+        submitButton.disabled=true; submitButton.textContent=requestDemoMode||waitlist?"Enviando...":"Preparando prueba...";
         api(action,formPayload()).then(function(out){
           if(requestDemoMode){form.reset();closeForm();showResult("Solicitud recibida. El equipo de LANA se pondrá en contacto contigo para coordinar la demostración.","success");result.scrollIntoView({behavior:"smooth",block:"center"});}
           else if(waitlist){closeForm();showResult("Tu solicitud quedó registrada. Te contactaremos cuando abramos un lugar para tu negocio.","success");result.scrollIntoView({behavior:"smooth",block:"center"});}
@@ -1582,8 +1582,8 @@
       });
 
       var paymentResult=new URLSearchParams(window.location.search).get("beta_pago");
-      if(paymentResult==="exito")showResult("Pago confirmado. Tu primer periodo incluye 30 días pagados más 7 días adicionales sin costo. Te enviaremos por correo el enlace para crear tu contraseña y entrar a LANA.","success");
-      if(paymentResult==="cancelado")showResult("El pago no se completó. Tu lugar se mantiene reservado por unos minutos para que puedas intentarlo de nuevo.","neutral");
+      if(paymentResult==="exito")showResult("Tu prueba gratuita está activa. Hoy pagaste $0. Te enviaremos por correo el enlace para entrar a LANA y la fecha exacta del primer cobro.","success");
+      if(paymentResult==="cancelado")showResult("No se activó la prueba. Tu lugar se mantiene reservado por unos minutos para que puedas intentarlo de nuevo.","neutral");
       api("estado").then(renderState).catch(function(){availabilityText.textContent="Consulta el cupo al continuar";actionNote.textContent="Confirmaremos la disponibilidad antes de abrir el pago.";});
       if(invitationToken){api("validar_invitacion",{invitacion:invitationToken}).then(function(out){if(!out.valida){showResult("La invitación no es válida o ya venció. Puedes registrarte en la lista de espera.","neutral");return;}invitationValid=true;fillInvitation(out.solicitud||{});renderState(state);showResult("Tu invitación está lista. Confirma tus datos para activar el acceso.","success");openForm("beta");}).catch(function(){showResult("No pudimos validar la invitación. Intenta nuevamente o contacta a soporte.","neutral");});}
     })();
