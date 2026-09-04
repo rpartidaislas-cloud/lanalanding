@@ -50,7 +50,7 @@ td{color:var(--lana-ui-text-secondary)}
 <tr><td>Negocios (tenants)</td><td>Nombre comercial, datos de contacto, catálogo de productos y precios, datos fiscales cuando emiten facturas (RFC, razón social, régimen fiscal, código postal), credenciales de sus propios medios de pago (Mercado Pago, Stripe) y de sus canales de mensajería (WhatsApp, Messenger, Instagram).</td></tr>
 <tr><td>Clientes finales</td><td>Nombre, teléfono y/o correo, los mensajes que envían por el catálogo, WhatsApp, Messenger o Instagram al conversar con el asistente del negocio, los diseños/logotipos que suben para cotizar, y el historial de sus cotizaciones y pedidos con ese negocio.</td></tr>
 <tr><td>Solicitantes de una demostración</td><td>Nombre del contacto y del negocio, correo, WhatsApp, necesidad que desean revisar, aceptación del aviso y estado del seguimiento comercial.</td></tr>
-<tr><td>Solicitantes del programa Beta</td><td>Nombre del contacto y del negocio, correo, WhatsApp, ciudad, país, tipo de negocio, canales actuales, necesidad principal, aceptación del aviso, de la condición Beta, del contrato, de los términos y de la renovación automática, versiones aceptadas, estado de solicitud o invitación, inicio y término de la prueba gratuita, aviso previo de cobro, confirmación del beneficio fundador y referencias técnicas de la suscripción en Stripe.</td></tr>
+<tr><td>Solicitantes del programa Beta</td><td>Nombre del contacto y del negocio, correo, WhatsApp, ciudad, país, tipo de negocio, canales actuales, necesidad principal, aceptaciones y versiones legales, estado de la solicitud, aprobación, inicio y término del piloto, confirmación del beneficio fundador y, sólo si se contrata, referencias técnicas de la suscripción en Stripe.</td></tr>
 <tr><td>Canales Meta</td><td>Identificadores de cuenta, página o canal, nombre visible, mensajes, archivos adjuntos, fecha, estado de entrega y datos necesarios para relacionar una conversación con el negocio que conectó WhatsApp Business, Messenger o Instagram.</td></tr>
 <tr><td>Uso técnico</td><td>Datos básicos de sesión, dirección IP, navegador, dispositivo, registros de seguridad y actividad dentro del panel, necesarios para el funcionamiento, soporte y protección de la plataforma.</td></tr>
 </table>
@@ -64,14 +64,14 @@ td{color:var(--lana-ui-text-secondary)}
 <li>Prevenir uso indebido de la plataforma y mantener la seguridad de las cuentas.</li>
 <li>Recibir solicitudes de demostración, asignarlas al equipo de LANA y contactar al negocio para mostrarle el producto.</li>
 <li>Gestionar solicitudes del programa Beta, asignar lugares, enviar invitaciones, crear la suscripción, habilitar el acceso y prestar soporte directo.</li>
-<li>Conservar evidencia de la contratación electrónica, de las versiones legales aceptadas, de la autorización de renovación automática, del periodo de prueba y del aviso previo al primer cobro.</li>
+<li>Conservar evidencia de la solicitud y aprobación del piloto, de las versiones legales aceptadas y, sólo si se contrata, de la autorización de renovación automática y del pago.</li>
 </ul>
 
 <h2 id="solicitudes-demo">4. Solicitudes de demostración</h2>
 <p>Los datos enviados mediante “Solicitar demo” se muestran únicamente al equipo Superadmin de LANA para atender la petición, preparar una demostración pertinente y dar seguimiento al contacto. También se envía una notificación transaccional al equipo. No se venden ni se comparten con terceros para publicidad.</p>
 
 <h2 id="programa-beta">5. Programa Beta y lista de espera</h2>
-<p>Los datos del formulario Beta se usan para confirmar elegibilidad y disponibilidad, documentar la contratación electrónica, iniciar la prueba gratuita de 7 días, programar el primer cobro y los pagos mensuales mediante Stripe, activar la cuenta, ofrecer soporte y administrar la lista de espera. Al registrar la prueba se guardan la fecha, el periodo gratuito, el aviso del primer cobro y las versiones de los términos, contrato y condiciones Beta aceptadas. No se usan para publicidad de terceros ni se venden. Si los lugares se agotan, conservaremos la solicitud mientras el programa permanezca activo o hasta que la persona pida retirarla.</p>
+<p>Los datos del formulario Beta se usan para revisar la solicitud, coordinar y habilitar un piloto acompañado de 10 días, ofrecer soporte y administrar lugares disponibles. Solicitarlo no registra tarjeta ni crea un cobro automático. Si posteriormente se contrata, se documentarán la aceptación de la renovación y las referencias del pago. No se usan para publicidad de terceros ni se venden.</p>
 <p>El pago se realiza en Stripe. LANA recibe identificadores de cliente, checkout y suscripción, importe, moneda y estado del pago; no recibe ni almacena el número completo de la tarjeta ni su código de seguridad.</p>
 
 <h2>6. Proveedores y transferencias necesarias</h2>
