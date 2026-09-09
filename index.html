@@ -451,6 +451,15 @@
     .package-price-locked strong { display:block; font:700 25px/1.2 Manrope,sans-serif; }
     .package-price-locked span { display:block; margin-top:4px; color:var(--lana-ui-text-muted); font-size:11px; }
     .package-summary { min-height:66px; margin:16px 0 0; color:var(--lana-ui-text-secondary); font-size:13px; line-height:1.6; }
+    .package-capacity { margin-top:18px; padding:14px; border:1px solid var(--lana-ui-border); border-radius:10px; background:var(--lana-ui-surface-subtle); }
+    .package-capacity > span { display:block; margin-bottom:11px; color:var(--lana-ui-text-secondary); font-size:11px; font-weight:700; }
+    .package-capacity dl { margin:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .package-capacity dl > div { min-width:0; padding:0 10px; border-left:1px solid var(--lana-ui-border); }
+    .package-capacity dl > div:first-child { padding-left:0; border-left:0; }
+    .package-capacity dl > div:last-child { padding-right:0; }
+    .package-capacity dt { color:var(--lana-ui-text-muted); font-size:10px; line-height:1.35; }
+    .package-capacity dd { margin:4px 0 0; color:var(--lana-ui-text); font:700 14px/1.25 Manrope,sans-serif; letter-spacing:-.015em; }
+    .package-capacity dd small { display:block; margin-top:2px; color:var(--lana-ui-text-muted); font:500 9px/1.3 Inter,sans-serif; letter-spacing:0; }
     .package-list { margin:22px 0 28px; padding:22px 0 0; display:grid; gap:13px; border-top:1px solid var(--lana-ui-border); list-style:none; }
     .package-list li { position:relative; padding-left:24px; color:var(--lana-ui-text-secondary); font-size:12px; line-height:1.55; }
     .package-list svg { position:absolute; top:1px; left:0; width:16px; height:16px; color:var(--lana-ui-success); }
@@ -1066,15 +1075,24 @@
               <div><strong>10 días para probar LANA en tu negocio</strong><span>Sin tarjeta y sin cobro automático. Te acompañamos para configurarla y generar tu primera cotización. Después tú decides si continúas por $499 MXN al mes.</span></div>
             </div>
             <p class="package-summary">Convierte tus canales Meta en un equipo de ventas que responde con el contexto real de tu negocio. Como Fundador Tier 1 tendrás atención prioritaria durante la Beta.</p>
+            <div class="package-capacity" aria-label="Capacidad mensual incluida en LANA Chat IA">
+              <span>Capacidad mensual incluida</span>
+              <dl>
+                <div><dt>Inteligencia artificial</dt><dd>1.89 millones<small>de tokens</small></dd></div>
+                <div><dt>Facturación CFDI</dt><dd>15<small>timbres</small></dd></div>
+                <div><dt>Archivos de diseño</dt><dd>2 GB<small>de espacio</small></dd></div>
+              </dl>
+            </div>
             <ul class="package-list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>WhatsApp Business, Messenger e Instagram en una sola bandeja.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Agentes de IA capacitados con tu catálogo, condiciones, preguntas frecuentes y estilo de atención.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Facturación CFDI 4.0 con PDF, XML, envío por correo y cancelación.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Catálogo interno con precios fijos, márgenes y escalas por volumen.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Reglas de arte para bordado, serigrafía, DTF, sublimación, vinil, lona y otros servicios.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Seguimiento por etapas y cotización rápida desde la conversación.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>E-commerce con catálogo, precios y cotizador de autoservicio.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Configurador Beta para organizar productos y diseños de forma visual.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Sin límites de conversaciones o cotizaciones en LANA durante la Beta.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Conversaciones y cotizaciones sin límite fijo; la IA incluye 1.89 millones de tokens al mes.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Sin plazo forzoso: cancelación cuando quieras antes de la siguiente renovación.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Atención prioritaria y contacto directo con el equipo de LANA.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Descuento Fundador protegido: Tier 1 paga siempre 55.44% del precio regular vigente.</li>
@@ -1093,12 +1111,20 @@
             <h3>LANA Operación</h3>
             <div class="package-price-locked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><strong>En preparación</strong><span>Precio disponible al abrir el paquete.</span></div></div>
             <p class="package-summary">Conecta ventas, administración y producción para trabajar con una sola fuente de información.</p>
+            <div class="package-capacity" aria-label="Capacidad mensual incluida en LANA Operación">
+              <span>Capacidad mensual incluida</span>
+              <dl>
+                <div><dt>Inteligencia artificial</dt><dd>4.84 millones<small>de tokens</small></dd></div>
+                <div><dt>Facturación CFDI</dt><dd>40<small>timbres</small></dd></div>
+                <div><dt>Archivos de diseño</dt><dd>10 GB<small>de espacio</small></dd></div>
+              </dl>
+            </div>
             <ul class="package-list">
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Todo lo incluido en LANA Chat IA, incluido e-commerce y Configurador Beta.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Todo lo incluido en LANA Chat IA.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Cotizaciones, aprobaciones, Órdenes de Trabajo, ventas y remisiones.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Clientes, pagos, compras, proveedores e inventario conectados.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Workflow de producción, calendario, capacidad y reportes operativos.</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Facturación CFDI 4.0 con PDF, XML, correo, cancelaciones y complementos de pago.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Administración fiscal conectada con ventas, pagos y complementos de pago.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Mensajes masivos y administración de campañas de Meta.</li>
             </ul>
             <button class="button" type="button" disabled aria-disabled="true">Disponible próximamente</button>
@@ -1109,6 +1135,14 @@
             <h3>LANA Multisucursal</h3>
             <div class="package-price-locked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><div><strong>En preparación</strong><span>Precio disponible al abrir el paquete.</span></div></div>
             <p class="package-summary">Lleva el mismo proceso comercial y operativo a todas tus sucursales con una implementación coordinada.</p>
+            <div class="package-capacity" aria-label="Capacidad mensual incluida en LANA Multisucursal">
+              <span>Capacidad mensual incluida</span>
+              <dl>
+                <div><dt>Inteligencia artificial</dt><dd>7.99 millones<small>de tokens</small></dd></div>
+                <div><dt>Facturación CFDI</dt><dd>100<small>timbres</small></dd></div>
+                <div><dt>Archivos de diseño</dt><dd>50 GB<small>de espacio</small></dd></div>
+              </dl>
+            </div>
             <ul class="package-list">
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Todo lo incluido en LANA Operación.</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Configuración para operar múltiples sucursales con procesos consistentes.</li>
@@ -1124,7 +1158,7 @@
           <div><strong>30 lugares Fundador Tier 2</strong><p>Cuando termine la apertura Tier 1 liberaremos un segundo grupo con acceso Beta y precio fundador propio.</p></div>
           <div class="beta-next-tier-price">$799<small>MXN / mes · IVA incluido</small></div>
         </div>
-        <p class="packages-footnote">Los precios actuales son $499 para Tier 1 y $799 para Tier 2, IVA incluido. En el futuro pueden cambiar por estrategia comercial o factores económicos. Mientras la suscripción permanezca activa y al corriente, se protege la proporción frente al precio regular vigente: Tier 1 paga 499/900 (55.44%) y Tier 2 paga 799/900 (88.78%). Cualquier ajuste se avisará con al menos 30 días naturales de anticipación, indicando el importe y la fecha de aplicación, para que puedas cancelar antes del cargo. No incluye cargos de Meta, timbres CFDI ni otros servicios externos.</p>
+        <p class="packages-footnote">Los precios actuales son $499 para Tier 1 y $799 para Tier 2, IVA incluido. En el futuro pueden cambiar por estrategia comercial o factores económicos. Mientras la suscripción permanezca activa y al corriente, se protege la proporción frente al precio regular vigente: Tier 1 paga 499/900 (55.44%) y Tier 2 paga 799/900 (88.78%). Cualquier ajuste se avisará con al menos 30 días naturales de anticipación, indicando el importe y la fecha de aplicación, para que puedas cancelar antes del cargo. Cada paquete incluye la capacidad mensual indicada; los tokens adicionales aplican al mes en curso, los timbres adicionales comprados no vencen y los complementos de pago también consumen un timbre. El almacenamiento corresponde a archivos de diseño. No incluye cargos de mensajería de Meta ni otros servicios externos.</p>
       </div>
     </section>
 
