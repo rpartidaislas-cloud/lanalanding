@@ -455,6 +455,7 @@
     .benchmark-mobile-hint { display:none; margin:0 0 10px; color:var(--lana-ui-text-muted); font-size:11px; font-weight:600; }
 
     .packages-section { background:var(--bg-2); }
+    .packages-head[hidden],.beta-context[hidden],.packages-grid[hidden],.beta-next-tier[hidden],.packages-footnote[hidden] { display:none; }
     .packages-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.55fr); align-items:end; gap:40px; }
     .packages-head .section-intro { margin:0; }
     .packages-grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-items:stretch; gap:16px; }
@@ -1195,15 +1196,87 @@
     <section class="section packages-section" id="paquetes">
       <div class="container">
         <div class="packages-head">
+          <div><span class="section-label">Planes y precios</span><h2 class="section-heading">Elige la capacidad que necesita tu negocio.</h2></div>
+          <p class="section-intro">Precios mensuales en pesos mexicanos más IVA. Los planes de pago incluyen 14 días de prueba gratuita, sin tarjeta de crédito.</p>
+        </div>
+        <div class="packages-grid">
+          <article class="package-card">
+            <div class="package-topline"><span>Para conocer LANA</span></div>
+            <h3>Gratis</h3>
+            <div class="package-price-wrap"><div class="package-price"><strong>$0</strong><span>/ mes</span></div><p class="package-billing-detail">Disponible para siempre.</p></div>
+            <p class="package-summary">Conoce el flujo básico de atención con un canal antes de activar funciones avanzadas.</p>
+            <ul class="package-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>1 número de WhatsApp y 1 usuario.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>100 mensajes al mes.</li>
+              <li class="is-unavailable">Sin Messenger, Instagram ni inteligencia artificial.</li>
+            </ul>
+            <button class="button" type="button" data-demo-request-open>Solicitar acceso</button>
+          </article>
+
+          <article class="package-card">
+            <div class="package-topline"><span>Operación inicial</span></div>
+            <h3>Inicio</h3>
+            <div class="package-price-wrap"><div class="package-price"><strong>$499</strong><span>MXN / mes</span></div><p class="package-billing-detail">Más IVA · 14 días de prueba gratuita.</p></div>
+            <p class="package-summary">Centraliza tus canales Meta y administra ventas, catálogo y facturación desde un solo lugar.</p>
+            <ul class="package-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>WhatsApp, Messenger e Instagram.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>1 usuario, 1,000 mensajes y 1 GB de almacenamiento.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>15 timbres CFDI, POS, catálogo público y soporte por chat.</li>
+            </ul>
+            <button class="button" type="button" data-demo-request-open>Probar Inicio</button>
+          </article>
+
+          <article class="package-card">
+            <div class="package-topline"><span>Ventas con IA</span></div>
+            <h3>Esencial</h3>
+            <div class="package-price-wrap"><div class="package-price"><strong>$990</strong><span>MXN / mes</span></div><p class="package-billing-detail">Más IVA · 14 días de prueba gratuita.</p></div>
+            <p class="package-summary">Activa respuestas con IA, Copilot y portal del cliente para atender con mayor contexto.</p>
+            <ul class="package-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>3 usuarios y 1,000 mensajes con IA al mes.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>1 millón de tokens Copilot y 5 GB de almacenamiento.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Portal del cliente, 50 timbres CFDI y soporte por chat.</li>
+            </ul>
+            <button class="button" type="button" data-demo-request-open>Probar Esencial</button>
+          </article>
+
+          <article class="package-card is-beta">
+            <div class="package-topline"><span>Operación conectada</span><span class="package-badge">Más popular</span></div>
+            <h3>Profesional</h3>
+            <div class="package-price-wrap"><div class="package-price"><strong>$1,990</strong><span>MXN / mes</span></div><p class="package-billing-detail">Más IVA · 14 días de prueba gratuita.</p></div>
+            <p class="package-summary">Coordina atención, ventas y seguimiento con más capacidad y todas las herramientas comerciales.</p>
+            <ul class="package-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>5 usuarios y 2,000 mensajes con IA al mes.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>4 millones de tokens Copilot y 20 GB de almacenamiento.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Agenda, mensajes masivos, 150 timbres y soporte prioritario.</li>
+            </ul>
+            <button class="button button-primary" type="button" data-demo-request-open>Probar Profesional</button>
+          </article>
+
+          <article class="package-card">
+            <div class="package-topline"><span>Escala empresarial</span></div>
+            <h3>Empresarial</h3>
+            <div class="package-price-wrap"><div class="package-price"><strong>$3,990</strong><span>MXN / mes</span></div><p class="package-billing-detail">Más IVA · 14 días de prueba gratuita.</p></div>
+            <p class="package-summary">Unifica equipos y sucursales con mayor capacidad, permisos y atención prioritaria.</p>
+            <ul class="package-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Hasta 3 números de WhatsApp y 15 usuarios.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>4,000 mensajes con IA, 8 millones de tokens y 50 GB.</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Operación multisucursal, 300 timbres y soporte prioritario.</li>
+            </ul>
+            <button class="button" type="button" data-demo-request-open>Probar Empresarial</button>
+          </article>
+        </div>
+        <p class="packages-footnote">Los planes de pago se renuevan mensualmente y pueden cancelarse antes de la siguiente renovación. No incluyen cargos externos de Meta ni de otros proveedores.</p>
+
+        <div class="packages-head" hidden>
           <div><span class="section-label">Acceso Beta</span><h2 class="section-heading">Empieza hoy con LANA Chat IA.</h2></div>
           <p class="section-intro">Abrimos 20 lugares Fundador Tier 1 para negocios que quieran usar el producto, recibir atención prioritaria y ayudarnos a perfeccionarlo.</p>
         </div>
         <div class="beta-result" id="betaResult" role="status" aria-live="polite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span id="betaResultText"></span></div>
-        <div class="beta-context">
+        <div class="beta-context" hidden>
           <div><strong>Una Beta es un producto funcional en etapa de mejora.</strong><p>Podrás trabajar con funciones reales desde el primer día. Pueden presentarse errores o ajustes mientras evolucionan las pantallas y los flujos; el equipo de LANA dará seguimiento a los reportes y trabajará en su corrección.</p></div>
           <div class="beta-founder-copy"><span>Fundador Tier 1</span>Los primeros 20 negocios reciben atención prioritaria y conservan permanentemente su proporción de descuento mientras mantengan la suscripción activa y al corriente.</div>
         </div>
-        <div class="packages-grid">
+        <div class="packages-grid" hidden>
           <article class="package-card is-beta">
             <div class="package-topline"><span>Mensajería comercial</span><span class="package-badge" id="betaStatusBadge">Beta abierta</span></div>
             <h3>LANA Chat IA</h3>
@@ -1300,12 +1373,12 @@
             <button class="button" type="button" disabled aria-disabled="true">Disponible próximamente</button>
           </article>
         </div>
-        <div class="beta-next-tier" aria-label="Próxima apertura Fundador Tier 2">
+        <div class="beta-next-tier" aria-label="Próxima apertura Fundador Tier 2" hidden>
           <span class="beta-next-tier-label">Próxima apertura</span>
           <div><strong>30 lugares Fundador Tier 2</strong><p>Cuando termine la apertura Tier 1 liberaremos un segundo grupo con acceso Beta y precio fundador propio.</p></div>
           <div class="beta-next-tier-price">$799<small>MXN / mes · IVA incluido</small></div>
         </div>
-        <p class="packages-footnote">Los precios actuales son $499 para Tier 1 y $799 para Tier 2, IVA incluido. En el futuro pueden cambiar por estrategia comercial o factores económicos. Mientras la suscripción permanezca activa y al corriente, se protege la proporción frente al precio regular vigente: Tier 1 paga 499/900 (55.44%) y Tier 2 paga 799/900 (88.78%). Cualquier ajuste se avisará con al menos 30 días naturales de anticipación, indicando el importe y la fecha de aplicación, para que puedas cancelar antes del cargo. Cada paquete incluye la capacidad mensual indicada; los tokens adicionales aplican al mes en curso, los timbres adicionales comprados no vencen y los complementos de pago también consumen un timbre. El almacenamiento corresponde a archivos y documentos del negocio. No incluye cargos de mensajería de Meta ni otros servicios externos.</p>
+        <p class="packages-footnote" hidden>Los precios actuales son $499 para Tier 1 y $799 para Tier 2, IVA incluido. En el futuro pueden cambiar por estrategia comercial o factores económicos. Mientras la suscripción permanezca activa y al corriente, se protege la proporción frente al precio regular vigente: Tier 1 paga 499/900 (55.44%) y Tier 2 paga 799/900 (88.78%). Cualquier ajuste se avisará con al menos 30 días naturales de anticipación, indicando el importe y la fecha de aplicación, para que puedas cancelar antes del cargo. Cada paquete incluye la capacidad mensual indicada; los tokens adicionales aplican al mes en curso, los timbres adicionales comprados no vencen y los complementos de pago también consumen un timbre. El almacenamiento corresponde a archivos y documentos del negocio. No incluye cargos de mensajería de Meta ni otros servicios externos.</p>
       </div>
     </section>
 
